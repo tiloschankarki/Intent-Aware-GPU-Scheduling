@@ -1,0 +1,350 @@
+{
+  "software": {
+    "python": "3.12.2 | packaged by conda-forge | (main, Feb 16 2024, 20:54:21) [Clang 16.0.6 ]",
+    "platform": "macOS-15.7.4-arm64-arm-64bit",
+    "lightgbm": "4.7.0",
+    "numpy": "2.0.1",
+    "pandas": "2.2.3"
+  },
+  "inputs": {
+    "20260927": {
+      "train": {
+        "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/train_20260927.parquet",
+        "sha256": "18f6cbc9e7c12caf23e3f3ee2591aed608be773b114f4e19e8de9a2abd9a3e2a",
+        "rows": 3339542,
+        "workloads": 331486
+      },
+      "validation": {
+        "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/validation_20260927.parquet",
+        "sha256": "ced84beb3cebfb1faee3321e243965b35a042288f30fe40aeafe960dec56f8dd",
+        "rows": 658761,
+        "workloads": 71074
+      },
+      "overlap": 0
+    },
+    "20261020": {
+      "train": {
+        "path": "/Users/tiloschan/Downloads/asi_robustness_20261020/selection_inputs/train.parquet",
+        "sha256": "ef0949fe1039baeff292e7d6ffc24502a5a65573caf62eaefb7d5e46ec1f4a37",
+        "rows": 3223597,
+        "workloads": 330836
+      },
+      "validation": {
+        "path": "/Users/tiloschan/Downloads/asi_robustness_20261020/selection_inputs/validation.parquet",
+        "sha256": "7db16f27169d1391cbf9c33e43c05cdfa7da6a09070a799bce4dae8ee1ce0525",
+        "rows": 752865,
+        "workloads": 70929
+      },
+      "overlap": 0
+    }
+  },
+  "baselines": {
+    "20260927_m0": {
+      "reference": 0.7769737589221009,
+      "reproduced": 0.7769737589221007,
+      "difference": -1.1102230246251565e-16,
+      "equal_workload": 0.7699276862393716,
+      "trees": 94,
+      "features": [
+        "gpu_request",
+        "gpu_spec_public",
+        "priority_class",
+        "model_type_public",
+        "is_genai_request"
+      ],
+      "encoding": {
+        "gpu_spec_public": [
+          "A10",
+          "A100",
+          "A30",
+          "A800",
+          "H20",
+          "H20-141GB",
+          "H800",
+          "L20",
+          "XPU-A",
+          "XPU-B",
+          "XPU-C",
+          "XPU-D",
+          "XPU-E"
+        ],
+        "priority_class": [
+          "HP",
+          "LP",
+          "Other"
+        ],
+        "model_type_public": [
+          "cv",
+          "dev",
+          "embedding",
+          "genai",
+          "rec",
+          "unknown"
+        ],
+        "is_genai_request": [
+          "False",
+          "True"
+        ]
+      },
+      "selected": {
+        "candidate_id": 10,
+        "validation_log_mae": 0.7769737589221009,
+        "best_iteration": 94,
+        "parameters": {
+          "objective": "regression_l1",
+          "metric": "l1",
+          "learning_rate": 0.05,
+          "bagging_fraction": 0.8,
+          "bagging_freq": 1,
+          "verbosity": -1,
+          "num_threads": 2,
+          "deterministic": true,
+          "force_col_wise": true,
+          "feature_pre_filter": false,
+          "num_leaves": 63,
+          "min_data_in_leaf": 20,
+          "feature_fraction": 1.0,
+          "seed": 20260927,
+          "bagging_seed": 20260927,
+          "feature_fraction_seed": 20260927,
+          "data_random_seed": 20260927
+        }
+      },
+      "model_sha256": "90eef4a16ad534c5a9c4f1bba2b0889b78c7f7726c70567b6070cc868889a79d"
+    },
+    "20260927_m1": {
+      "reference": 0.7607849167256721,
+      "reproduced": 0.760784916725672,
+      "difference": -1.1102230246251565e-16,
+      "equal_workload": 0.74171373199107,
+      "trees": 190,
+      "features": [
+        "gpu_request",
+        "gpu_spec_public",
+        "priority_class",
+        "model_type_public",
+        "is_genai_request",
+        "job_type_public"
+      ],
+      "encoding": {
+        "gpu_spec_public": [
+          "A10",
+          "A100",
+          "A30",
+          "A800",
+          "H20",
+          "H20-141GB",
+          "H800",
+          "L20",
+          "XPU-A",
+          "XPU-B",
+          "XPU-C",
+          "XPU-D",
+          "XPU-E"
+        ],
+        "priority_class": [
+          "HP",
+          "LP",
+          "Other"
+        ],
+        "model_type_public": [
+          "cv",
+          "dev",
+          "embedding",
+          "genai",
+          "rec",
+          "unknown"
+        ],
+        "is_genai_request": [
+          "False",
+          "True"
+        ],
+        "job_type_public": [
+          "dev",
+          "offline_inference",
+          "online_inference",
+          "training"
+        ]
+      },
+      "selected": {
+        "candidate_id": 11,
+        "validation_log_mae": 0.7607849167256721,
+        "best_iteration": 190,
+        "parameters": {
+          "objective": "regression_l1",
+          "metric": "l1",
+          "learning_rate": 0.05,
+          "bagging_fraction": 0.8,
+          "bagging_freq": 1,
+          "verbosity": -1,
+          "num_threads": 2,
+          "deterministic": true,
+          "force_col_wise": true,
+          "feature_pre_filter": false,
+          "num_leaves": 63,
+          "min_data_in_leaf": 100,
+          "feature_fraction": 0.8,
+          "seed": 20260927,
+          "bagging_seed": 20260927,
+          "feature_fraction_seed": 20260927,
+          "data_random_seed": 20260927
+        }
+      },
+      "model_sha256": "0e527148f606e3434723b4c2e175a5b36cc7e882fcd0a1241d7597a0144c6e70"
+    },
+    "20261020_m0": {
+      "reference": 0.7852658401015193,
+      "reproduced": 0.7852658401015193,
+      "difference": 0.0,
+      "equal_workload": 0.7911145323993632,
+      "trees": 141,
+      "features": [
+        "gpu_request",
+        "gpu_spec_public",
+        "priority_class",
+        "model_type_public",
+        "is_genai_request"
+      ],
+      "encoding": {
+        "gpu_spec_public": [
+          "A10",
+          "A100",
+          "A30",
+          "A800",
+          "H20",
+          "H20-141GB",
+          "H800",
+          "L20",
+          "XPU-A",
+          "XPU-B",
+          "XPU-C",
+          "XPU-D",
+          "XPU-E"
+        ],
+        "priority_class": [
+          "HP",
+          "LP",
+          "Other"
+        ],
+        "model_type_public": [
+          "cv",
+          "dev",
+          "embedding",
+          "genai",
+          "rec",
+          "unknown"
+        ],
+        "is_genai_request": [
+          "False",
+          "True"
+        ]
+      },
+      "selected": {
+        "candidate_id": 2,
+        "validation_log_mae": 0.7852658401015193,
+        "best_iteration": 141,
+        "parameters": {
+          "objective": "regression_l1",
+          "metric": "l1",
+          "learning_rate": 0.05,
+          "bagging_fraction": 0.8,
+          "bagging_freq": 1,
+          "verbosity": -1,
+          "num_threads": 2,
+          "deterministic": true,
+          "force_col_wise": true,
+          "feature_pre_filter": false,
+          "num_leaves": 15,
+          "min_data_in_leaf": 20,
+          "feature_fraction": 1.0,
+          "seed": 20260927,
+          "bagging_seed": 20260927,
+          "feature_fraction_seed": 20260927,
+          "data_random_seed": 20260927
+        }
+      },
+      "model_sha256": "0acc2f4cf8383652a69c7b3878f44166b3a7af0cc1f941ad01f925292f1f9b66"
+    },
+    "20261020_m1": {
+      "reference": 0.8237959010870514,
+      "reproduced": 0.8237959010870514,
+      "difference": 0.0,
+      "equal_workload": 0.8129090643266287,
+      "trees": 5,
+      "features": [
+        "gpu_request",
+        "gpu_spec_public",
+        "priority_class",
+        "model_type_public",
+        "is_genai_request",
+        "job_type_public"
+      ],
+      "encoding": {
+        "gpu_spec_public": [
+          "A10",
+          "A100",
+          "A30",
+          "A800",
+          "H20",
+          "H20-141GB",
+          "H800",
+          "L20",
+          "XPU-A",
+          "XPU-B",
+          "XPU-C",
+          "XPU-D",
+          "XPU-E"
+        ],
+        "priority_class": [
+          "HP",
+          "LP",
+          "Other"
+        ],
+        "model_type_public": [
+          "cv",
+          "dev",
+          "embedding",
+          "genai",
+          "rec",
+          "unknown"
+        ],
+        "is_genai_request": [
+          "False",
+          "True"
+        ],
+        "job_type_public": [
+          "dev",
+          "offline_inference",
+          "online_inference",
+          "training"
+        ]
+      },
+      "selected": {
+        "candidate_id": 1,
+        "validation_log_mae": 0.8237959010870514,
+        "best_iteration": 5,
+        "parameters": {
+          "objective": "regression_l1",
+          "metric": "l1",
+          "learning_rate": 0.05,
+          "bagging_fraction": 0.8,
+          "bagging_freq": 1,
+          "verbosity": -1,
+          "num_threads": 2,
+          "deterministic": true,
+          "force_col_wise": true,
+          "feature_pre_filter": false,
+          "num_leaves": 15,
+          "min_data_in_leaf": 20,
+          "feature_fraction": 0.8,
+          "seed": 20260927,
+          "bagging_seed": 20260927,
+          "feature_fraction_seed": 20260927,
+          "data_random_seed": 20260927
+        }
+      },
+      "model_sha256": "b081da60e0d5d1f07fe8db511afa260dea71b51fc31bfdc7859af6acb0842b13"
+    }
+  },
+  "source_code_inspected_not_executed": true
+}

@@ -1,0 +1,729 @@
+{
+  "date": "2026-11-01",
+  "initial_head": "d5dbd80784a91882c9a8ff3453cfacd6ab989a80",
+  "initial_status": "main tracking origin/main; three untracked research-audit folders; no tracked modifications",
+  "imports": [
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/README.md",
+      "destination": "paper/asi_manuscript_2026-10-29/README.md",
+      "bytes": 4440,
+      "sha256": "71c5fb4d4f9857e88d00651392bfcc34f37ab886f67b82dd45d63f5c100e4791"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/audit_retrieved_prefix.txt",
+      "destination": "paper/asi_manuscript_2026-10-29/data/audit_retrieved_prefix.txt",
+      "bytes": 20141,
+      "sha256": "fe4bf47c768f69509cc0aa484b9b398582c79a2e9586279fe20ea9b49602cec8"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp1_checkpoint_original.md",
+      "destination": "paper/asi_manuscript_2026-10-29/data/exp1_checkpoint_original.md",
+      "bytes": 27046,
+      "sha256": "38871676d260c8b785679e807496ce58ab1b34e63761df2e9459fd029d0cb517"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp1_historical_report_values.csv",
+      "destination": "paper/asi_manuscript_2026-10-29/data/exp1_historical_report_values.csv",
+      "bytes": 325,
+      "sha256": "7ec93dd79a6777bb00d853d10de26427d7563e4a7bf5724993cfee6e4840b13d"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp2_phase1_findings_original.md",
+      "destination": "paper/asi_manuscript_2026-10-29/data/exp2_phase1_findings_original.md",
+      "bytes": 35682,
+      "sha256": "fb553f81ff6ea45d4981c4c7aff25c2e979a5ca835f6771e2c3db7c4629b4230"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp2_reported_validation_values.csv",
+      "destination": "paper/asi_manuscript_2026-10-29/data/exp2_reported_validation_values.csv",
+      "bytes": 192,
+      "sha256": "56a9432a50c1654b68bc026ccc1c5a7ded46235587424df865ab34efad454e89"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_candidate_records.csv",
+      "destination": "paper/asi_manuscript_2026-10-29/data/exp3_candidate_records.csv",
+      "bytes": 8832,
+      "sha256": "c382de3bc1410377699f4b1d0806afb6b9ebe436695cfdb9f89405387d6ba804"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_concentration_attribution.csv",
+      "destination": "paper/asi_manuscript_2026-10-29/data/exp3_concentration_attribution.csv",
+      "bytes": 795,
+      "sha256": "0a7fa1a8c9ad4277d1078f224659c88872b09cde0a5f7a7bca80dd8db4cccdde"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_preregistration_original.json",
+      "destination": "paper/asi_manuscript_2026-10-29/data/exp3_preregistration_original.json",
+      "bytes": 5838,
+      "sha256": "ebdb0e142dbc7f1da6f75513165d6ce1818507a0a0b4f89de6f7f71f1c655f4a"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_report_original.json",
+      "destination": "paper/asi_manuscript_2026-10-29/data/exp3_report_original.json",
+      "bytes": 232700,
+      "sha256": "133905e754953dc45ebbb5f7d483daa0ab10124c032aff304599857bcacea85c"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_selected_validation.csv",
+      "destination": "paper/asi_manuscript_2026-10-29/data/exp3_selected_validation.csv",
+      "bytes": 2686,
+      "sha256": "9cd77897d96d2d262ef46394aa4262089e8d53c1d59ce0f095bec8bb01f6adf1"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/environment.json",
+      "destination": "paper/asi_manuscript_2026-10-29/environment.json",
+      "bytes": 212,
+      "sha256": "e68cebdbb607bcc533274bfc1bac71a0ba52c5a389a134dab2ef1052ac97ac2a"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig01_historical_test.pdf",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig01_historical_test.pdf",
+      "bytes": 21644,
+      "sha256": "df9922bb979b48f64d4684a27d1883292415f422ba4f748368e50161f280f7a8"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig01_historical_test.png",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig01_historical_test.png",
+      "bytes": 141929,
+      "sha256": "4c4b94b257a39da839b01e67090dc8336e91a60f630415c94cb0f9fca95ac437"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig01_historical_test.svg",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig01_historical_test.svg",
+      "bytes": 16065,
+      "sha256": "5a5dfb10cda3cd78b71d5c664a138951a1f82558e29c75c633778c4c9fc38104"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig02_partition_weighting.pdf",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig02_partition_weighting.pdf",
+      "bytes": 23257,
+      "sha256": "96e2c4f95b378f3f2882d73389c9ae39e892ba7361610f7258b05e0a0fa656db"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig02_partition_weighting.png",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig02_partition_weighting.png",
+      "bytes": 175080,
+      "sha256": "5f6bf8a416a5cba8694d1880710b1c70902ce1f13628ee2e419f9590c5b0e726"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig02_partition_weighting.svg",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig02_partition_weighting.svg",
+      "bytes": 19183,
+      "sha256": "28f757a30ed4dc2ebdb7f06aee264f90a5ed04ff439e3cef776a34cb1b5f15e6"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig03_concentration_attribution.pdf",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig03_concentration_attribution.pdf",
+      "bytes": 23309,
+      "sha256": "1be850f1ff8671deec8db7bb830548e92e240e2dd6dff19487162bf3585f13cc"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig03_concentration_attribution.png",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig03_concentration_attribution.png",
+      "bytes": 138849,
+      "sha256": "0dfd3660a96d68f52fdba84490f1d2da7ab4c2027c91f657fa854adcb10ee591"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig03_concentration_attribution.svg",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig03_concentration_attribution.svg",
+      "bytes": 16685,
+      "sha256": "6ba3c51e550772b311e1272b010c2e9846c7ed15877df4c03e44526e7bac6d3f"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig04_selection_context.pdf",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig04_selection_context.pdf",
+      "bytes": 22897,
+      "sha256": "af723c2a5a41a30e365bd611cd6c954f051804962e2b351280242b921f8724b3"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig04_selection_context.png",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig04_selection_context.png",
+      "bytes": 156568,
+      "sha256": "42a2cb1e5a93c424723ab125e33626f4fb42a7c63ac79f94ff443ed99c6d50fc"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig04_selection_context.svg",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig04_selection_context.svg",
+      "bytes": 20656,
+      "sha256": "ee4f5bec9069ae4941e5ae730ed3332abc419ea1c2bed66acbd6ade635986a9e"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig05_evidence_map.pdf",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig05_evidence_map.pdf",
+      "bytes": 17856,
+      "sha256": "0c8a00d0b04a67047c9d686df88e7d69e070de3237058e2422651e9bc2f8a5fe"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig05_evidence_map.png",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig05_evidence_map.png",
+      "bytes": 82348,
+      "sha256": "17c0d758d1c7a964ebbd88659f89b8deb28d18f544915edabc326c11710d2041"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig05_evidence_map.svg",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig05_evidence_map.svg",
+      "bytes": 5413,
+      "sha256": "9b532f25d6d523a3cef176cda88e88274783963ee29c54d65e2d439270e505fa"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig06_historical_validation.pdf",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig06_historical_validation.pdf",
+      "bytes": 22495,
+      "sha256": "9f3e5878136f1aec883f4a2211653a332563335bce9f8a704a92dc9f92b5efff"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig06_historical_validation.png",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig06_historical_validation.png",
+      "bytes": 111106,
+      "sha256": "958cefeab528bf0312af7661ceff4d9bc31c38567c2b57d7ccb9553e186cb607"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig06_historical_validation.svg",
+      "destination": "paper/asi_manuscript_2026-10-29/figures/fig06_historical_validation.svg",
+      "bytes": 13062,
+      "sha256": "85d44a8c38e8327adbc92f017a1c185bfc2a2023e673dbad5ce2eee0dff31649"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/initial_draft.md",
+      "destination": "paper/asi_manuscript_2026-10-29/initial_draft.md",
+      "bytes": 21858,
+      "sha256": "295397ff5a1c8952a2384cd5ea853bd5794ea1477d88d0978bf614834f10bfd6"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/manifest.json",
+      "destination": "paper/asi_manuscript_2026-10-29/manifest.json",
+      "bytes": 4967,
+      "sha256": "3b6e8a91e0847e5e67b73706252293d8696706c2bc405750a1810616332a3c9e"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/manuscript_plan.md",
+      "destination": "paper/asi_manuscript_2026-10-29/manuscript_plan.md",
+      "bytes": 13501,
+      "sha256": "6cfed86668d69dad8ba4ed248d8c1b10d77d46536924135df14d1180e4da32a7"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/reproduce_figures.py",
+      "destination": "paper/asi_manuscript_2026-10-29/reproduce_figures.py",
+      "bytes": 10432,
+      "sha256": "2cbd67e5e8f9a9acc7d59940a8860400624967c3272c142f0dff813730a8bcdd"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/verification.json",
+      "destination": "paper/asi_manuscript_2026-10-29/verification.json",
+      "bytes": 404,
+      "sha256": "fb86c82afa64ee4f9fc295ffe534179d3324c7b2158699b14c545dfc2930d4e3"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig01_historical_test.pdf",
+      "destination": "figures/historical/fig01_historical_test.pdf",
+      "bytes": 21644,
+      "sha256": "df9922bb979b48f64d4684a27d1883292415f422ba4f748368e50161f280f7a8"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig01_historical_test.png",
+      "destination": "figures/historical/fig01_historical_test.png",
+      "bytes": 141929,
+      "sha256": "4c4b94b257a39da839b01e67090dc8336e91a60f630415c94cb0f9fca95ac437"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig01_historical_test.svg",
+      "destination": "figures/historical/fig01_historical_test.svg",
+      "bytes": 16065,
+      "sha256": "5a5dfb10cda3cd78b71d5c664a138951a1f82558e29c75c633778c4c9fc38104"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig02_partition_weighting.pdf",
+      "destination": "figures/historical/fig02_partition_weighting.pdf",
+      "bytes": 23257,
+      "sha256": "96e2c4f95b378f3f2882d73389c9ae39e892ba7361610f7258b05e0a0fa656db"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig02_partition_weighting.png",
+      "destination": "figures/historical/fig02_partition_weighting.png",
+      "bytes": 175080,
+      "sha256": "5f6bf8a416a5cba8694d1880710b1c70902ce1f13628ee2e419f9590c5b0e726"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig02_partition_weighting.svg",
+      "destination": "figures/historical/fig02_partition_weighting.svg",
+      "bytes": 19183,
+      "sha256": "28f757a30ed4dc2ebdb7f06aee264f90a5ed04ff439e3cef776a34cb1b5f15e6"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig03_concentration_attribution.pdf",
+      "destination": "figures/historical/fig03_concentration_attribution.pdf",
+      "bytes": 23309,
+      "sha256": "1be850f1ff8671deec8db7bb830548e92e240e2dd6dff19487162bf3585f13cc"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig03_concentration_attribution.png",
+      "destination": "figures/historical/fig03_concentration_attribution.png",
+      "bytes": 138849,
+      "sha256": "0dfd3660a96d68f52fdba84490f1d2da7ab4c2027c91f657fa854adcb10ee591"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig03_concentration_attribution.svg",
+      "destination": "figures/historical/fig03_concentration_attribution.svg",
+      "bytes": 16685,
+      "sha256": "6ba3c51e550772b311e1272b010c2e9846c7ed15877df4c03e44526e7bac6d3f"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig04_selection_context.pdf",
+      "destination": "figures/historical/fig04_selection_context.pdf",
+      "bytes": 22897,
+      "sha256": "af723c2a5a41a30e365bd611cd6c954f051804962e2b351280242b921f8724b3"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig04_selection_context.png",
+      "destination": "figures/historical/fig04_selection_context.png",
+      "bytes": 156568,
+      "sha256": "42a2cb1e5a93c424723ab125e33626f4fb42a7c63ac79f94ff443ed99c6d50fc"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig04_selection_context.svg",
+      "destination": "figures/historical/fig04_selection_context.svg",
+      "bytes": 20656,
+      "sha256": "ee4f5bec9069ae4941e5ae730ed3332abc419ea1c2bed66acbd6ade635986a9e"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig05_evidence_map.pdf",
+      "destination": "figures/historical/fig05_evidence_map.pdf",
+      "bytes": 17856,
+      "sha256": "0c8a00d0b04a67047c9d686df88e7d69e070de3237058e2422651e9bc2f8a5fe"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig05_evidence_map.png",
+      "destination": "figures/historical/fig05_evidence_map.png",
+      "bytes": 82348,
+      "sha256": "17c0d758d1c7a964ebbd88659f89b8deb28d18f544915edabc326c11710d2041"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig05_evidence_map.svg",
+      "destination": "figures/historical/fig05_evidence_map.svg",
+      "bytes": 5413,
+      "sha256": "9b532f25d6d523a3cef176cda88e88274783963ee29c54d65e2d439270e505fa"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig06_historical_validation.pdf",
+      "destination": "figures/historical/fig06_historical_validation.pdf",
+      "bytes": 22495,
+      "sha256": "9f3e5878136f1aec883f4a2211653a332563335bce9f8a704a92dc9f92b5efff"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig06_historical_validation.png",
+      "destination": "figures/historical/fig06_historical_validation.png",
+      "bytes": 111106,
+      "sha256": "958cefeab528bf0312af7661ceff4d9bc31c38567c2b57d7ccb9553e186cb607"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/figures/fig06_historical_validation.svg",
+      "destination": "figures/historical/fig06_historical_validation.svg",
+      "bytes": 13062,
+      "sha256": "85d44a8c38e8327adbc92f017a1c185bfc2a2023e673dbad5ce2eee0dff31649"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/reproduce_figures.py",
+      "destination": "figures/reproduce_figures_historical.py",
+      "bytes": 10432,
+      "sha256": "2cbd67e5e8f9a9acc7d59940a8860400624967c3272c142f0dff813730a8bcdd"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp1_checkpoint_original.md",
+      "destination": "experiments/experiment-1/exp1_checkpoint_original.md",
+      "bytes": 27046,
+      "sha256": "38871676d260c8b785679e807496ce58ab1b34e63761df2e9459fd029d0cb517"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp1_historical_report_values.csv",
+      "destination": "experiments/experiment-1/exp1_historical_report_values.csv",
+      "bytes": 325,
+      "sha256": "7ec93dd79a6777bb00d853d10de26427d7563e4a7bf5724993cfee6e4840b13d"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp2_phase1_findings_original.md",
+      "destination": "experiments/experiment-2/exp2_phase1_findings_original.md",
+      "bytes": 35682,
+      "sha256": "fb553f81ff6ea45d4981c4c7aff25c2e979a5ca835f6771e2c3db7c4629b4230"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp2_reported_validation_values.csv",
+      "destination": "experiments/experiment-2/exp2_reported_validation_values.csv",
+      "bytes": 192,
+      "sha256": "56a9432a50c1654b68bc026ccc1c5a7ded46235587424df865ab34efad454e89"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_candidate_records.csv",
+      "destination": "experiments/experiment-3/exp3_candidate_records.csv",
+      "bytes": 8832,
+      "sha256": "c382de3bc1410377699f4b1d0806afb6b9ebe436695cfdb9f89405387d6ba804"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_concentration_attribution.csv",
+      "destination": "experiments/experiment-3/exp3_concentration_attribution.csv",
+      "bytes": 795,
+      "sha256": "0a7fa1a8c9ad4277d1078f224659c88872b09cde0a5f7a7bca80dd8db4cccdde"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_preregistration_original.json",
+      "destination": "experiments/experiment-3/exp3_preregistration_original.json",
+      "bytes": 5838,
+      "sha256": "ebdb0e142dbc7f1da6f75513165d6ce1818507a0a0b4f89de6f7f71f1c655f4a"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_report_original.json",
+      "destination": "experiments/experiment-3/exp3_report_original.json",
+      "bytes": 232700,
+      "sha256": "133905e754953dc45ebbb5f7d483daa0ab10124c032aff304599857bcacea85c"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-29/referenced-chatgpt-conversation-this-is-an/outputs/asi_manuscript/data/exp3_selected_validation.csv",
+      "destination": "experiments/experiment-3/exp3_selected_validation.csv",
+      "bytes": 2686,
+      "sha256": "9cd77897d96d2d262ef46394aa4262089e8d53c1d59ce0f095bec8bb01f6adf1"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-22/README.md",
+      "destination": "audits/research-audit-2026-09-22/README.md",
+      "bytes": 1607,
+      "sha256": "e521b5bd442ed0f0b26144c5441efe95b7805076cdcfda4c60d649da0aa69fb6"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-22/coverage.json",
+      "destination": "audits/research-audit-2026-09-22/coverage.json",
+      "bytes": 6314,
+      "sha256": "15e5b06ff46e70fdb18fc5e5783a988199cab536912d33581acdaa206682ef25"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-22/nasbench-prefix-audit.json",
+      "destination": "audits/research-audit-2026-09-22/nasbench-prefix-audit.json",
+      "bytes": 78,
+      "sha256": "8c1b9658e31abf96613f6501130e45fa72a3c59d3f5afd37b9b1afa461ad7afd"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-22/pai-eligible-coverage.json",
+      "destination": "audits/research-audit-2026-09-22/pai-eligible-coverage.json",
+      "bytes": 232,
+      "sha256": "d33ebefa04af103f2f31a742ca819f0ece392b4d91f0799d842094ff5d362ab1"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-22/source-manifest.json",
+      "destination": "audits/research-audit-2026-09-22/source-manifest.json",
+      "bytes": 8384,
+      "sha256": "3f5c7f776c2327feddc85e15f993b015185df807aacea74750dd6262f925347f"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-23/assessment.md",
+      "destination": "audits/research-audit-2026-09-23/assessment.md",
+      "bytes": 13265,
+      "sha256": "6fa83b83dac31a793f82a48d4efdf2730895a514dc941cc02ac62c5107668b6d"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-23/evidence-notes.md",
+      "destination": "audits/research-audit-2026-09-23/evidence-notes.md",
+      "bytes": 8486,
+      "sha256": "31fda4c22fe1c09c88eaf721bc0fe560960d677adfbca3230d8ae19bfab0576b"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-23/field-evidence-matrix.html",
+      "destination": "audits/research-audit-2026-09-23/field-evidence-matrix.html",
+      "bytes": 126066,
+      "sha256": "dd005b02cc942f5c4691df83ef73ef2f7174458060a838b023de3f0173a7cd32"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-23/field-evidence-matrix.json",
+      "destination": "audits/research-audit-2026-09-23/field-evidence-matrix.json",
+      "bytes": 193892,
+      "sha256": "b4037d9cf96a7c164572f96538cecc4cef0cab087fbd17100ed21efff1193e32"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-23/field-evidence-matrix.md",
+      "destination": "audits/research-audit-2026-09-23/field-evidence-matrix.md",
+      "bytes": 202716,
+      "sha256": "46c2638bf3c515476505add998af58168ebb519b8bf24c770aa17dcb01c92613"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-23/field-level-evidence-matrix.csv",
+      "destination": "audits/research-audit-2026-09-23/field-level-evidence-matrix.csv",
+      "bytes": 44187,
+      "sha256": "0be0c8a4ab82efc0ff7846993ebfe71d2f76672d65a71ff09cc37934e6f3c780"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-23/field-level-evidence-matrix.md",
+      "destination": "audits/research-audit-2026-09-23/field-level-evidence-matrix.md",
+      "bytes": 47646,
+      "sha256": "784446d01e9b07c6220ce79124a82e9cea02a1f386caeefe8c12e55f43e94688"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-09-23/final-lifecycle-prior-art-audit.md",
+      "destination": "audits/research-audit-2026-09-23/final-lifecycle-prior-art-audit.md",
+      "bytes": 28055,
+      "sha256": "c1e3d54ac2a1b37ad380dce996bd6a4bf9ccdadfe2c32dfd04008004610b343c"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-10-29/arithmetic-verification.json",
+      "destination": "audits/research-audit-2026-10-29/arithmetic-verification.json",
+      "bytes": 17775,
+      "sha256": "389700c9cb77d648ee05747229527fd3bb48aebbe9ce42b45389ba1d71b155aa"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-10-29/artifact-evidence.json",
+      "destination": "audits/research-audit-2026-10-29/artifact-evidence.json",
+      "bytes": 70486,
+      "sha256": "88a00452e4f50a83d77fdb3657acb049fb9b2514e952e5d381e3a41723a43efd"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-10-29/independent-research-audit.md",
+      "destination": "audits/research-audit-2026-10-29/independent-research-audit.md",
+      "bytes": 44808,
+      "sha256": "469ff5885d2a743ee6a3552e5bb7f88fa2b44efc39088bb3be67b124d2b1edf1"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-10-29/selection-and-hash-checks.json",
+      "destination": "audits/research-audit-2026-10-29/selection-and-hash-checks.json",
+      "bytes": 6758,
+      "sha256": "04c3d44f4927a51c7fec6fdb0376862456cc726bb21a4bc2599ab3b5e081a936"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/research-audit-2026-10-29/verify_saved_validation_sums.py",
+      "destination": "audits/research-audit-2026-10-29/verify_saved_validation_sums.py",
+      "bytes": 1890,
+      "sha256": "27ac587a87fd2a3081f60fc9f527b04b7a5c8e3f050cbf7211aef19707d6cdf5"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/LiteratureReview/Comparison_Table.md",
+      "destination": "literature/legacy-notes/Comparison_Table.md",
+      "bytes": 4780,
+      "sha256": "9fb06f9647ab78c5c7414fb490159a06b26b4d2391e891af9008fcfb9777dd3a"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/LiteratureReview/PaperInsights/Liquid.md",
+      "destination": "literature/legacy-notes/PaperInsights/Liquid.md",
+      "bytes": 1817,
+      "sha256": "a235d398bdb8eed90fa3184cfee1d994a502de4d4430511387ece9c248b84629"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/LiteratureReview/PaperInsights/Lucid.md",
+      "destination": "literature/legacy-notes/PaperInsights/Lucid.md",
+      "bytes": 1567,
+      "sha256": "da7446d01eff2139930a85dc75a26001a3c687a5e603f7dd3723b2fb93df2a94"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/LiteratureReview/PaperInsights/Pollux.md",
+      "destination": "literature/legacy-notes/PaperInsights/Pollux.md",
+      "bytes": 1735,
+      "sha256": "08b4bd45e2f54b1b7dc64e57223391227dfafd9041ef67e95ee6234745845929"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/LiteratureReview/PaperInsights/SchedMate.md",
+      "destination": "literature/legacy-notes/PaperInsights/SchedMate.md",
+      "bytes": 2178,
+      "sha256": "79115312d24182672c0a5399f5f32666cd987be6f02c36b370741e00eedc5521"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/LiteratureReview/research_gap_summary.md",
+      "destination": "literature/legacy-notes/research_gap_summary.md",
+      "bytes": 6444,
+      "sha256": "37e3daa0f151c9a87cd105907362e0e56fb841439c1e97fddaf9f9ed3462930e"
+    },
+    {
+      "source": "/Users/tiloschan/Desktop/Intent-Aware-GPU-Scheduling/README.md",
+      "destination": "docs/README.original-2026-11-01.md",
+      "bytes": 8450,
+      "sha256": "175050ed5e8f78d8d65810ab02de29c64328078ff3aec252a0bf292dd98ade59"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/CHECKPOINT_COMPLETED.md",
+      "destination": "experiments/experiment-1/archive-records/CHECKPOINT_COMPLETED.md",
+      "bytes": 27046,
+      "sha256": "38871676d260c8b785679e807496ce58ab1b34e63761df2e9459fd029d0cb517"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/ARCHIVE_README.md",
+      "destination": "experiments/experiment-1/archive-records/ARCHIVE_README.md",
+      "bytes": 6476,
+      "sha256": "b70a3f9fb4269de52b3eda2470d4f399edfb0a370d70af361c2cfc33973e6221"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/FILE_INVENTORY.json",
+      "destination": "experiments/experiment-1/archive-records/FILE_INVENTORY.json",
+      "bytes": 695323,
+      "sha256": "05c16714b3253cce97d81776f522e78428e3f60fb83d5a4559a12e29d5e14f42"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/05f59b72c95fe11e48825a04f143c8db97dbab934a3c8f90743fb610c23ec6a4",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/__init__.py",
+      "bytes": 54,
+      "sha256": "05f59b72c95fe11e48825a04f143c8db97dbab934a3c8f90743fb610c23ec6a4"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/0d95523289640ef4266e3ab8fc4d1fe654ac5605a67d2888c30b4ac0958307e2",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/checkpoints.py",
+      "bytes": 3329,
+      "sha256": "0d95523289640ef4266e3ab8fc4d1fe654ac5605a67d2888c30b4ac0958307e2"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/310ea3657e50cd767cc241a1d17c21f5e11b2993a9e30e1af93c02ba9d08085e",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/dataset.py",
+      "bytes": 5769,
+      "sha256": "310ea3657e50cd767cc241a1d17c21f5e11b2993a9e30e1af93c02ba9d08085e"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/3bbbc97cd38e675202d4b1845bca15532a92f93bd7443e3da01441fd1de4aff7",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/execution.py",
+      "bytes": 15523,
+      "sha256": "3bbbc97cd38e675202d4b1845bca15532a92f93bd7443e3da01441fd1de4aff7"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/54cd4ddf7c32a1e8c12e18b422416779d8a1a8c5c2165f6cc72c9e24e4dc172d",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/feasibility.py",
+      "bytes": 3806,
+      "sha256": "54cd4ddf7c32a1e8c12e18b422416779d8a1a8c5c2165f6cc72c9e24e4dc172d"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/71571aadb26ea4609209b0e2f13f308d87902f8634a3cfcc13d9447b20ac0566",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/metrics.py",
+      "bytes": 5559,
+      "sha256": "71571aadb26ea4609209b0e2f13f308d87902f8634a3cfcc13d9447b20ac0566"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/18563ed3247e48a9f3225140f9d4c326da9e7ad1beef4af0434d77581ff270a9",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/modeling.py",
+      "bytes": 2805,
+      "sha256": "18563ed3247e48a9f3225140f9d4c326da9e7ad1beef4af0434d77581ff270a9"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/576b97ccc56986caba479eea7fac26b871d715f673a35398f054f6eea7b6c9ec",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/primary_data.py",
+      "bytes": 15898,
+      "sha256": "576b97ccc56986caba479eea7fac26b871d715f673a35398f054f6eea7b6c9ec"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/88b980a18bce2f534a2d5ea348f7ead5bb37c2f74698e71977eab2a5bad1fd45",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/remote_temporal.py",
+      "bytes": 15470,
+      "sha256": "88b980a18bce2f534a2d5ea348f7ead5bb37c2f74698e71977eab2a5bad1fd45"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/fa42eeffd7e005b8e9a4ec2ab93e46dfb0f9aa4d3ac0c7be5cae541a0ce4c609",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/safety.py",
+      "bytes": 3894,
+      "sha256": "fa42eeffd7e005b8e9a4ec2ab93e46dfb0f9aa4d3ac0c7be5cae541a0ce4c609"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/662c0c68b20bfdaeafee7555de0dea85e06ea861a3fb96a02afcd1295dd4611e",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/scientific_run.py",
+      "bytes": 4499,
+      "sha256": "662c0c68b20bfdaeafee7555de0dea85e06ea861a3fb96a02afcd1295dd4611e"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/96a368972fd9d73d05f443b726c02a67d425dab19bc9a0d02841e97b8c8964fd",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/temporal.py",
+      "bytes": 2895,
+      "sha256": "96a368972fd9d73d05f443b726c02a67d425dab19bc9a0d02841e97b8c8964fd"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/3fde03f22b01fe52d65b93a6c258b5774321f58bb8054be202e2c5009e8a3115",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/train_cli.py",
+      "bytes": 1399,
+      "sha256": "3fde03f22b01fe52d65b93a6c258b5774321f58bb8054be202e2c5009e8a3115"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/112f4fa2a2f7c71de51f8d5ad86ccfca88f533c052cda1b60b65f8cf96eacaaa",
+      "destination": "preprocessing/archived-source/checkpoint/asi_pipeline/windows_monitor.py",
+      "bytes": 10307,
+      "sha256": "112f4fa2a2f7c71de51f8d5ad86ccfca88f533c052cda1b60b65f8cf96eacaaa"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/4908e86e7526c8ecc298facd46089ac94fd4dec5094eee47af24987237653e61",
+      "destination": "experiments/experiment-1/archived-source/checkpoint/config/protocol.yaml",
+      "bytes": 10885,
+      "sha256": "4908e86e7526c8ecc298facd46089ac94fd4dec5094eee47af24987237653e61"
+    },
+    {
+      "source": "/Users/tiloschan/Downloads/asi_completed_2026-10-13/objects/2609e8a3168b482e8d5051954d96a885be453ab90eb099afaf78954bc31c1588",
+      "destination": "experiments/experiment-1/archived-source/resume_reports/results-summary.json",
+      "bytes": 6619,
+      "sha256": "2609e8a3168b482e8d5051954d96a885be453ab90eb099afaf78954bc31c1588"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_phase1_prediction_instability_diagnostics/analysis_protocol.md",
+      "destination": "experiments/experiment-2/ASI_phase1_prediction_instability_diagnostics/analysis_protocol.md",
+      "bytes": 5196,
+      "sha256": "afbf663bb1eea7543a0272edaa8feff22e6987d2b63860b59983aa51ba528575"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_phase1_prediction_instability_diagnostics/supplemental_method_note.md",
+      "destination": "experiments/experiment-2/ASI_phase1_prediction_instability_diagnostics/supplemental_method_note.md",
+      "bytes": 1642,
+      "sha256": "ea6fbbbd1522b5485913892787182d30c3efcc0b7f6fe61bff03a19143f3f904"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_phase1_prediction_instability_diagnostics/phase1_findings.md",
+      "destination": "experiments/experiment-2/ASI_phase1_prediction_instability_diagnostics/phase1_findings.md",
+      "bytes": 35682,
+      "sha256": "fb553f81ff6ea45d4981c4c7aff25c2e979a5ca835f6771e2c3db7c4629b4230"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_phase1_prediction_instability_diagnostics/phase1_analysis.py",
+      "destination": "experiments/experiment-2/ASI_phase1_prediction_instability_diagnostics/phase1_analysis.py",
+      "bytes": 25700,
+      "sha256": "e0007ca957f14de0f790d3322c86fd755e4f8665dc90a50c367f4f201204e79c"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_instability_mitigation/phase_a_verification.json",
+      "destination": "experiments/experiment-2/ASI_instability_mitigation/phase_a_verification.json",
+      "bytes": 9230,
+      "sha256": "cf5ccc014bd266efb781cd76264ef78c2189d30ae77ebbbb9a614ef2b7b86ede"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_instability_mitigation/diagnostic_report.md",
+      "destination": "experiments/experiment-2/ASI_instability_mitigation/diagnostic_report.md",
+      "bytes": 20019,
+      "sha256": "efa2378c2803ecd70885c01e8b5163608559257a8c906d8973d88d8af32cb870"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_instability_mitigation/paper_findings.md",
+      "destination": "experiments/experiment-2/ASI_instability_mitigation/paper_findings.md",
+      "bytes": 4910,
+      "sha256": "ef28cdce2b0ebc676954fbbfff62af21086a1267e140c0e2a6a1b8a9975bb28e"
+    },
+    {
+      "source": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_instability_mitigation/mitigation_protocol.md",
+      "destination": "experiments/experiment-2/ASI_instability_mitigation/mitigation_protocol.md",
+      "bytes": 7034,
+      "sha256": "ee9ab8cfff579f6d9be99c6b9b611c14d242b18a2e85848d99784f5895852880"
+    }
+  ],
+  "original_files_sha256": {
+    ".DS_Store": "497686ab9a434a113791e16e72ebee6540b787fd94b3afe2e8f875dda629078f",
+    "LICENSE": "8308f75234e734e6a9b09534f733eb391cec5fbdbb67046f57cced014eddc243",
+    "README.md": "175050ed5e8f78d8d65810ab02de29c64328078ff3aec252a0bf292dd98ade59",
+    "Design/DesignPreview.png": "7df065faa178433f9cf7ae91d680ce68be4ba1c5712165c6985c6658ee51df54",
+    "LiteratureReview/research_gap_summary.md": "37e3daa0f151c9a87cd105907362e0e56fb841439c1e97fddaf9f9ed3462930e",
+    "LiteratureReview/.DS_Store": "a3b67ce7f2a7a337a42ff2c40e8e92dc1787a2c64736cad841fa81840f614ee5",
+    "LiteratureReview/Comparison_Table.md": "9fb06f9647ab78c5c7414fb490159a06b26b4d2391e891af9008fcfb9777dd3a",
+    "Proposal/Intent_Aware_GPU_Resource_Prediction_Research_Proposal.pdf": "25db74545917e256891dab2ad951fff3dbc5407fa663e39cab74f117e99b0877",
+    "research-audit-2026-10-29/arithmetic-verification.json": "389700c9cb77d648ee05747229527fd3bb48aebbe9ce42b45389ba1d71b155aa",
+    "research-audit-2026-10-29/artifact-evidence.json": "88a00452e4f50a83d77fdb3657acb049fb9b2514e952e5d381e3a41723a43efd",
+    "research-audit-2026-10-29/verify_saved_validation_sums.py": "27ac587a87fd2a3081f60fc9f527b04b7a5c8e3f050cbf7211aef19707d6cdf5",
+    "research-audit-2026-10-29/selection-and-hash-checks.json": "04c3d44f4927a51c7fec6fdb0376862456cc726bb21a4bc2599ab3b5e081a936",
+    "research-audit-2026-10-29/independent-research-audit.md": "469ff5885d2a743ee6a3552e5bb7f88fa2b44efc39088bb3be67b124d2b1edf1",
+    "research-audit-2026-09-23/field-evidence-matrix.md": "46c2638bf3c515476505add998af58168ebb519b8bf24c770aa17dcb01c92613",
+    "research-audit-2026-09-23/final-lifecycle-prior-art-audit.md": "c1e3d54ac2a1b37ad380dce996bd6a4bf9ccdadfe2c32dfd04008004610b343c",
+    "research-audit-2026-09-23/field-level-evidence-matrix.csv": "0be0c8a4ab82efc0ff7846993ebfe71d2f76672d65a71ff09cc37934e6f3c780",
+    "research-audit-2026-09-23/field-evidence-matrix.html": "dd005b02cc942f5c4691df83ef73ef2f7174458060a838b023de3f0173a7cd32",
+    "research-audit-2026-09-23/evidence-notes.md": "31fda4c22fe1c09c88eaf721bc0fe560960d677adfbca3230d8ae19bfab0576b",
+    "research-audit-2026-09-23/field-level-evidence-matrix.md": "784446d01e9b07c6220ce79124a82e9cea02a1f386caeefe8c12e55f43e94688",
+    "research-audit-2026-09-23/field-evidence-matrix.json": "b4037d9cf96a7c164572f96538cecc4cef0cab087fbd17100ed21efff1193e32",
+    "research-audit-2026-09-23/assessment.md": "6fa83b83dac31a793f82a48d4efdf2730895a514dc941cc02ac62c5107668b6d",
+    "research-audit-2026-09-22/source-manifest.json": "3f5c7f776c2327feddc85e15f993b015185df807aacea74750dd6262f925347f",
+    "research-audit-2026-09-22/README.md": "e521b5bd442ed0f0b26144c5441efe95b7805076cdcfda4c60d649da0aa69fb6",
+    "research-audit-2026-09-22/coverage.json": "15e5b06ff46e70fdb18fc5e5783a988199cab536912d33581acdaa206682ef25",
+    "research-audit-2026-09-22/pai-eligible-coverage.json": "d33ebefa04af103f2f31a742ca819f0ece392b4d91f0799d842094ff5d362ab1",
+    "research-audit-2026-09-22/nasbench-prefix-audit.json": "8c1b9658e31abf96613f6501130e45fa72a3c59d3f5afd37b9b1afa461ad7afd",
+    "LiteratureReview/PaperInsights/SchedMate.md": "79115312d24182672c0a5399f5f32666cd987be6f02c36b370741e00eedc5521",
+    "LiteratureReview/PaperInsights/Pollux.md": "08b4bd45e2f54b1b7dc64e57223391227dfafd9041ef67e95ee6234745845929",
+    "LiteratureReview/PaperInsights/Liquid.md": "a235d398bdb8eed90fa3184cfee1d994a502de4d4430511387ece9c248b84629",
+    "LiteratureReview/PaperInsights/Lucid.md": "da7446d01eff2139930a85dc75a26001a3c687a5e603f7dd3723b2fb93df2a94"
+  }
+}

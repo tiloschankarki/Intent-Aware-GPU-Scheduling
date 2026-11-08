@@ -1,0 +1,742 @@
+[
+  {
+    "seed": 20261028,
+    "workloads": 51189,
+    "executions": 498078,
+    "unique_workloads": 51189,
+    "positive_counts": true,
+    "m0_micro": 0.7265900697147774,
+    "m1_micro": 0.7075458424837403,
+    "m0_macro": 0.7714188049809343,
+    "m1_macro": 0.7537881022222855,
+    "favor_m1_percent": 50.53234093262224,
+    "ties": 519,
+    "net_loss_difference": 9485.510610780446,
+    "sha256": "28411a4d6b3160aee4025633403c19ee5b5dac95d9132e75063e71c27d17fba4",
+    "top1_floor": {
+      "k": 511,
+      "execution_share": 0.6397973811330755,
+      "delta": 5587.623103729475,
+      "rest_delta": 3897.8875070509444
+    },
+    "top1_ceil": {
+      "k": 512,
+      "execution_share": 0.6401025542184156,
+      "delta": 5520.893988317844,
+      "rest_delta": 3964.616622462576
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.8607103044350742,
+        "m1_loss": 0.8416416673062933
+      },
+      "1000": {
+        "m0_loss": 0.8095482608596832,
+        "m1_loss": 0.7967574282953678
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 37627,
+        "executions": 37627,
+        "delta": 158.6006287009421
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10723,
+        "executions": 39680,
+        "delta": 2219.228814850545
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 2071,
+        "executions": 69673,
+        "delta": 1582.0556439552793
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 710,
+        "executions": 181588,
+        "delta": -241.16933158071149
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 58,
+        "executions": 169510,
+        "delta": 5766.7948548543645
+      }
+    ]
+  },
+  {
+    "seed": 20261029,
+    "workloads": 51328,
+    "executions": 513432,
+    "unique_workloads": 51328,
+    "positive_counts": true,
+    "m0_micro": 0.7609632660665587,
+    "m1_micro": 0.7537160015273012,
+    "m0_macro": 0.7740175982898194,
+    "m1_macro": 0.7448288575767109,
+    "favor_m1_percent": 53.04512157107232,
+    "ties": 517,
+    "net_loss_difference": 3720.9775269200327,
+    "sha256": "8b5f1035b6b415ac28c560c20987f860ef11fd07c2422ae52839e9ca00e1a457",
+    "top1_floor": {
+      "k": 513,
+      "execution_share": 0.6506879197245204,
+      "delta": -105.3795357371666,
+      "rest_delta": 3826.357062657206
+    },
+    "top1_ceil": {
+      "k": 514,
+      "execution_share": 0.6509917574284423,
+      "delta": -50.85684671095611,
+      "rest_delta": 3771.8343736309953
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.8450791789420657,
+        "m1_loss": 0.8289852114451409
+      },
+      "1000": {
+        "m0_loss": 0.8036528681524759,
+        "m1_loss": 0.7935575371678242
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 38053,
+        "executions": 38053,
+        "delta": 659.0757460066342
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10532,
+        "executions": 38772,
+        "delta": 2481.9573311433105
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 1927,
+        "executions": 64137,
+        "delta": 1778.4619755077167
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 758,
+        "executions": 190752,
+        "delta": -1618.9087108897918
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 58,
+        "executions": 181718,
+        "delta": 420.39118515216967
+      }
+    ]
+  },
+  {
+    "seed": 20261030,
+    "workloads": 51404,
+    "executions": 497218,
+    "unique_workloads": 51404,
+    "positive_counts": true,
+    "m0_micro": 0.7657331240572501,
+    "m1_micro": 0.7519609442613364,
+    "m0_macro": 0.7716286593759739,
+    "m1_macro": 0.7454512308096107,
+    "favor_m1_percent": 52.63792700957124,
+    "ties": 687,
+    "net_loss_difference": 6847.775693764619,
+    "sha256": "d55ef0f2b094705904f895cd1ccc44a6d3089edb912c94c709bea9712a9c0d6c",
+    "top1_floor": {
+      "k": 514,
+      "execution_share": 0.6303009947347039,
+      "delta": 1107.3328971666442,
+      "rest_delta": 5740.442796597969
+    },
+    "top1_ceil": {
+      "k": 515,
+      "execution_share": 0.630602673274097,
+      "delta": 1104.5753133605654,
+      "rest_delta": 5743.200380404049
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.8362732415060025,
+        "m1_loss": 0.8086161381802799
+      },
+      "1000": {
+        "m0_loss": 0.8030668891365983,
+        "m1_loss": 0.7837180645241456
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 38019,
+        "executions": 38019,
+        "delta": 403.8652066754419
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10534,
+        "executions": 39297,
+        "delta": 2733.1166012368762
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 2048,
+        "executions": 69631,
+        "delta": 2251.6837909981286
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 740,
+        "executions": 189937,
+        "delta": 2205.9221763193
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 63,
+        "executions": 160334,
+        "delta": -746.812081465133
+      }
+    ]
+  },
+  {
+    "seed": 20261031,
+    "workloads": 50961,
+    "executions": 476885,
+    "unique_workloads": 50961,
+    "positive_counts": true,
+    "m0_micro": 0.7290698832411464,
+    "m1_micro": 0.7190026568046853,
+    "m0_macro": 0.7671211565345665,
+    "m1_macro": 0.7342403595857915,
+    "favor_m1_percent": 51.874963207158416,
+    "ties": 660,
+    "net_loss_difference": 4800.909279151761,
+    "sha256": "f35e27f673f80464f887fb71b5b6300be99d7984a3ff3f3dd067344233f5eac5",
+    "top1_floor": {
+      "k": 509,
+      "execution_share": 0.6260293362131332,
+      "delta": -209.04103964547824,
+      "rest_delta": 5009.950318797224
+    },
+    "top1_ceil": {
+      "k": 510,
+      "execution_share": 0.6263417805131216,
+      "delta": -208.110924511225,
+      "rest_delta": 5009.020203662971
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.8248643639408552,
+        "m1_loss": 0.8012207939819621
+      },
+      "1000": {
+        "m0_loss": 0.7721813425000045,
+        "m1_loss": 0.7593087728284338
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 37557,
+        "executions": 37557,
+        "delta": 795.2323891633451
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10621,
+        "executions": 39582,
+        "delta": 2635.5545230539633
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 2000,
+        "executions": 67108,
+        "delta": 1810.3351669542103
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 721,
+        "executions": 187215,
+        "delta": 519.7927810792198
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 62,
+        "executions": 145423,
+        "delta": -960.0055810989927
+      }
+    ]
+  },
+  {
+    "seed": 20261101,
+    "workloads": 50814,
+    "executions": 551211,
+    "unique_workloads": 50814,
+    "positive_counts": true,
+    "m0_micro": 0.7230522077741451,
+    "m1_micro": 0.767299248601399,
+    "m0_macro": 0.7960389167457342,
+    "m1_macro": 0.8156005480122948,
+    "favor_m1_percent": 45.24343684811272,
+    "ties": 295,
+    "net_loss_difference": -24389.455621431407,
+    "sha256": "dc0ab6a9992974f901f7d7cb62ff6c2d662fb7375487ad23c137a1d4e6a9ba39",
+    "top1_floor": {
+      "k": 508,
+      "execution_share": 0.6758065423222686,
+      "delta": -12004.820464564462,
+      "rest_delta": -12384.635156866963
+    },
+    "top1_ceil": {
+      "k": 509,
+      "execution_share": 0.6760804846057136,
+      "delta": -11929.75125605997,
+      "rest_delta": -12459.704365371454
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.8589166431952825,
+        "m1_loss": 0.9394836607821816
+      },
+      "1000": {
+        "m0_loss": 0.7899211883550785,
+        "m1_loss": 0.8793072712728949
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 37454,
+        "executions": 37454,
+        "delta": 116.02921536774541
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10538,
+        "executions": 39067,
+        "delta": -3035.001146493911
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 2036,
+        "executions": 67549,
+        "delta": -4619.6157389843
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 722,
+        "executions": 183913,
+        "delta": -26439.874120494187
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 64,
+        "executions": 223228,
+        "delta": 9589.00616917323
+      }
+    ]
+  },
+  {
+    "seed": 20261102,
+    "workloads": 50999,
+    "executions": 553132,
+    "unique_workloads": 50999,
+    "positive_counts": true,
+    "m0_micro": 0.8019673885421141,
+    "m1_micro": 0.8181299976757916,
+    "m0_macro": 0.8021918173279118,
+    "m1_macro": 0.7943438703478691,
+    "favor_m1_percent": 53.82654561854154,
+    "ties": 346,
+    "net_loss_difference": -8940.056315329275,
+    "sha256": "7d3520972bba75c4d3f60295a7ed3dc10f20383300ed2194d0bf1ff8976ae2ec",
+    "top1_floor": {
+      "k": 509,
+      "execution_share": 0.6767588929948005,
+      "delta": -6484.54307170973,
+      "rest_delta": -2455.5132436195513
+    },
+    "top1_ceil": {
+      "k": 510,
+      "execution_share": 0.6770373075504581,
+      "delta": -6518.512379958258,
+      "rest_delta": -2421.543935371023
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.874929190170589,
+        "m1_loss": 0.8942698222127331
+      },
+      "1000": {
+        "m0_loss": 0.8214844202145521,
+        "m1_loss": 0.8455856387518629
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 37640,
+        "executions": 37640,
+        "delta": 467.23757762931854
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10555,
+        "executions": 39144,
+        "delta": -312.5517950701792
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 2030,
+        "executions": 68593,
+        "delta": -754.363142449601
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 705,
+        "executions": 185010,
+        "delta": -7334.051070432191
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 69,
+        "executions": 222745,
+        "delta": -1006.3278850066281
+      }
+    ]
+  },
+  {
+    "seed": 20261103,
+    "workloads": 51287,
+    "executions": 425122,
+    "unique_workloads": 51287,
+    "positive_counts": true,
+    "m0_micro": 0.8157966051313743,
+    "m1_micro": 0.7986714760305207,
+    "m0_macro": 0.7722552661467521,
+    "m1_macro": 0.7451117063874902,
+    "favor_m1_percent": 55.18747440871956,
+    "ties": 549,
+    "net_loss_difference": 7280.269133613096,
+    "sha256": "8c8d492c703510be639d66a207a92428a24b6cc2cff033a1911dabdb6d96949d",
+    "top1_floor": {
+      "k": 512,
+      "execution_share": 0.5848532891734608,
+      "delta": 2187.7616049292305,
+      "rest_delta": 5092.50752868381
+    },
+    "top1_ceil": {
+      "k": 513,
+      "execution_share": 0.5851943677344386,
+      "delta": 2190.7979081737863,
+      "rest_delta": 5089.471225439254
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.8614074535917147,
+        "m1_loss": 0.8334271532280279
+      },
+      "1000": {
+        "m0_loss": 0.8487156414278766,
+        "m1_loss": 0.8278112200887754
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 37901,
+        "executions": 37901,
+        "delta": 469.23986453079726
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10585,
+        "executions": 38890,
+        "delta": 2702.478057535338
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 2036,
+        "executions": 68319,
+        "delta": 1601.2964941369582
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 721,
+        "executions": 189285,
+        "delta": 3431.922387313795
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 44,
+        "executions": 90727,
+        "delta": -924.6676699038475
+      }
+    ]
+  },
+  {
+    "seed": 20261104,
+    "workloads": 51611,
+    "executions": 532705,
+    "unique_workloads": 51611,
+    "positive_counts": true,
+    "m0_micro": 0.6978347443603122,
+    "m1_micro": 0.6882800106662654,
+    "m0_macro": 0.7646317760868869,
+    "m1_macro": 0.7422685562083176,
+    "favor_m1_percent": 51.182887368971734,
+    "ties": 538,
+    "net_loss_difference": 5089.854412487242,
+    "sha256": "d950b9e7c8af6254fb29f890ae9a8cf85c706b9ba2a4fce50c81ab41773a997d",
+    "top1_floor": {
+      "k": 516,
+      "execution_share": 0.6562468908683042,
+      "delta": 896.6765967286627,
+      "rest_delta": 4193.177815758564
+    },
+    "top1_ceil": {
+      "k": 517,
+      "execution_share": 0.6565322270299697,
+      "delta": 898.4320674417064,
+      "rest_delta": 4191.42234504552
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.8148596639868743,
+        "m1_loss": 0.7933489953070727
+      },
+      "1000": {
+        "m0_loss": 0.7709223975534939,
+        "m1_loss": 0.7549143555861868
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 38117,
+        "executions": 38117,
+        "delta": 224.63953437438062
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10645,
+        "executions": 39686,
+        "delta": 2845.1923112214968
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 2056,
+        "executions": 70240,
+        "delta": 1615.0821515940465
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 721,
+        "executions": 188798,
+        "delta": 1593.6129878124473
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 72,
+        "executions": 195864,
+        "delta": -1188.6725725151448
+      }
+    ]
+  },
+  {
+    "seed": 20261105,
+    "workloads": 51380,
+    "executions": 491615,
+    "unique_workloads": 51380,
+    "positive_counts": true,
+    "m0_micro": 0.6993178941219427,
+    "m1_micro": 0.6911566071936531,
+    "m0_macro": 0.7668610078293451,
+    "m1_macro": 0.7383118300332733,
+    "favor_m1_percent": 53.89645776566758,
+    "ties": 701,
+    "net_loss_difference": 4012.211073251092,
+    "sha256": "be075bd2af5038164e270437d4c29deae7cfc1105274b1339e32d7b2b5b57322",
+    "top1_floor": {
+      "k": 513,
+      "execution_share": 0.6397953683268411,
+      "delta": -327.4458851877071,
+      "rest_delta": 4339.656958438758
+    },
+    "top1_ceil": {
+      "k": 514,
+      "execution_share": 0.6400882804633707,
+      "delta": -333.760576540103,
+      "rest_delta": 4345.971649791154
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.833597385659194,
+        "m1_loss": 0.8118405937910258
+      },
+      "1000": {
+        "m0_loss": 0.7868720203138925,
+        "m1_loss": 0.772345495636495
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 37891,
+        "executions": 37891,
+        "delta": 640.0147024956004
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10657,
+        "executions": 39292,
+        "delta": 2306.845374733916
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 2062,
+        "executions": 68543,
+        "delta": 1710.1143151065903
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 712,
+        "executions": 182966,
+        "delta": 1696.691318038475
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 58,
+        "executions": 162923,
+        "delta": -2341.4546371235306
+      }
+    ]
+  },
+  {
+    "seed": 20261106,
+    "workloads": 51145,
+    "executions": 578665,
+    "unique_workloads": 51145,
+    "positive_counts": true,
+    "m0_micro": 0.6801744660102611,
+    "m1_micro": 0.6597617906296064,
+    "m0_macro": 0.7707731550782757,
+    "m1_macro": 0.74834984658796,
+    "favor_m1_percent": 52.23384495063056,
+    "ties": 591,
+    "net_loss_difference": 11812.100799146574,
+    "sha256": "e423817193388a6d5d5048431d03dd29a929f563075c97de53c9d34a21b886b3",
+    "top1_floor": {
+      "k": 511,
+      "execution_share": 0.6830739719872465,
+      "delta": 7843.714235829364,
+      "rest_delta": 3968.3865633172213
+    },
+    "top1_ceil": {
+      "k": 512,
+      "execution_share": 0.6833401017860075,
+      "delta": 7836.330775832808,
+      "rest_delta": 3975.770023313777
+    },
+    "capped": {
+      "100": {
+        "m0_loss": 0.8337808305347311,
+        "m1_loss": 0.8126989243053555
+      },
+      "1000": {
+        "m0_loss": 0.7955198109211301,
+        "m1_loss": 0.7724412684168678
+      }
+    },
+    "bands": [
+      {
+        "lo": 1,
+        "hi": 1,
+        "workloads": 37691,
+        "executions": 37691,
+        "delta": 289.4477143649275
+      },
+      {
+        "lo": 2,
+        "hi": 10,
+        "workloads": 10601,
+        "executions": 39747,
+        "delta": 2613.0371281617195
+      },
+      {
+        "lo": 11,
+        "hi": 100,
+        "workloads": 2060,
+        "executions": 70420,
+        "delta": 1115.554712691468
+      },
+      {
+        "lo": 101,
+        "hi": 1000,
+        "workloads": 713,
+        "executions": 180826,
+        "delta": 1636.4081474869306
+      },
+      {
+        "lo": 1001,
+        "hi": 1000000000000,
+        "workloads": 80,
+        "executions": 249981,
+        "delta": 6157.653096441541
+      }
+    ]
+  }
+]

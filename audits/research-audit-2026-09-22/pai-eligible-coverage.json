@@ -1,0 +1,14 @@
+{
+  "rows": 229469,
+  "jobs": 212046,
+  "users": 624,
+  "groups": 81420,
+  "group_nonnull": 229078,
+  "launch_min": 636282.0,
+  "launch_max": 6450962.0,
+  "roles": {
+    "worker": 211791,
+    "evaluator": 12536,
+    "ps": 5142
+  }
+}

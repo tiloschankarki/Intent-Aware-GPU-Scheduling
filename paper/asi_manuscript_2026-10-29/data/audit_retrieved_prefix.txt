@@ -1,0 +1,101 @@
+\# Independent novelty and methodological validity audit\
+Date: 29 October 2026. Scope: complete ASI Experiments 1–3, with explicit evidence limits.\
+\
+\## A. Executive verdict\
+\
+\*\*Proceed only with narrower claims.\*\*\
+\
+The artifacts support an empirical case study of how the measured incremental value of one coarse workload-type field varies with workload-disjoint partitions, evaluation weighting, and the models selected using validation data. They do not establish a new predictor, a new scheduling method, a causal explanation of instability, or an independently confirmed general improvement.\
+\
+There is a coherent manuscript here, but its scientific contribution is smaller than “discovering pitfalls in GPU runtime prediction.” Feature ablation, group-aware evaluation, weighting sensitivity, selection bias, and temporal generalization already have substantial precedent. The potentially distinct contribution is their concrete interaction in the ASI execution-span prediction task, documented with reproducible loss attribution. That is a bounded empirical extension, not an established major methodological advance.\
+\
+The current title is broad. A more accurate title is \*\*“Partition and Weighting Sensitivity in ASI Execution-Duration Prediction: A Case Study.”\*\* This describes demonstrated behavior without suggesting a general theory of GPU prediction failures.\
+\
+A workshop, short empirical paper, or technical report is a reasonable target. The present evidence does not justify positioning this as an OSDI/NSDI/EuroSys/MLSys main-track contribution. HPDC, SC, or SoCC main tracks are not automatic alternatives with a lower novelty requirement.\
+\
+\## Evidence standard and what was actually checked\
+\
+This audit performed literature searches, read original documentation and saved artifacts, and verified arithmetic from existing validation workload loss sums. It did \*\*not\*\* train a model, generate predictions, modify a protocol, run a new robustness experiment, or evaluate reserved holdouts.\
+\
+Evidence levels:\
+\
+\- \*\*V — verified from saved original artifacts in this audit:\*\* Experiment 3 summary results and candidate records, ten downloaded validation workload loss-sum tables, their committed hashes, and reconstruction of their aggregate losses.\
+\- \*\*R — read in historical original reports/aggregate artifacts:\*\* Experiments 1–2 numerical summaries and their historical verification reports. Their models/predictions were not rerun.\
+\- \*\*U — not independently located/verified:\*\* the exact 0.2915 versus 0.2142 within-M1 decomposition and associated 76,366 exact-profile count; full certification of prediction-time feature provenance; complete source-to-split lineage for Experiment 3.\
+\
+Primary artifact entry points:\
+\
+1\. [Experiment 3 preregistration result.json]\(https\://drive.google.com/file/d/1ds2nOIhZPlORSfbwnM8ZgRnIxhRLHaqO/view).\
+2\. [Experiment 3 consolidated report]\(https\://drive.google.com/file/d/1Ntk1MhpLtjSHCcPceswH1Rikjack0aHs/view).\
+3\. [All ten seed folders]\(https\://drive.google.com/drive/folders/1DML5EJ5UQlBqDW1ui_lvt0j8HaPoU6CB).\
+4\. [Historical completed checkpoint]\(https\://drive.google.com/file/d/1wdEwx54Y-rF9ZSiopj0zuDek5LJ991Ra/view).\
+5\. [Experiment 2 saved verification]\(/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_instability_mitigation/phase_a_verification.json).\
+6\. [Experiment 2 phase-one findings]\(/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_phase1_prediction_instability_diagnostics/phase1_findings.md).\
+7\. [Experiment 1 archive inventory]\(/Users/tiloschan/Downloads/asi_completed_2026-10-13/FILE_INVENTORY.json): the inspected inventory maps \*\*resume_reports/results-summary.json\*\* to content object SHA-256 \*\*2609e8a3168b482e8d5051954d96a885be453ab90eb099afaf78954bc31c1588\*\*.\
+\
+Checks passed: all ten validation Parquet hashes matched their SUMMARY/COMMIT.json entries; 40 reconstructed M0/M1 execution/equal-workload metrics matched saved results within 1e-12; the 240 candidate records contain 12 candidates per side per seed; all 20 reported winners match minimum execution-weighted validation loss with candidate-ID tie breaking. This establishes internal consistency, not an independent audit of every raw row, training execution, or source label.\
+\
+The preregistration file specifies the restricted population, ten seeds, fixed model seed, grid, early stopping, selection metric, secondary metric, and test-exclusion policy. The uploaded registration precedes uploaded seed-result folders and includes a registration timestamp. That is evidence of a documented frozen plan; it is not an independently timestamped public registry proving every analysis was specified before any local result inspection.\
+\
+\### Verified Experiment 3 headline\
+\
+Positive percentages mean lower M1 LogMAE. Both metrics evaluate the execution-weighted-selected models.\
+\
+\| Split seed | Execution-weighted improvement | Equal-workload improvement |\
+\|---|---:|---:|\
+\| 20261028 | +2.621% | +2.285% |\
+\| 20261029 | +0.952% | +3.771% |\
+\| 20261030 | +1.799% | +3.392% |\
+\| 20261031 | +1.381% | +4.286% |\
+\| 20261101 | −6.119% | −2.457% |\
+\| 20261102 | −2.015% | +0.978% |\
+\| 20261103 | +2.099% | +3.515% |\
+\| 20261104 | +1.369% | +2.925% |\
+\| 20261105 | +1.167% | +3.723% |\
+\| 20261106 | +3.001% | +2.909% |\
+\
+M1 wins 8/10 and 9/10, respectively. Mean signed M0−M1 differences are \*\*+0.00449751\*\* and \*\*+0.01946433\*\*. “Mean absolute difference” is potentially misleading: these are means of signed differences in absolute-error metrics, not means of absolute model gaps.\
+\
+Seeds are identifiers, not execution dates. The presence of seeds labeled November does not imply experiments occurred after this audit's date.\
+\
+\## B. Novelty overlap matrix\
+\
+Search covered GPU/HPC runtime prediction, learning-augmented scheduling, Alibaba traces, semantic feature ablations, group/temporal evaluation, concentration and weighted metrics, leakage, and model selection. Primary papers, author/publisher pages and official implementations were used. Prior local literature notes supplied leads, not independent evidence.\
+\
+“Not found” below means not established in the inspected sources, not proof of worldwide absence. An exact duplicate was not verified; neither was a broad first-of-kind claim.\
+\
+\| Prior work: authors and publication status | Exact inspected contribution | Overlap with Experiments 1–3 | Remaining distinction and scientific significance |\
+\|---|---|---|---|\
+\| \*\*Smith, Foster & Taylor, “Predicting Application Run Times Using Historical Information,” JSSPP 1998.\*\* [Full text]\(https\://www\.globus.org/sites/default/files/runtime.pdf) | Historical similarity templates selected using search methods; application/context attributes include execution/job metadata, users, executables and arguments. | Runtime metadata and feature-selection value are old ideas. Exp1 is not a new semantic-prediction premise. | ASI's public coarse type under the stated controls and workload-disjoint design differs. It is a modern empirical extension, not a new principle. |\
+\| \*\*Weng et al., “MLaaS in the Wild,” NSDI 2022.\*\* [Publisher]\(https\://www\.usenix.org/conference/nsdi22/presentation/weng), [paper]\(https\://www\.usenix.org/system/files/nsdi22-weng.pdf) | §5.2/Fig.12 evaluates duration prediction with CART and Group/User/Resource/GPU feature combinations on recurrent PAI tasks, followed by scheduling simulation. | Direct overlap with Alibaba duration prediction and feature ablations. Treating this as characterization alone would conceal close prior art. | PAI recurrence/group features differ from ASI job-type increments on unseen workload IDs. Your split targets a harder/different transfer question, but does not demonstrate that the earlier paper's estimand was invalid. |\
+\| \*\*Menear & Duplyakin, “Is Knowledge About Running Applications Helping Improve Runtime Prediction of HPC Jobs?”, PEARC23 poster, 2023.\*\* [Laboratory record]\(https\://research-hub.nlr.gov/en/publications/is-knowledge-about-running-applications-helping-improve-runtime-p/) | Explicitly studies adding primary application as a predictor; the primary abstract reports variable benefits by application and runtime length. | Very close conceptual precedent for Exp1's semantic-feature increment. | Application identity differs from lifecycle type. Exact ASI feature/control comparison remains distinct, but “adding semantics helps” is already studied. \*\*Access limit:\*\* poster PDF was inaccessible; exact splits/models/numbers are not asserted. |\
+\| \*\*Menear, Nag, Perr-Sauer, Lunacek, Potter & Duplyakin, “Mastering HPC Runtime Prediction: From Observing Patterns to a Methodological Approach,” PEARC 2023.\*\* [Laboratory preprint record]\(https\://research-hub.nlr.gov/en/publications/mastering-hpc-runtime-prediction-from-observing-patterns-to-a-met/), [proceedings DOI]\(https\://doi.org/10.1145/3569951.3593598) | Runtime-prediction best practices and empirical methodology on the 11-million-job Eagle dataset, with released data/code. | Directly limits novelty of a general “evaluation pitfalls” framing. | ASI frequency concentration and selected-complexity patterns are a different case. \*\*Access limit:\*\* original full PDF was not retrievable; detailed claims from indexed excerpts are not used to establish exact equivalence. |\
+\| \*\*Hu, Zhang, Sun, Wen & Zhang, “Lucid,” ASPLOS 2023.\*\* [Full text]\(https\://tianweiz07.github.io/Papers/23-asplos.pdf) | GA²M duration estimation uses job/user/GPU-related submission attributes and name representations within a scheduler that also profiles and updates jobs. | Metadata prediction is established; the systems contribution depends on actual scheduling behavior. | No inspected isolated ASI job-type increment. Your project is an offline empirical analysis, not a competing scheduler. |\
+\| \*\*Jiang, Zhao, Xia & Zomaya, “ATLAS: Alibaba Dataset and Benchmark for Learning-Augmented Scheduling,” ICLR 2026.\*\* [Published paper]\(https\://proceedings.iclr.cc/paper_files/paper/2026/file/de15d58b049530fe7df634f71e47164b-Paper-Conference.pdf) | PAI-derived prediction/scheduling benchmark; LightGBM log-duration models with metadata/history, temporal partitioning, calibration, feature analysis and scheduler objectives. | Substantial overlap with model family, target transformation, metadata ablation and realistic benchmarking. | ASI, strict workload-ID-disjoint partitions, micro/macro contrast and selected-round sensitivity remain different. This can support a focused companion case study; it does not displace ATLAS or reveal that its evaluations are wrong. |\
+\| \*\*Li et al., “Heterogeneity at Hyperscale,” OSDI 2026, Operational Systems.\*\* [Publisher paper]\(https\://www\.usenix.org/system/files/osdi26-li-suyi.pdf) | Introduces ASI characterization and deployed resource-management mechanisms; Fig.7 already distinguishes execution distributions by job/model types. | The exact trace already links type categories with duration distributions. | Conditional out-of-group prediction value after controls is not the same as marginal characterization. This is a substantive estimand distinction, but it still needs credible estimation. |\
+\| \*\*Xiao, Wu, Lu, Wang, Zhao & He, “TARE: Tail Aware Evaluation of HPC Job Runtime Prediction,” arXiv v1, 6 July 2026.\*\* [Full text]\(https\://arxiv.org/html/2607.04935v1), [metadata]\(https\://arxiv.org/abs/2607.04935) | Resource-weighted GeoAccuracy, tail/decile evaluation, rolling splits, and a scheduling replay show that aggregate prediction conclusions depend on weighting and operational objectives. | Closest challenge to claiming that weighting-sensitive runtime evaluation itself is novel. | TARE weights jobs by resource consumption; your comparison weights execution rows versus workload identities. Frequency concentration is not the same as runtime-tail or node-hour concentration. The exact phenomenon differs, but the broad evaluation lesson is known. Publication: submitted to ICPP26 according to arXiv; acceptance was not independently verified from the official schedule/booklet. |\
+\| \*\*Shafin & Ahmed, “Leakage-Safe and Scheduler-Aware Machine Learning for Grid Job Runtime Prediction,” September 2026 arXiv preprint.\*\* [Full text]\(https\://arxiv.org/html/2609.13701v1) | Submission-time feature policy; temporal and cold-start evaluation, categorical models, feature ablations and a simplified scheduling study on AuverGrid. | Direct contemporary overlap with leakage-aware runtime benchmarking and generalization framing. | Different dataset, feature construct and concentration diagnostics. Do not present chronology or cold-start evaluation as a new method. This preprint's existence does not certify all its methodological claims. |\
+\| \*\*Pourali & Khazaei, “ORION,” ICPE 2026.\*\* [Conference paper]\(https\://icpe2026.spec.org/preprint/ORION_Integrated_Runtime_Modelling_for_Predicting_Deep_Learning_training_time.pdf) | Iteration-time modelling couples GPU computation with CPU/data-loading/storage effects; evaluates held-out hardware/configurations. | Relevant GPU runtime/generalization literature, but limited overlap with coarse execution-span metadata. | Different target granularity and richer mechanistic inputs. Shows why “GPU execution-duration prediction” must specify the prediction task rather than lumping all GPU predictors together. |\
+\| \*\*Romero Ugalde, Faqir-Rhazoui, Funk & Gorroñogoitia Cruz, “Evaluating Runtime Prediction and Conservative Walltime Policies in HPC Systems,” October 2026 manuscript.\*\* [Full text]\(https\://arxiv.org/html/2610.27755v1), [metadata]\(https\://arxiv.org/abs/2610.27755) | Rolling temporal prediction, seen/unseen workload regimes and conservative walltime recommendation on Fugaku/Eagle. | Further overlap with deployment/generalization evaluation and the distinction between prediction and operational decisions. | No inspected ASI job-type ablation. The manuscript states SBAC-PAD 2026 acceptance; this audit verified that statement, not an independently located proceedings entry. |\
+\| \*\*Cawley & Talbot, JMLR 2010.\*\* [Paper]\(https\://www\.jmlr.org/papers/v11/cawley10a.html) | Selection criteria can be overfit, creating evaluation bias comparable to algorithm differences. | Direct precedent for validation reuse and selection instability. | Your saved candidates instantiate this concern; they do not supply a new theory or quantify selection bias without independent evaluation. |\
+\| \*\*Bengio & Grandvalet, JMLR 2004.\*\* [Paper]\(https\://www\.jmlr.org/papers/v5/grandvalet04a.html) | Establishes limitations of variance estimation for K-fold cross-validation under correlated errors. | Supports caution about shared-data dependence. | Their theorem is about K-fold CV, not a proof specific to your ten repeated group partitions. Do not overstate the transfer of the theorem. |\
+\| \*\*Roberts et al., Ecography 2017.\*\* [Author record and original abstract]\(https\://florianhartig.github.io/publications/roberts2017cross/) | Evaluation blocking must match structured dependence and the intended prediction task; blocking can induce extrapolation. | Workload-disjoint evaluation is an application of established group/blocking principles. | The appropriate ASI grouping and its consequences are empirical questions. Group separation itself is not methodological novelty. |\
+\| \*\*Kapoor & Narayanan, Patterns 2023.\*\* [Full text]\(https\://pmc.ncbi.nlm.nih.gov/articles/PMC10499856/) | Leakage taxonomy connects data dependence, temporal availability and mismatched evaluation distributions with overclaimed validity. | Direct precedent for the feature-timing and unit-of-analysis audit. | Your potential contribution is specific evidence, not discovery of leakage as a general issue. |\
+\
+\*\*Novelty conclusion:\*\* none of the generic ingredients is new. The conjunction could still yield a useful empirical contribution if it reveals a consequential, well-documented failure of a common interpretation. The strongest specific observation is that the same extra public category has unstable selected-validation value across workload-disjoint partitions, and that evaluation-unit changes can alter ranking while broad concentration alone cannot explain the sign. There is no verified evidence that this exact ASI result is already published. That is weaker than proving it is novel enough for a major conference.\
+\
+\## C. Claim-by-claim validity audit\
+\
+\| Proposed claim | Supporting artifact | Evidence | Skeptical verdict |\
+\|---|---|---|---|\
+\| “Job type yields about 5.88% benefit, declining to 1.05% with application controls.” | Experiment 1 archived results-summary and completed checkpoint | R; weak-control model-seed gains 5.949393%, 5.844247%, 5.848031%; strong-control gains 0.946168%, 0.814672%, 1.378673% | Survives as an informal descriptive summary over three model seeds on one split. It is not a protocol-defined pooled effect or independent replication. The weaker baseline was \*\*resource plus priority\*\*, not resource only. |\
+\| “Application information explains most of job type's independent information.” | Same ablations | R, predictive comparison | Too strong. Gains shrink under richer controls, consistent with predictive redundancy and/or changes in model fit. No conditional-information quantity or causal explanation was identified. |\
+\| “M0 is a no-semantics baseline.” | Feature lists in original code, selections and summaries | V/R | False. Model type and GenAI detection already carry semantics. M1 adds one coarse lifecycle/type field to an already semantic baseline. |\
+\| “Selected M1 ranking reverses across the original two partitions.” | Experiment 2 verification and phase-one findings | R; +2.083576% versus −4.906626%; model counts and input hashes documented | Survives as a saved validation result. The audit did not rerun predictions. Both partitions share the same fixed model seed; this is partition sensitivity. |\
+\| “190 versus 5 trees identifies early stopping as the cause.” | Experiment 2 selection records | R | Unsupported causally. Selected leaves/minimum leaf settings also change. Training populations and validation populations change together. |\
+\| “Two workloads caused the M1-versus-M0 reversal.” | Phase-one workload attribution | R, directly contradictory to that assertion | Rejected. Those workloads benefit from M1 versus M0. Their influence on a separate within-M1 comparison cannot establish the cross-model mechanism. |\
+\| “Those workloads contribute 0.2915 against a net 0.2142 within M1.” | Researcher summary only in this audit | U | The arithmetic could exceed 100% of net because other workloads offset it. But the exact saved source was not located, so retain as unverified and do not promote it to a causal result. |\
+\| “M1 wins 8/10 execution and 9/10 workload partitions.” | Ten SUMMARY files and validation-loss Parquets | V | Survives exactly as a descriptive count of these selected-validation outcomes. Not 80%/90% probability of success on future clusters or independent statistical replications. |\
+\| “The mean effect is +0.00450 / +0.01946.” | Consolidated report and reconstructed metrics | V | Survives for the fixed collection of dependent partitions. No naive across-seed standard error, binomial significance, or generic population confidence interval is justified. |\
+\| “Weighting can reverse the ranking.” | Seed 20261102 workload losses | V | Demonstrated for fixed selected predictions: execution-weighted M1 worsens 2.015%, equal-workload improves 0.978%. This is an estimand change, not evidence that one metric is correct. |\
+\| “Concentration explains negative model rankings.” | Top-frequency shares, signed contributions, positive control | V | Rejected as a suffi

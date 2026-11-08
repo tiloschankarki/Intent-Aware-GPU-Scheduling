@@ -1,0 +1,11 @@
+{
+  "seed_rows": 10,
+  "candidate_records": 240,
+  "selected_winners_match_minimum": 20,
+  "selected_metrics_reconciled": 40,
+  "new_training": false,
+  "prediction_files_read": false,
+  "holdout_files_read": false,
+  "source": "original consolidated report, historical checkpoint, phase-one report",
+  "limits": "Aggregate arithmetic verification only; no new validation-loss parquet reconstruction."
+}

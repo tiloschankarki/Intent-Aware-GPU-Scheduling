@@ -1,0 +1,30 @@
+# Local credentials and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+service-account*.json
+secrets/
+# OS/editor/cache/environment
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+# Raw or large local assets: compact result CSV/JSON/Parquet remain eligible
+data/raw/
+raw_data/
+raw/
+large_intermediates/
+checkpoints/
+*.zip
+*.tar
+*.tar.gz
+*.7z
+# Reserved outcomes must stay outside this review package
+holdouts/
+reserved_holdouts/

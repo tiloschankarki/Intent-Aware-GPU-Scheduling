@@ -1,0 +1,313 @@
+{
+  "acme_seren": {
+    "rows": 818327,
+    "gpu_jobs": 450590,
+    "columns": [
+      "job_id",
+      "user",
+      "node_num",
+      "gpu_num",
+      "cpu_num",
+      "type",
+      "state",
+      "submit_time",
+      "start_time",
+      "end_time",
+      "duration",
+      "queue",
+      "gpu_time"
+    ],
+    "types_all": {
+      "CPU": 367737,
+      "Eval": 292212,
+      "SFT": 66971,
+      "Other": 65624,
+      "MLLM": 13288,
+      "Debug": 8469,
+      "Pretrain": 4026
+    },
+    "types_gpu": {
+      "Eval": 292212,
+      "SFT": 66971,
+      "Other": 65624,
+      "MLLM": 13288,
+      "Debug": 8469,
+      "Pretrain": 4026
+    },
+    "gpu_users": 118,
+    "submission_min": "2023-03-01 00:18:22+08:00",
+    "submission_max": "2023-08-16 23:59:42+08:00",
+    "duration_matches_execution": 818327,
+    "duration_matches_turnaround": 280866
+  },
+  "acme_kalos": {
+    "rows": 62413,
+    "gpu_jobs": 19907,
+    "columns": [
+      "job_id",
+      "user",
+      "node_num",
+      "gpu_num",
+      "cpu_num",
+      "mem_per_pod_GB",
+      "shared_mem_per_pod",
+      "type",
+      "state",
+      "submit_time",
+      "start_time",
+      "end_time",
+      "fail_time",
+      "stop_time",
+      "duration",
+      "queue",
+      "gpu_time"
+    ],
+    "types_all": {
+      "CPU": 42506,
+      "Eval": 18471,
+      "Pretrain": 641,
+      "Debug": 537,
+      "Other": 250,
+      "SFT": 8
+    },
+    "types_gpu": {
+      "Eval": 18471,
+      "Pretrain": 641,
+      "Debug": 537,
+      "Other": 250,
+      "SFT": 8
+    },
+    "gpu_users": 12,
+    "submission_min": "2023-05-17 11:00:58+00:00",
+    "submission_max": "2023-08-16 15:18:02+00:00",
+    "duration_matches_execution": 1,
+    "duration_matches_turnaround": 62410
+  },
+  "helios": {
+    "data/Saturn/cluster_log.csv": {
+      "rows": 1753078,
+      "cols": [
+        "job_id",
+        "user",
+        "vc",
+        "gpu_num",
+        "cpu_num",
+        "node_num",
+        "state",
+        "submit_time",
+        "start_time",
+        "end_time",
+        "duration",
+        "queue"
+      ],
+      "gpu_jobs": 698896
+    },
+    "data/Uranus/cluster_log.csv": {
+      "rows": 490309,
+      "cols": [
+        "job_id",
+        "user",
+        "vc",
+        "gpu_num",
+        "cpu_num",
+        "node_num",
+        "state",
+        "submit_time",
+        "start_time",
+        "end_time",
+        "duration",
+        "queue"
+      ],
+      "gpu_jobs": 329117
+    },
+    "data/Venus/cluster_log.csv": {
+      "rows": 246708,
+      "cols": [
+        "job_id",
+        "user",
+        "vc",
+        "gpu_num",
+        "cpu_num",
+        "node_num",
+        "state",
+        "submit_time",
+        "start_time",
+        "end_time",
+        "duration",
+        "queue"
+      ],
+      "gpu_jobs": 125303
+    },
+    "data/Earth/cluster_log.csv": {
+      "rows": 872886,
+      "cols": [
+        "job_id",
+        "user",
+        "vc",
+        "gpu_num",
+        "cpu_num",
+        "node_num",
+        "state",
+        "submit_time",
+        "start_time",
+        "end_time",
+        "duration",
+        "queue"
+      ],
+      "gpu_jobs": 427148
+    }
+  },
+  "pai2020": {
+    "task_rows": 1261050,
+    "task_roles": {
+      "tensorflow": 621415,
+      "worker": 275785,
+      "ps": 183283,
+      "PyTorchWorker": 110784,
+      "xComputeWorker": 27402,
+      "evaluator": 17210,
+      "TensorboardTask": 10681,
+      "DecoderWorker": 4136,
+      "ReduceTask": 4136,
+      "JupyterTask": 2066,
+      "TVMTuneMain": 1158,
+      "OpenmpiTracker": 745,
+      "OpenmpiWorker": 745,
+      "OssToVolumeWorker": 672,
+      "MWorker": 404,
+      "chief": 371,
+      "BladeMain": 39,
+      "aligraph": 6,
+      "TransformGraph": 3,
+      "M1": 3,
+      "R2_1": 2,
+      "TfClientWorker": 2,
+      "R3_1_2": 1,
+      "M2": 1
+    },
+    "task_role_nunique": 24,
+    "gpu_task_roles": {
+      "tensorflow": 616919,
+      "worker": 266698,
+      "PyTorchWorker": 106823,
+      "xComputeWorker": 23932,
+      "evaluator": 13843,
+      "ps": 5918,
+      "TVMTuneMain": 1158,
+      "OssToVolumeWorker": 664,
+      "OpenmpiWorker": 631,
+      "JupyterTask": 443,
+      "BladeMain": 37,
+      "chief": 16,
+      "TransformGraph": 3
+    },
+    "jobs_rows": 1055501,
+    "job_unique": 1055501,
+    "users": 1433,
+    "gpu_jobs": 1017904,
+    "gpu_users": 1329,
+    "group_rows": 1055032,
+    "group_nonnull": 1055032,
+    "groups_unique": 316956,
+    "workload_nonnull": 102798,
+    "workload_values": {
+      "<NULL>": 952234,
+      "bert": 54887,
+      "ctr": 27083,
+      "nmt": 10363,
+      "inception": 5440,
+      "graphlearn": 3754,
+      "resnet": 541,
+      "xlnet": 415,
+      "rl": 249,
+      "vgg": 66
+    },
+    "gpu_group_rows": 1016492,
+    "gpu_group_nonnull": 1016492,
+    "gpu_workload_nonnull": 100439,
+    "gpu_workload_values": {
+      "<NULL>": 916053,
+      "bert": 53410,
+      "ctr": 27039,
+      "nmt": 10065,
+      "inception": 5395,
+      "graphlearn": 3413,
+      "resnet": 423,
+      "xlnet": 409,
+      "rl": 226,
+      "vgg": 59
+    },
+    "submit_range": [
+      494319.0,
+      6451081.0
+    ],
+    "role_evaluator": {
+      "jobs": 17210,
+      "gpu_jobs": 16995,
+      "gpu_users": 47
+    },
+    "role_ps": {
+      "jobs": 183283,
+      "gpu_jobs": 176386,
+      "gpu_users": 519
+    },
+    "role_worker": {
+      "jobs": 275785,
+      "gpu_jobs": 267090,
+      "gpu_users": 702
+    },
+    "role_chief": {
+      "jobs": 371,
+      "gpu_jobs": 340,
+      "gpu_users": 7
+    },
+    "role_tensorflow": {
+      "jobs": 621415,
+      "gpu_jobs": 616919,
+      "gpu_users": 832
+    },
+    "role_pytorch": {
+      "jobs": 0,
+      "gpu_jobs": 0,
+      "gpu_users": 0
+    }
+  },
+  "2023-pods": {
+    "rows": 8152,
+    "cols": [
+      "name",
+      "cpu_milli",
+      "memory_mib",
+      "num_gpu",
+      "gpu_milli",
+      "gpu_spec",
+      "qos",
+      "pod_phase",
+      "creation_time",
+      "deletion_time",
+      "scheduled_time"
+    ]
+  },
+  "2025": {
+    "rows": 23871,
+    "cols": [
+      "instance_sn",
+      "role",
+      "app_name",
+      "cpu_request",
+      "cpu_limit",
+      "gpu_request",
+      "gpu_limit",
+      "rdma_request",
+      "rdma_limit",
+      "memory_request",
+      "memory_limit",
+      "disk_request",
+      "disk_limit",
+      "max_instance_per_node",
+      "creation_time",
+      "scheduled_time",
+      "deletion_time"
+    ]
+  }
+}

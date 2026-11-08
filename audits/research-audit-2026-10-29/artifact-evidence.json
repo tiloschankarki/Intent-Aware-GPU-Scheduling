@@ -1,0 +1,1977 @@
+{
+  "audit_scope": "Read-only literature and saved-artifact audit; arithmetic checks only on saved validation workload loss sums. No fitting, fresh prediction, holdout evaluation, or protocol change.",
+  "preregistration": {
+    "environment_at_registration": {
+      "logical_cpus": 2,
+      "packages": {
+        "lightgbm": "4.7.0",
+        "numpy": "2.0.1",
+        "pandas": "2.2.3",
+        "psutil": "6.1.1",
+        "pyarrow": "25.0.1"
+      },
+      "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+      "python": "3.13.18",
+      "ram_bytes": 13605818368
+    },
+    "registered_unix": 1793246886.1947021,
+    "spec": {
+      "analysis": "report every seed, candidates, rounds, both validation metrics, unweighted seed delta summaries; no independent-seed significance claim",
+      "base_parameters": {
+        "bagging_fraction": 0.8,
+        "bagging_freq": 1,
+        "deterministic": true,
+        "feature_pre_filter": false,
+        "force_col_wise": true,
+        "learning_rate": 0.05,
+        "metric": "l1",
+        "num_threads": 2,
+        "objective": "regression_l1",
+        "verbosity": -1
+      },
+      "bundle_manifest_sha256": "dc6c41f425cdd364c07b4af2ee0c33b78a36fb1eea255589c0e2f39203ac170e",
+      "confirmatory_tests": "untouched; no confirmatory test results in this study notebook",
+      "early_stopping_rounds": 30,
+      "failure_policy": "stop on resource/data/protocol failure; keep partial checkpoints and all seed statuses; no seed replacement, no grid/data changes",
+      "feature_processing": "verbatim archived feature_columns, fit_encoding, encode; train only",
+      "grid": [
+        {
+          "candidate_id": 1,
+          "feature_fraction": 0.8,
+          "min_data_in_leaf": 20,
+          "num_leaves": 15
+        },
+        {
+          "candidate_id": 2,
+          "feature_fraction": 1,
+          "min_data_in_leaf": 20,
+          "num_leaves": 15
+        },
+        {
+          "candidate_id": 3,
+          "feature_fraction": 0.8,
+          "min_data_in_leaf": 100,
+          "num_leaves": 15
+        },
+        {
+          "candidate_id": 4,
+          "feature_fraction": 1,
+          "min_data_in_leaf": 100,
+          "num_leaves": 15
+        },
+        {
+          "candidate_id": 5,
+          "feature_fraction": 0.8,
+          "min_data_in_leaf": 20,
+          "num_leaves": 31
+        },
+        {
+          "candidate_id": 6,
+          "feature_fraction": 1,
+          "min_data_in_leaf": 20,
+          "num_leaves": 31
+        },
+        {
+          "candidate_id": 7,
+          "feature_fraction": 0.8,
+          "min_data_in_leaf": 100,
+          "num_leaves": 31
+        },
+        {
+          "candidate_id": 8,
+          "feature_fraction": 1,
+          "min_data_in_leaf": 100,
+          "num_leaves": 31
+        },
+        {
+          "candidate_id": 9,
+          "feature_fraction": 0.8,
+          "min_data_in_leaf": 20,
+          "num_leaves": 63
+        },
+        {
+          "candidate_id": 10,
+          "feature_fraction": 1,
+          "min_data_in_leaf": 20,
+          "num_leaves": 63
+        },
+        {
+          "candidate_id": 11,
+          "feature_fraction": 0.8,
+          "min_data_in_leaf": 100,
+          "num_leaves": 63
+        },
+        {
+          "candidate_id": 12,
+          "feature_fraction": 1,
+          "min_data_in_leaf": 100,
+          "num_leaves": 63
+        }
+      ],
+      "historical_split_seeds": [
+        20260927,
+        20261020
+      ],
+      "model_seed": 20260927,
+      "num_boost_round": 200,
+      "package_versions": {
+        "lightgbm": "4.7.0",
+        "numpy": "2.0.1",
+        "pandas": "2.2.3",
+        "psutil": "6.1.1",
+        "pyarrow": "25.0.1"
+      },
+      "pilot_fits": 24,
+      "pilot_gate": "all 24 candidates and both winners committed; sampled RSS <= 8 GiB; sampled available >= 2 GiB",
+      "pilot_seed": 20261028,
+      "population": {
+        "eligible_execution_fraction": 0.7160720261320225,
+        "eligible_executions": 3372430,
+        "eligible_selection": "inner join original seed-20260927 train/validation to eligible IDs before returning any features/outcomes",
+        "eligible_workload_fraction": 0.7218302642282864,
+        "eligible_workloads": 341617,
+        "excluded_union_executions": 1337194,
+        "excluded_union_workloads": 131648,
+        "feature_target_processing": "copied original features and duration_hours; no re-cleaning, target transform applied at fit time",
+        "historical_ids_use": "only exclusion membership and exclusion counts; not exported",
+        "historical_partition_seeds": [
+          20260927,
+          20261020
+        ],
+        "historical_test_files_opened": false,
+        "historical_test_outcomes_inspected": false,
+        "historical_test_workloads": [
+          70705,
+          71500
+        ],
+        "label": "new restricted-population robustness study; not direct full-population replication",
+        "maps": [
+          {
+            "columns": [
+              "workload_id",
+              "split"
+            ],
+            "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/split-map.parquet",
+            "seed": 20260927,
+            "sha256": "222d5c8464ccb48e9a507a81fd838728cee5707e380254340a9c0917426cbaf1"
+          },
+          {
+            "columns": [
+              "workload_id",
+              "split"
+            ],
+            "path": "/Users/tiloschan/Downloads/asi_robustness_20261020/split_map.parquet",
+            "seed": 20261020,
+            "sha256": "e06c43ec87176849b1073c73912eceb454b4094824531ae945b16d7847510c09"
+          }
+        ],
+        "original_executions": 4709624,
+        "original_population_source": "saved archival metadata: 4,709,624 rows / 473,265 workloads",
+        "original_workloads": 473265,
+        "overlap_workloads": 10557,
+        "prior_inputs_unchanged": true,
+        "source_inputs": [
+          {
+            "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/train_20260927.parquet",
+            "sha256": "18f6cbc9e7c12caf23e3f3ee2591aed608be773b114f4e19e8de9a2abd9a3e2a"
+          },
+          {
+            "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/validation_20260927.parquet",
+            "sha256": "ced84beb3cebfb1faee3321e243965b35a042288f30fe40aeafe960dec56f8dd"
+          }
+        ],
+        "source_train_validation_counts": [
+          {
+            "eligible_rows": 2822729,
+            "excluded_rows": 516813,
+            "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/train_20260927.parquet",
+            "rows": 3339542
+          },
+          {
+            "eligible_rows": 549701,
+            "excluded_rows": 109060,
+            "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/validation_20260927.parquet",
+            "rows": 658761
+          }
+        ]
+      },
+      "protocol_sha256": "4908e86e7526c8ecc298facd46089ac94fd4dec5094eee47af24987237653e61",
+      "reference_sha256": "1ee397b75425fb70267b5db3a15f9a64553f016f272a62206b85bc2c217f6bec",
+      "reserve_bytes": 2147483648,
+      "rss_limit_bytes": 8589934592,
+      "runner_sha256": "920ffa415981344292a5e4a0465ad9962e55143a8d67e32fa5980f5f6fb97be4",
+      "secondary_metric": "equal-workload validation LogMAE, never used for selection",
+      "seed_interpretation": "10 split seeds; one fixed model seed, as in experiment 2",
+      "selection": "minimum validation execution LogMAE; lowest candidate_id breaks ties",
+      "split_seeds": [
+        20261028,
+        20261029,
+        20261030,
+        20261031,
+        20261101,
+        20261102,
+        20261103,
+        20261104,
+        20261105,
+        20261106
+      ],
+      "study": "new restricted-population robustness study; not full-population replication",
+      "target": "numpy.log1p(duration_hours), no clipping or inverse transform",
+      "test_policy": "historical holdouts excluded; new per-seed test outcomes never loaded or evaluated"
+    }
+  },
+  "report_url": "https://drive.google.com/file/d/1Ntk1MhpLtjSHCcPceswH1Rikjack0aHs/view",
+  "preregistration_url": "https://drive.google.com/file/d/1ds2nOIhZPlORSfbwnM8ZgRnIxhRLHaqO/view",
+  "summaries": [
+    {
+      "seed": "20261106",
+      "summary": {
+        "candidate_compute_seconds": 1982.6231342609954,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 903.4829071870117,
+              "hhi": 0.001106827801660901,
+              "rows": 2326154,
+              "top1_execution_share": 0.01640433092563949,
+              "top1pct_execution_share": 0.6383485358235096,
+              "workloads": 238938
+            },
+            "validation": {
+              "effective_workloads": 141.45244508214026,
+              "hhi": 0.0070695137112639405,
+              "rows": 578665,
+              "top1_execution_share": 0.0531533788979807,
+              "top1pct_execution_share": 0.6833401017860073,
+              "workloads": 51145
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 467611,
+              "workloads": 51534
+            },
+            "train": {
+              "rows": 2326154,
+              "workloads": 238938
+            },
+            "validation": {
+              "rows": 578665,
+              "workloads": 51145
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -9254.079323016618,
+            "net_m0_minus_m1_loss_sum": 11812.100799146585,
+            "positive_workload_loss_difference_sum": 21066.180122163205,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.6071385054251809,
+              "m1": 0.6053812395608135
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": 7842.472043506245
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 14398,
+              "offline_inference": 544653,
+              "online_inference": 309445,
+              "training": 1457658
+            },
+            "validation": {
+              "dev": 2821,
+              "offline_inference": 149258,
+              "online_inference": 87265,
+              "training": 339321
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  26885,
+                  65368,
+                  181802,
+                  225687
+                ],
+                "train_unique_profiles": 387,
+                "unseen_validation_execution_fraction": 0.000038018542680134446,
+                "validation_unique_profiles": 296
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  20572,
+                  55864,
+                  167914,
+                  225687
+                ],
+                "train_unique_profiles": 555,
+                "unseen_validation_execution_fraction": 0.0004976972859944873,
+                "validation_unique_profiles": 419
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 2042.2877159279997,
+        "equal_workload_logmae_m0_minus_m1": 0.022423308490315708,
+        "equal_workload_logmae_relative_improvement_percent": 2.9091968684403016,
+        "execution_logmae_m0_minus_m1": 0.020412675380653278,
+        "execution_logmae_relative_improvement_percent": 3.0010940428841972,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 11265388544,
+          "peak_rss_bytes_sampled": 1274421248,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261106,
+        "winners": {
+          "m0": {
+            "best_iteration": 200,
+            "candidate_id": 10,
+            "equal_workload_logmae": 0.7707731550782757,
+            "execution_logmae": 0.6801744660102589,
+            "rows": 578665,
+            "workloads": 51145
+          },
+          "m1": {
+            "best_iteration": 194,
+            "candidate_id": 5,
+            "equal_workload_logmae": 0.74834984658796,
+            "execution_logmae": 0.6597617906296056,
+            "rows": 578665,
+            "workloads": 51145
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "1J0vKwufDy1DdWU6eXNJnH5OWkprD2HZP",
+          "url": "https://drive.google.com/file/d/1J0vKwufDy1DdWU6eXNJnH5OWkprD2HZP/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1d_aER2WoyyeUvwGGFm8KN1jnwa7syC_i",
+          "url": "https://drive.google.com/file/d/1d_aER2WoyyeUvwGGFm8KN1jnwa7syC_i/view?usp=drivesdk",
+          "size": "2384760"
+        },
+        {
+          "title": "result.json",
+          "id": "1VsFjiiNvud9Od29AdoBnhL9W0O9XVS9a",
+          "url": "https://drive.google.com/file/d/1VsFjiiNvud9Od29AdoBnhL9W0O9XVS9a/view?usp=drivesdk",
+          "size": "3196"
+        }
+      ]
+    },
+    {
+      "seed": "20261105",
+      "summary": {
+        "candidate_compute_seconds": 1645.2638956099981,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 914.6068255978785,
+              "hhi": 0.0010933659929186512,
+              "rows": 2370954,
+              "top1_execution_share": 0.016094365390471516,
+              "top1pct_execution_share": 0.6399470424141507,
+              "workloads": 238978
+            },
+            "validation": {
+              "effective_workloads": 212.0412812610257,
+              "hhi": 0.0047160628065107115,
+              "rows": 491615,
+              "top1_execution_share": 0.03254172472361502,
+              "top1pct_execution_share": 0.6400882804633706,
+              "workloads": 51380
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 509861,
+              "workloads": 51259
+            },
+            "train": {
+              "rows": 2370954,
+              "workloads": 238978
+            },
+            "validation": {
+              "rows": 491615,
+              "workloads": 51380
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -11346.191399922707,
+            "net_m0_minus_m1_loss_sum": 4012.21107325105,
+            "positive_workload_loss_difference_sum": 15358.402473173757,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.5651752220652746,
+              "m1": 0.5728311766066869
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": -333.7605765401029
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 14137,
+              "offline_inference": 516581,
+              "online_inference": 335645,
+              "training": 1504591
+            },
+            "validation": {
+              "dev": 2875,
+              "offline_inference": 118232,
+              "online_inference": 65679,
+              "training": 304829
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  23904,
+                  58096,
+                  181955,
+                  240769
+                ],
+                "train_unique_profiles": 385,
+                "unseen_validation_execution_fraction": 0.00020951354210103435,
+                "validation_unique_profiles": 311
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  16936,
+                  51612,
+                  171905,
+                  240769
+                ],
+                "train_unique_profiles": 554,
+                "unseen_validation_execution_fraction": 0.00028477568829266806,
+                "validation_unique_profiles": 434
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 1698.6693688640007,
+        "equal_workload_logmae_m0_minus_m1": 0.02854917779607158,
+        "equal_workload_logmae_relative_improvement_percent": 3.722862096859256,
+        "execution_logmae_m0_minus_m1": 0.008161286928287548,
+        "execution_logmae_relative_improvement_percent": 1.1670353349866442,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 11361034240,
+          "peak_rss_bytes_sampled": 1174974464,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261105,
+        "winners": {
+          "m0": {
+            "best_iteration": 175,
+            "candidate_id": 12,
+            "equal_workload_logmae": 0.7668610078293451,
+            "execution_logmae": 0.6993178941219417,
+            "rows": 491615,
+            "workloads": 51380
+          },
+          "m1": {
+            "best_iteration": 108,
+            "candidate_id": 10,
+            "equal_workload_logmae": 0.7383118300332735,
+            "execution_logmae": 0.6911566071936541,
+            "rows": 491615,
+            "workloads": 51380
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "1nADh01ClB3wkDwodofdz1l7wEXcuvNhk",
+          "url": "https://drive.google.com/file/d/1nADh01ClB3wkDwodofdz1l7wEXcuvNhk/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1SHw7_z7ejb6WfA3TMsovZcC4FZ7X49nR",
+          "url": "https://drive.google.com/file/d/1SHw7_z7ejb6WfA3TMsovZcC4FZ7X49nR/view?usp=drivesdk",
+          "size": "2396425"
+        },
+        {
+          "title": "result.json",
+          "id": "1F12h4Zx6rfGXg-2jxPx17h5GY0VZR-mJ",
+          "url": "https://drive.google.com/file/d/1F12h4Zx6rfGXg-2jxPx17h5GY0VZR-mJ/view?usp=drivesdk",
+          "size": "3200"
+        }
+      ]
+    },
+    {
+      "seed": "20261104",
+      "summary": {
+        "candidate_compute_seconds": 1612.9016865840094,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 794.9023707809528,
+              "hhi": 0.0012580161246940915,
+              "rows": 2386566,
+              "top1_execution_share": 0.015989082221065747,
+              "top1pct_execution_share": 0.6461761375968651,
+              "workloads": 238660
+            },
+            "validation": {
+              "effective_workloads": 215.67276093844418,
+              "hhi": 0.0046366541405078645,
+              "rows": 532705,
+              "top1_execution_share": 0.04299377704357947,
+              "top1pct_execution_share": 0.6565322270299696,
+              "workloads": 51611
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 453159,
+              "workloads": 51346
+            },
+            "train": {
+              "rows": 2386566,
+              "workloads": 238660
+            },
+            "validation": {
+              "rows": 532705,
+              "workloads": 51611
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -12271.906598830825,
+            "net_m0_minus_m1_loss_sum": 5089.854412487227,
+            "positive_workload_loss_difference_sum": 17361.761011318053,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.5961480989851278,
+              "m1": 0.6019818818627345
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": 895.349355304694
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 14498,
+              "offline_inference": 568840,
+              "online_inference": 341108,
+              "training": 1462120
+            },
+            "validation": {
+              "dev": 3006,
+              "offline_inference": 110297,
+              "online_inference": 64455,
+              "training": 354947
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  20734,
+                  79824,
+                  174516,
+                  222213
+                ],
+                "train_unique_profiles": 387,
+                "unseen_validation_execution_fraction": 0.00011826433016397444,
+                "validation_unique_profiles": 305
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  16865,
+                  58514,
+                  172282,
+                  222213
+                ],
+                "train_unique_profiles": 556,
+                "unseen_validation_execution_fraction": 0.0006232342478482462,
+                "validation_unique_profiles": 425
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 1664.6164850099995,
+        "equal_workload_logmae_m0_minus_m1": 0.022363219878569374,
+        "equal_workload_logmae_relative_improvement_percent": 2.9247044888738953,
+        "execution_logmae_m0_minus_m1": 0.009554733694047135,
+        "execution_logmae_relative_improvement_percent": 1.3691971876243745,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 11336507392,
+          "peak_rss_bytes_sampled": 1185001472,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261104,
+        "winners": {
+          "m0": {
+            "best_iteration": 69,
+            "candidate_id": 10,
+            "equal_workload_logmae": 0.7646317760868869,
+            "execution_logmae": 0.697834744360312,
+            "rows": 532705,
+            "workloads": 51611
+          },
+          "m1": {
+            "best_iteration": 200,
+            "candidate_id": 8,
+            "equal_workload_logmae": 0.7422685562083176,
+            "execution_logmae": 0.6882800106662649,
+            "rows": 532705,
+            "workloads": 51611
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "1LJOZyru4izOaUjI54JziMorutxbgraNQ",
+          "url": "https://drive.google.com/file/d/1LJOZyru4izOaUjI54JziMorutxbgraNQ/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1PLPmVz15zGsZx89IJ6VyT0q18NKf-8Ka",
+          "url": "https://drive.google.com/file/d/1PLPmVz15zGsZx89IJ6VyT0q18NKf-8Ka/view?usp=drivesdk",
+          "size": "2402923"
+        },
+        {
+          "title": "result.json",
+          "id": "12prjto1uS-05YR15HnQ_KGZNR2SxvLX2",
+          "url": "https://drive.google.com/file/d/12prjto1uS-05YR15HnQ_KGZNR2SxvLX2/view?usp=drivesdk",
+          "size": "3198"
+        }
+      ]
+    },
+    {
+      "seed": "20261103",
+      "summary": {
+        "candidate_compute_seconds": 1167.086410754995,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 847.869276918624,
+              "hhi": 0.0011794270971042357,
+              "rows": 2403637,
+              "top1_execution_share": 0.0158755252977051,
+              "top1pct_execution_share": 0.6483807663137154,
+              "workloads": 238999
+            },
+            "validation": {
+              "effective_workloads": 449.7358538541634,
+              "hhi": 0.0022235274137700207,
+              "rows": 425122,
+              "top1_execution_share": 0.028382440805227675,
+              "top1pct_execution_share": 0.5851943677344386,
+              "workloads": 51287
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 543671,
+              "workloads": 51331
+            },
+            "train": {
+              "rows": 2403637,
+              "workloads": 238999
+            },
+            "validation": {
+              "rows": 425122,
+              "workloads": 51287
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -11533.502258588876,
+            "net_m0_minus_m1_loss_sum": 7280.26913361304,
+            "positive_workload_loss_difference_sum": 18813.771392201917,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.5640962409424202,
+              "m1": 0.5697392140430654
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": 2190.7979081737867
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 14322,
+              "offline_inference": 534287,
+              "online_inference": 359220,
+              "training": 1495808
+            },
+            "validation": {
+              "dev": 2655,
+              "offline_inference": 87443,
+              "online_inference": 43960,
+              "training": 291064
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  24552,
+                  79655,
+                  178598,
+                  244717
+                ],
+                "train_unique_profiles": 387,
+                "unseen_validation_execution_fraction": 0.001190246564515598,
+                "validation_unique_profiles": 297
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  18961,
+                  60661,
+                  169504,
+                  244717
+                ],
+                "train_unique_profiles": 561,
+                "unseen_validation_execution_fraction": 0.002074698557120074,
+                "validation_unique_profiles": 410
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 1215.9456851480008,
+        "equal_workload_logmae_m0_minus_m1": 0.027143559759261637,
+        "equal_workload_logmae_relative_improvement_percent": 3.5148429475524656,
+        "execution_logmae_m0_minus_m1": 0.01712512910085362,
+        "execution_logmae_relative_improvement_percent": 2.099191022999639,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 11349327872,
+          "peak_rss_bytes_sampled": 1187131392,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261103,
+        "winners": {
+          "m0": {
+            "best_iteration": 35,
+            "candidate_id": 10,
+            "equal_workload_logmae": 0.772255266146752,
+            "execution_logmae": 0.8157966051313743,
+            "rows": 425122,
+            "workloads": 51287
+          },
+          "m1": {
+            "best_iteration": 66,
+            "candidate_id": 9,
+            "equal_workload_logmae": 0.7451117063874904,
+            "execution_logmae": 0.7986714760305207,
+            "rows": 425122,
+            "workloads": 51287
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "1WuhVKpfgiJH0VDtmgR1wOtqxMJqfJsyW",
+          "url": "https://drive.google.com/file/d/1WuhVKpfgiJH0VDtmgR1wOtqxMJqfJsyW/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1pXRO4ey-bcr2XIvCXTdjqoFHxvGHfnLf",
+          "url": "https://drive.google.com/file/d/1pXRO4ey-bcr2XIvCXTdjqoFHxvGHfnLf/view?usp=drivesdk",
+          "size": "2394748"
+        },
+        {
+          "title": "result.json",
+          "id": "1-DYSxEa6OjTpWUBDqqxsVT_2jBFO1uy-",
+          "url": "https://drive.google.com/file/d/1-DYSxEa6OjTpWUBDqqxsVT_2jBFO1uy-/view?usp=drivesdk",
+          "size": "3188"
+        }
+      ]
+    },
+    {
+      "seed": "20261102",
+      "summary": {
+        "candidate_compute_seconds": 367.76504676999957,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 974.1551955994445,
+              "hhi": 0.0010265304794526626,
+              "rows": 2334511,
+              "top1_execution_share": 0.013175350212528449,
+              "top1pct_execution_share": 0.6386656563194604,
+              "workloads": 239364
+            },
+            "validation": {
+              "effective_workloads": 116.96490080450421,
+              "hhi": 0.008549573360228857,
+              "rows": 553132,
+              "top1_execution_share": 0.06898714954115835,
+              "top1pct_execution_share": 0.6770373075504581,
+              "workloads": 50999
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 484787,
+              "workloads": 51254
+            },
+            "train": {
+              "rows": 2334511,
+              "workloads": 239364
+            },
+            "validation": {
+              "rows": 553132,
+              "workloads": 50999
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -24741.699950897062,
+            "net_m0_minus_m1_loss_sum": -8940.056315329279,
+            "positive_workload_loss_difference_sum": 15801.64363556778,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.6465836193166347,
+              "m1": 0.6482144771159253
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": -6518.512379958258
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 14534,
+              "offline_inference": 563531,
+              "online_inference": 284296,
+              "training": 1472150
+            },
+            "validation": {
+              "dev": 2548,
+              "offline_inference": 110883,
+              "online_inference": 106461,
+              "training": 333240
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  18690,
+                  52377,
+                  158088,
+                  260020
+                ],
+                "train_unique_profiles": 386,
+                "unseen_validation_execution_fraction": 0.00005423660175148066,
+                "validation_unique_profiles": 307
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  13597,
+                  43318,
+                  158088,
+                  260020
+                ],
+                "train_unique_profiles": 556,
+                "unseen_validation_execution_fraction": 0.0002693751220323539,
+                "validation_unique_profiles": 431
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 411.5740211759994,
+        "equal_workload_logmae_m0_minus_m1": 0.007847946980042653,
+        "equal_workload_logmae_relative_improvement_percent": 0.9783130182235017,
+        "execution_logmae_m0_minus_m1": -0.01616260913367007,
+        "execution_logmae_relative_improvement_percent": -2.0153698722153366,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 11346718720,
+          "peak_rss_bytes_sampled": 1179250688,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261102,
+        "winners": {
+          "m0": {
+            "best_iteration": 23,
+            "candidate_id": 2,
+            "equal_workload_logmae": 0.8021918173279118,
+            "execution_logmae": 0.8019673885421236,
+            "rows": 553132,
+            "workloads": 50999
+          },
+          "m1": {
+            "best_iteration": 9,
+            "candidate_id": 2,
+            "equal_workload_logmae": 0.7943438703478691,
+            "execution_logmae": 0.8181299976757936,
+            "rows": 553132,
+            "workloads": 50999
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "1SBeNzan9CIo3moT6A9bxOIohdsPavsK0",
+          "url": "https://drive.google.com/file/d/1SBeNzan9CIo3moT6A9bxOIohdsPavsK0/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1dRbnDpNqY8f9qXo3F5NcD_e7KfxmkXPI",
+          "url": "https://drive.google.com/file/d/1dRbnDpNqY8f9qXo3F5NcD_e7KfxmkXPI/view?usp=drivesdk",
+          "size": "2317277"
+        },
+        {
+          "title": "result.json",
+          "id": "15Ts6i0tBEHqbLSrLuvCaUz0FCLtbc3ax",
+          "url": "https://drive.google.com/file/d/15Ts6i0tBEHqbLSrLuvCaUz0FCLtbc3ax/view?usp=drivesdk",
+          "size": "3197"
+        }
+      ]
+    },
+    {
+      "seed": "20261101",
+      "summary": {
+        "candidate_compute_seconds": 397.5988120910006,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 984.2323209398013,
+              "hhi": 0.0010160202817208266,
+              "rows": 2260753,
+              "top1_execution_share": 0.013605201452790287,
+              "top1pct_execution_share": 0.6257401847968354,
+              "workloads": 239570
+            },
+            "validation": {
+              "effective_workloads": 122.12508056385411,
+              "hhi": 0.00818832622572676,
+              "rows": 551211,
+              "top1_execution_share": 0.06922757347005049,
+              "top1pct_execution_share": 0.6760804846057136,
+              "workloads": 50814
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 560466,
+              "workloads": 51233
+            },
+            "train": {
+              "rows": 2260753,
+              "workloads": 239570
+            },
+            "validation": {
+              "rows": 551211,
+              "workloads": 50814
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -59149.8853721922,
+            "net_m0_minus_m1_loss_sum": -24389.455621431425,
+            "positive_workload_loss_difference_sum": 34760.429750760755,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.6054569853976169,
+              "m1": 0.5989253889662842
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": -12004.268151959652
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 14539,
+              "offline_inference": 514376,
+              "online_inference": 283641,
+              "training": 1448197
+            },
+            "validation": {
+              "dev": 3035,
+              "offline_inference": 135328,
+              "online_inference": 82159,
+              "training": 330689
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  17829,
+                  51680,
+                  166709,
+                  234026
+                ],
+                "train_unique_profiles": 383,
+                "unseen_validation_execution_fraction": 0.0005043440715080069,
+                "validation_unique_profiles": 309
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  15588,
+                  41733,
+                  166709,
+                  234026
+                ],
+                "train_unique_profiles": 551,
+                "unseen_validation_execution_fraction": 0.0007111614245724414,
+                "validation_unique_profiles": 434
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 440.43053929799953,
+        "equal_workload_logmae_m0_minus_m1": -0.01956163126656052,
+        "equal_workload_logmae_relative_improvement_percent": -2.457371223322838,
+        "execution_logmae_m0_minus_m1": -0.04424704082724262,
+        "execution_logmae_relative_improvement_percent": -6.119480772135605,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 11363713024,
+          "peak_rss_bytes_sampled": 1185869824,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261101,
+        "winners": {
+          "m0": {
+            "best_iteration": 36,
+            "candidate_id": 2,
+            "equal_workload_logmae": 0.7960389167457342,
+            "execution_logmae": 0.723052207774175,
+            "rows": 551211,
+            "workloads": 50814
+          },
+          "m1": {
+            "best_iteration": 1,
+            "candidate_id": 2,
+            "equal_workload_logmae": 0.8156005480122948,
+            "execution_logmae": 0.7672992486014176,
+            "rows": 551211,
+            "workloads": 50814
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "1zra88uBthbSH1PvjDXL6MjZcCJtjrCDl",
+          "url": "https://drive.google.com/file/d/1zra88uBthbSH1PvjDXL6MjZcCJtjrCDl/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1hQvJ6nj4dAFExhKS4DncgswKW8ioxEvo",
+          "url": "https://drive.google.com/file/d/1hQvJ6nj4dAFExhKS4DncgswKW8ioxEvo/view?usp=drivesdk",
+          "size": "2297332"
+        },
+        {
+          "title": "result.json",
+          "id": "1mAbGJ4l3uewlCR65ks5tdQg93-2MMxNe",
+          "url": "https://drive.google.com/file/d/1mAbGJ4l3uewlCR65ks5tdQg93-2MMxNe/view?usp=drivesdk",
+          "size": "3194"
+        }
+      ]
+    },
+    {
+      "seed": "20261031",
+      "summary": {
+        "candidate_compute_seconds": 1774.3033312240013,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 1020.6442458627362,
+              "hhi": 0.0009797733187186237,
+              "rows": 2329266,
+              "top1_execution_share": 0.013205018233211664,
+              "top1pct_execution_share": 0.6358548143492413,
+              "workloads": 239293
+            },
+            "validation": {
+              "effective_workloads": 363.02300688261454,
+              "hhi": 0.002754646347589081,
+              "rows": 476885,
+              "top1_execution_share": 0.01892489803621418,
+              "top1pct_execution_share": 0.6263417805131216,
+              "workloads": 50961
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 566279,
+              "workloads": 51363
+            },
+            "train": {
+              "rows": 2329266,
+              "workloads": 239293
+            },
+            "validation": {
+              "rows": 476885,
+              "workloads": 50961
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -6997.298630218134,
+            "net_m0_minus_m1_loss_sum": 4800.909279151745,
+            "positive_workload_loss_difference_sum": 11798.20790936988,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.5724685932394975,
+              "m1": 0.5810937600045143
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": -209.04104401269768
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 13040,
+              "offline_inference": 545559,
+              "online_inference": 290777,
+              "training": 1479890
+            },
+            "validation": {
+              "dev": 2912,
+              "offline_inference": 96289,
+              "online_inference": 63732,
+              "training": 313952
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  20148,
+                  68517,
+                  179092,
+                  230379
+                ],
+                "train_unique_profiles": 387,
+                "unseen_validation_execution_fraction": 0.000039841890602556174,
+                "validation_unique_profiles": 307
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  17443,
+                  51643,
+                  174412,
+                  230379
+                ],
+                "train_unique_profiles": 557,
+                "unseen_validation_execution_fraction": 0.004741184981704185,
+                "validation_unique_profiles": 420
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 1831.7566658020005,
+        "equal_workload_logmae_m0_minus_m1": 0.03288079694877477,
+        "equal_workload_logmae_relative_improvement_percent": 4.286258652715591,
+        "execution_logmae_m0_minus_m1": 0.010067226436461407,
+        "execution_logmae_relative_improvement_percent": 1.3808314769095429,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 11423764480,
+          "peak_rss_bytes_sampled": 1114566656,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261031,
+        "winners": {
+          "m0": {
+            "best_iteration": 200,
+            "candidate_id": 10,
+            "equal_workload_logmae": 0.7671211565345665,
+            "execution_logmae": 0.7290698832411469,
+            "rows": 476885,
+            "workloads": 50961
+          },
+          "m1": {
+            "best_iteration": 200,
+            "candidate_id": 11,
+            "equal_workload_logmae": 0.7342403595857917,
+            "execution_logmae": 0.7190026568046854,
+            "rows": 476885,
+            "workloads": 50961
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "1qAS0IeDUr8HSqfel6miCWjfGb6iApul6",
+          "url": "https://drive.google.com/file/d/1qAS0IeDUr8HSqfel6miCWjfGb6iApul6/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1TtXxq-V3O50P1_oaZFxK8-E0ePfDluDG",
+          "url": "https://drive.google.com/file/d/1TtXxq-V3O50P1_oaZFxK8-E0ePfDluDG/view?usp=drivesdk",
+          "size": "2381005"
+        },
+        {
+          "title": "result.json",
+          "id": "1nCRdeHx6Ou00G4XTdijf-ElEMF2PkzlJ",
+          "url": "https://drive.google.com/file/d/1nCRdeHx6Ou00G4XTdijf-ElEMF2PkzlJ/view?usp=drivesdk",
+          "size": "3198"
+        }
+      ]
+    },
+    {
+      "seed": "20261030",
+      "summary": {
+        "candidate_compute_seconds": 1128.8677504349998,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 943.9954604968717,
+              "hhi": 0.001059327127986029,
+              "rows": 2336748,
+              "top1_execution_share": 0.016329959413680893,
+              "top1pct_execution_share": 0.6392204037405831,
+              "workloads": 239134
+            },
+            "validation": {
+              "effective_workloads": 223.01153910796594,
+              "hhi": 0.00448407290492656,
+              "rows": 497218,
+              "top1_execution_share": 0.03472722226468068,
+              "top1pct_execution_share": 0.630602673274097,
+              "workloads": 51404
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 538464,
+              "workloads": 51079
+            },
+            "train": {
+              "rows": 2336748,
+              "workloads": 239134
+            },
+            "validation": {
+              "rows": 497218,
+              "workloads": 51404
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -9746.283431184824,
+            "net_m0_minus_m1_loss_sum": 6847.7756937646145,
+            "positive_workload_loss_difference_sum": 16594.05912494944,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.5931233390856744,
+              "m1": 0.6010321143988924
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": 1104.5753133605656
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 12996,
+              "offline_inference": 530190,
+              "online_inference": 300456,
+              "training": 1493106
+            },
+            "validation": {
+              "dev": 3042,
+              "offline_inference": 117190,
+              "online_inference": 63839,
+              "training": 313147
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  26628,
+                  62483,
+                  161096,
+                  257459
+                ],
+                "train_unique_profiles": 393,
+                "unseen_validation_execution_fraction": 0.00012670498654513714,
+                "validation_unique_profiles": 298
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  19782,
+                  59534,
+                  161096,
+                  257459
+                ],
+                "train_unique_profiles": 559,
+                "unseen_validation_execution_fraction": 0.0011262665470678857,
+                "validation_unique_profiles": 428
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 1180.1741130780001,
+        "equal_workload_logmae_m0_minus_m1": 0.02617742856636307,
+        "equal_workload_logmae_relative_improvement_percent": 3.3924904483891383,
+        "execution_logmae_m0_minus_m1": 0.013772179795912831,
+        "execution_logmae_relative_improvement_percent": 1.798561321592136,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 11391926272,
+          "peak_rss_bytes_sampled": 1154576384,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261030,
+        "winners": {
+          "m0": {
+            "best_iteration": 51,
+            "candidate_id": 10,
+            "equal_workload_logmae": 0.7716286593759738,
+            "execution_logmae": 0.7657331240572502,
+            "rows": 497218,
+            "workloads": 51404
+          },
+          "m1": {
+            "best_iteration": 142,
+            "candidate_id": 12,
+            "equal_workload_logmae": 0.7454512308096107,
+            "execution_logmae": 0.7519609442613374,
+            "rows": 497218,
+            "workloads": 51404
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "12_85CLziRfSZ41L__s9YwRHvd7XaSdE9",
+          "url": "https://drive.google.com/file/d/12_85CLziRfSZ41L__s9YwRHvd7XaSdE9/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1vmcr0mYh-4Apu0Dqjn7foZxWiEgjl5wD",
+          "url": "https://drive.google.com/file/d/1vmcr0mYh-4Apu0Dqjn7foZxWiEgjl5wD/view?usp=drivesdk",
+          "size": "2396094"
+        },
+        {
+          "title": "result.json",
+          "id": "1LYC00ZrDgunz3UWdsA8Nq6zVVL249Ms6",
+          "url": "https://drive.google.com/file/d/1LYC00ZrDgunz3UWdsA8Nq6zVVL249Ms6/view?usp=drivesdk",
+          "size": "3195"
+        }
+      ]
+    },
+    {
+      "seed": "20261029",
+      "summary": {
+        "candidate_compute_seconds": 914.1107743190005,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 1022.9172326760719,
+              "hhi": 0.0009775962004119163,
+              "rows": 2335283,
+              "top1_execution_share": 0.013170994693148539,
+              "top1pct_execution_share": 0.6375578463081348,
+              "workloads": 238647
+            },
+            "validation": {
+              "effective_workloads": 208.9235653558995,
+              "hhi": 0.004786439472715816,
+              "rows": 513432,
+              "top1_execution_share": 0.03363054893345175,
+              "top1pct_execution_share": 0.6509917574284424,
+              "workloads": 51328
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 523715,
+              "workloads": 51642
+            },
+            "train": {
+              "rows": 2335283,
+              "workloads": 238647
+            },
+            "validation": {
+              "rows": 513432,
+              "workloads": 51328
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -16118.84024621495,
+            "net_m0_minus_m1_loss_sum": 3720.9775269200395,
+            "positive_workload_loss_difference_sum": 19839.81777313499,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.6082905864950597,
+              "m1": 0.6144118296588325
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": -105.37479397962034
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 14532,
+              "offline_inference": 530155,
+              "online_inference": 286503,
+              "training": 1504093
+            },
+            "validation": {
+              "dev": 2902,
+              "offline_inference": 145664,
+              "online_inference": 59544,
+              "training": 305322
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  21904,
+                  58640,
+                  166487,
+                  256703
+                ],
+                "train_unique_profiles": 393,
+                "unseen_validation_execution_fraction": 0.00027851789526168997,
+                "validation_unique_profiles": 307
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  18565,
+                  56753,
+                  163777,
+                  256703
+                ],
+                "train_unique_profiles": 564,
+                "unseen_validation_execution_fraction": 0.0010342167998878137,
+                "validation_unique_profiles": 423
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 962.6083190160002,
+        "equal_workload_logmae_m0_minus_m1": 0.029188740713108174,
+        "equal_workload_logmae_relative_improvement_percent": 3.771069388809799,
+        "execution_logmae_m0_minus_m1": 0.00724726453925717,
+        "execution_logmae_relative_improvement_percent": 0.9523803398183068,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 2769915904,
+          "peak_rss_bytes_sampled": 1172946944,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261029,
+        "winners": {
+          "m0": {
+            "best_iteration": 149,
+            "candidate_id": 6,
+            "equal_workload_logmae": 0.7740175982898193,
+            "execution_logmae": 0.7609632660665578,
+            "rows": 513432,
+            "workloads": 51328
+          },
+          "m1": {
+            "best_iteration": 42,
+            "candidate_id": 11,
+            "equal_workload_logmae": 0.7448288575767111,
+            "execution_logmae": 0.7537160015273007,
+            "rows": 513432,
+            "workloads": 51328
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "13bQIKUYbezp0yWcnZsxzxNv71F1Auvy2",
+          "url": "https://drive.google.com/file/d/13bQIKUYbezp0yWcnZsxzxNv71F1Auvy2/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1609c1NnxEm5dwj6-nZeFV7bU8ql19Vf5",
+          "url": "https://drive.google.com/file/d/1609c1NnxEm5dwj6-nZeFV7bU8ql19Vf5/view?usp=drivesdk",
+          "size": "2388604"
+        },
+        {
+          "title": "result.json",
+          "id": "1CBcm_aVoChMqD1LncgmTAa7cHvAad6gQ",
+          "url": "https://drive.google.com/file/d/1CBcm_aVoChMqD1LncgmTAa7cHvAad6gQ/view?usp=drivesdk",
+          "size": "3195"
+        }
+      ]
+    },
+    {
+      "seed": "20261028",
+      "summary": {
+        "candidate_compute_seconds": 1382.8065563260016,
+        "diagnostics": {
+          "concentration": {
+            "train": {
+              "effective_workloads": 948.6616082638615,
+              "hhi": 0.0010541166537034134,
+              "rows": 2395337,
+              "top1_execution_share": 0.015930535035362455,
+              "top1pct_execution_share": 0.6452561789844186,
+              "workloads": 238939
+            },
+            "validation": {
+              "effective_workloads": 191.87882508924045,
+              "hhi": 0.005211622489010512,
+              "rows": 498078,
+              "top1_execution_share": 0.04205164652925847,
+              "top1pct_execution_share": 0.6401025542184157,
+              "workloads": 51189
+            }
+          },
+          "counts": {
+            "test": {
+              "rows": 479015,
+              "workloads": 51489
+            },
+            "train": {
+              "rows": 2395337,
+              "workloads": 238939
+            },
+            "validation": {
+              "rows": 498078,
+              "workloads": 51189
+            }
+          },
+          "error_concentration": {
+            "negative_workload_loss_difference_sum": -11731.377277554177,
+            "net_m0_minus_m1_loss_sum": 9485.510610780419,
+            "positive_workload_loss_difference_sum": 21216.887888334593,
+            "top1pct_by_execution_frequency": {
+              "m0": 0.5668090543933978,
+              "m1": 0.5662034319607288
+            },
+            "top1pct_by_execution_frequency_net_loss_difference": 5589.9025290806885
+          },
+          "lifecycle_execution_counts": {
+            "train": {
+              "dev": 14467,
+              "offline_inference": 558790,
+              "online_inference": 314430,
+              "training": 1507650
+            },
+            "validation": {
+              "dev": 3014,
+              "offline_inference": 124278,
+              "online_inference": 56211,
+              "training": 314575
+            }
+          },
+          "roles": {
+            "m0": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  22693,
+                  76959,
+                  170928,
+                  238176
+                ],
+                "train_unique_profiles": 391,
+                "unseen_validation_execution_fraction": 0.0001425479543364694,
+                "validation_unique_profiles": 296
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            },
+            "m1": {
+              "features": [
+                "gpu_request",
+                "gpu_spec_public",
+                "priority_class",
+                "model_type_public",
+                "is_genai_request",
+                "job_type_public"
+              ],
+              "profile_support": {
+                "train_support_rows_quantiles_for_validation_executions": [
+                  0,
+                  13091,
+                  61991,
+                  169915,
+                  238176
+                ],
+                "train_unique_profiles": 566,
+                "unseen_validation_execution_fraction": 0.00016864828400371025,
+                "validation_unique_profiles": 417
+              },
+              "unknown_category_validation_fraction": {
+                "gpu_spec_public": 0,
+                "is_genai_request": 0,
+                "job_type_public": 0,
+                "model_type_public": 0,
+                "priority_class": 0
+              }
+            }
+          },
+          "test_outcomes_accessed": false
+        },
+        "elapsed_note": "wall time for current invocation only; candidate_compute_seconds includes resumed completed candidates",
+        "elapsed_seconds": 1433.6623959619997,
+        "equal_workload_logmae_m0_minus_m1": 0.017630702758648864,
+        "equal_workload_logmae_relative_improvement_percent": 2.285490403501974,
+        "execution_logmae_m0_minus_m1": 0.019044227231037936,
+        "execution_logmae_relative_improvement_percent": 2.6210414957245036,
+        "label": "VALIDATION ONLY; selected on these validation outcomes",
+        "model_seed": 20260927,
+        "resources": {
+          "minimum_available_bytes_sampled": 11313942528,
+          "peak_rss_bytes_sampled": 1064509440,
+          "sample_interval_seconds": 0.25
+        },
+        "split_seed": 20261028,
+        "winners": {
+          "m0": {
+            "best_iteration": 58,
+            "candidate_id": 12,
+            "equal_workload_logmae": 0.7714188049809344,
+            "execution_logmae": 0.7265900697147781,
+            "rows": 498078,
+            "workloads": 51189
+          },
+          "m1": {
+            "best_iteration": 132,
+            "candidate_id": 7,
+            "equal_workload_logmae": 0.7537881022222855,
+            "execution_logmae": 0.7075458424837402,
+            "rows": 498078,
+            "workloads": 51189
+          }
+        }
+      },
+      "files": [
+        {
+          "title": "COMMIT.json",
+          "id": "1WBswd_JstXBL58SgMz0k6eGNA7GOnfFA",
+          "url": "https://drive.google.com/file/d/1WBswd_JstXBL58SgMz0k6eGNA7GOnfFA/view?usp=drivesdk",
+          "size": "319"
+        },
+        {
+          "title": "validation_workload_loss_sums.parquet",
+          "id": "1oMK0IqkTL_S2Nbn8syq6r7PU1FtRsW5W",
+          "url": "https://drive.google.com/file/d/1oMK0IqkTL_S2Nbn8syq6r7PU1FtRsW5W/view?usp=drivesdk",
+          "size": "2389596"
+        },
+        {
+          "title": "result.json",
+          "id": "1oyC4wysPfl-_wOmfHrSh-mBt-QunjnOZ",
+          "url": "https://drive.google.com/file/d/1oyC4wysPfl-_wOmfHrSh-mBt-QunjnOZ/view?usp=drivesdk",
+          "size": "3199"
+        }
+      ]
+    }
+  ]
+}

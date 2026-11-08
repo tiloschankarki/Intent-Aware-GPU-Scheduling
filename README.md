@@ -233,3 +233,12 @@ There are several others I still need to study more closely.
 This is an ongoing research project, so the research question, approach, and even the main idea may change as I learn more and start experimenting.
 
 For now, this repository is mainly a record of **how the idea is developing and where I am with it.**
+
+
+## ASI evidence package (1 November 2026)
+
+The completed study concerns execution-duration prediction, not a demonstrated intent-aware scheduler. The earlier README above describes the original proposal.
+
+Start with `docs/manuscript-improvement-plan.md` and `docs/source-gaps.md`. `paper/` holds the historical manuscript package; `experiments/` holds compact evidence for Experiments 1-3; `figures/` holds existing exports; `analysis/` indexes saved verification; `preprocessing/` holds selected archival source; `literature/` preserves notes; `audits/` preserves complete dated audits. Legacy folders remain intact.
+
+All imports are copied and SHA-256 recorded in `docs/import-manifest.json`. Raw traces, large datasets, secrets and reserved holdouts are excluded from the import. No scripts, training, new experiments or holdout evaluation were run. This is a documentation/evidence organization pass, not full computational reproduction. Review changes in GitHub Desktop before committing; no commit or push was performed.

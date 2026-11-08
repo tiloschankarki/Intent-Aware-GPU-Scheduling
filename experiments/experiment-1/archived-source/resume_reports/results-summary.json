@@ -1,0 +1,254 @@
+[
+  {
+    "population": "broad",
+    "comparison": "R",
+    "seed": 20260927,
+    "test_rows": 711321,
+    "m0_logmae": 0.8291852244589685,
+    "m1_logmae": 0.7385764999135833,
+    "absolute_gain": 0.09060872454538516,
+    "relative_gain_percent": 10.927440802446288,
+    "relative_ci95": [
+      5.87194933151627,
+      17.691931146176127
+    ]
+  },
+  {
+    "population": "broad",
+    "comparison": "R",
+    "seed": 20260928,
+    "test_rows": 711321,
+    "m0_logmae": 0.8291601916101773,
+    "m1_logmae": 0.7363226569192004,
+    "absolute_gain": 0.09283753469097689,
+    "relative_gain_percent": 11.196574031212498,
+    "relative_ci95": [
+      6.078388643543901,
+      18.021380275362453
+    ]
+  },
+  {
+    "population": "broad",
+    "comparison": "R",
+    "seed": 20260929,
+    "test_rows": 711321,
+    "m0_logmae": 0.828601362616108,
+    "m1_logmae": 0.7396168645478816,
+    "absolute_gain": 0.08898449806822639,
+    "relative_gain_percent": 10.739120412170143,
+    "relative_ci95": [
+      5.837223400425237,
+      17.35379568230573
+    ]
+  },
+  {
+    "population": "broad",
+    "comparison": "R+P",
+    "seed": 20260927,
+    "test_rows": 711321,
+    "m0_logmae": 0.767696207785857,
+    "m1_logmae": 0.7220229416366861,
+    "absolute_gain": 0.04567326614917089,
+    "relative_gain_percent": 5.949393221688429,
+    "relative_ci95": [
+      1.183747259191217,
+      13.33846094730109
+    ]
+  },
+  {
+    "population": "broad",
+    "comparison": "R+P",
+    "seed": 20260928,
+    "test_rows": 711321,
+    "m0_logmae": 0.7670838915639631,
+    "m1_logmae": 0.7222536176959206,
+    "absolute_gain": 0.0448302738680425,
+    "relative_gain_percent": 5.844246549962175,
+    "relative_ci95": [
+      1.0270266313989165,
+      13.274724761358243
+    ]
+  },
+  {
+    "population": "broad",
+    "comparison": "R+P",
+    "seed": 20260929,
+    "test_rows": 711321,
+    "m0_logmae": 0.7669504244133041,
+    "m1_logmae": 0.7220989238681228,
+    "absolute_gain": 0.04485150054518128,
+    "relative_gain_percent": 5.848031256973544,
+    "relative_ci95": [
+      1.097515266059675,
+      13.280474796746777
+    ]
+  },
+  {
+    "population": "broad",
+    "comparison": "R+P+A",
+    "seed": 20260927,
+    "test_rows": 711321,
+    "m0_logmae": 0.7261954034509834,
+    "m1_logmae": 0.7193243747061635,
+    "absolute_gain": 0.006871028744819929,
+    "relative_gain_percent": 0.9461680302805315,
+    "relative_ci95": [
+      -1.1556693288810944,
+      2.5580923336846935
+    ]
+  },
+  {
+    "population": "broad",
+    "comparison": "R+P+A",
+    "seed": 20260928,
+    "test_rows": 711321,
+    "m0_logmae": 0.7247167338206858,
+    "m1_logmae": 0.7188126704978293,
+    "absolute_gain": 0.005904063322856534,
+    "relative_gain_percent": 0.8146718638233289,
+    "relative_ci95": [
+      -1.3238907068013972,
+      2.402525207340963
+    ]
+  },
+  {
+    "population": "broad",
+    "comparison": "R+P+A",
+    "seed": 20260929,
+    "test_rows": 711321,
+    "m0_logmae": 0.7275455167118866,
+    "m1_logmae": 0.7175150409233099,
+    "absolute_gain": 0.010030475788576743,
+    "relative_gain_percent": 1.3786733005941791,
+    "relative_ci95": [
+      -0.7554450700737221,
+      3.014961178061143
+    ]
+  },
+  {
+    "population": "finite",
+    "comparison": "R",
+    "seed": 20260927,
+    "test_rows": 577148,
+    "m0_logmae": 0.6513128090251223,
+    "m1_logmae": 0.6431469664410697,
+    "absolute_gain": 0.008165842584052618,
+    "relative_gain_percent": 1.2537512652753076,
+    "relative_ci95": [
+      0.6815849920240161,
+      1.832937074456082
+    ]
+  },
+  {
+    "population": "finite",
+    "comparison": "R",
+    "seed": 20260928,
+    "test_rows": 577148,
+    "m0_logmae": 0.6513043532916757,
+    "m1_logmae": 0.6431589928235303,
+    "absolute_gain": 0.008145360468145402,
+    "relative_gain_percent": 1.2506227583124474,
+    "relative_ci95": [
+      0.6808564226943326,
+      1.8284477305232305
+    ]
+  },
+  {
+    "population": "finite",
+    "comparison": "R",
+    "seed": 20260929,
+    "test_rows": 577148,
+    "m0_logmae": 0.6513068015243539,
+    "m1_logmae": 0.6433387028052512,
+    "absolute_gain": 0.007968098719102756,
+    "relative_gain_percent": 1.2234017363942438,
+    "relative_ci95": [
+      0.6440326037692952,
+      1.7829140449975232
+    ]
+  },
+  {
+    "population": "finite",
+    "comparison": "R+P",
+    "seed": 20260927,
+    "test_rows": 577148,
+    "m0_logmae": 0.6349000654375877,
+    "m1_logmae": 0.6292285890519658,
+    "absolute_gain": 0.005671476385621932,
+    "relative_gain_percent": 0.8932864704798888,
+    "relative_ci95": [
+      0.5296704872511322,
+      1.248144622794949
+    ]
+  },
+  {
+    "population": "finite",
+    "comparison": "R+P",
+    "seed": 20260928,
+    "test_rows": 577148,
+    "m0_logmae": 0.6348849073548652,
+    "m1_logmae": 0.629227347304093,
+    "absolute_gain": 0.005657560050772226,
+    "relative_gain_percent": 0.891115851901952,
+    "relative_ci95": [
+      0.5273549878239102,
+      1.248236993902922
+    ]
+  },
+  {
+    "population": "finite",
+    "comparison": "R+P",
+    "seed": 20260929,
+    "test_rows": 577148,
+    "m0_logmae": 0.6348696933294221,
+    "m1_logmae": 0.6292380032195544,
+    "absolute_gain": 0.0056316901098677485,
+    "relative_gain_percent": 0.8870623639842844,
+    "relative_ci95": [
+      0.5195794321922923,
+      1.2413108106607862
+    ]
+  },
+  {
+    "population": "finite",
+    "comparison": "R+P+A",
+    "seed": 20260927,
+    "test_rows": 577148,
+    "m0_logmae": 0.6267133119122376,
+    "m1_logmae": 0.6247405762283561,
+    "absolute_gain": 0.0019727356838814547,
+    "relative_gain_percent": 0.3147748175098136,
+    "relative_ci95": [
+      0.1817765609117613,
+      0.4422583781727329
+    ]
+  },
+  {
+    "population": "finite",
+    "comparison": "R+P+A",
+    "seed": 20260928,
+    "test_rows": 577148,
+    "m0_logmae": 0.6286086241778802,
+    "m1_logmae": 0.6246674417033529,
+    "absolute_gain": 0.003941182474527349,
+    "relative_gain_percent": 0.6269692019707472,
+    "relative_ci95": [
+      0.32233177864478185,
+      0.9429028992743582
+    ]
+  },
+  {
+    "population": "finite",
+    "comparison": "R+P+A",
+    "seed": 20260929,
+    "test_rows": 577148,
+    "m0_logmae": 0.6286813898540174,
+    "m1_logmae": 0.6267301939301874,
+    "absolute_gain": 0.0019511959238300847,
+    "relative_gain_percent": 0.31036323888689643,
+    "relative_ci95": [
+      0.18363740770744272,
+      0.43817310970430856
+    ]
+  }
+]

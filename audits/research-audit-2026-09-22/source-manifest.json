@@ -1,0 +1,188 @@
+[
+  {
+    "local_evidence_name": "pai-paper.pdf",
+    "source_url": "https://qzweng.github.io/assets/pdf/2022.NSDI-MLaaS-Weng.pdf",
+    "bytes": 21006403,
+    "sha256": "4fa944ce9d6dd6e9daf66fe68a03538dc3fb50ed947b59f2a196e4eb26c6e895"
+  },
+  {
+    "local_evidence_name": "mit-paper.pdf",
+    "source_url": "https://arxiv.org/pdf/2108.02037",
+    "bytes": 670142,
+    "sha256": "87206b0766215024c9c79836cc4996d5e05e7049beb710ef013408b11d863d65"
+  },
+  {
+    "local_evidence_name": "nats-paper.pdf",
+    "source_url": "https://arxiv.org/pdf/2009.00437",
+    "bytes": 11081397,
+    "sha256": "90e154a2a9abe25328f6e6a1118bdc7dbc49c5504559ae00e7f87ef8112c3e87"
+  },
+  {
+    "local_evidence_name": "helios-readme.md",
+    "source_url": "https://raw.githubusercontent.com/S-Lab-System-Group/HeliosData/master/README.md",
+    "bytes": 6201,
+    "sha256": "370b3a365bbe05e81ca44464f6e8776b41b36fc00c355b0e9424bfa74103c4eb"
+  },
+  {
+    "local_evidence_name": "mit-generation.ipynb",
+    "source_url": "https://raw.githubusercontent.com/MIT-AI-Accelerator/MIT-Supercloud-Dataset/main/notebooks/Generating-the-labelled-dataset.ipynb",
+    "bytes": 406537,
+    "sha256": "f747552d59ce7fe2e597251177df84fcef305a6dc630c8a6d48a2509ffbe8376"
+  },
+  {
+    "local_evidence_name": "mit-intro.ipynb",
+    "source_url": "https://raw.githubusercontent.com/MIT-AI-Accelerator/MIT-Supercloud-Dataset/main/notebooks/Intro-to-MIT-Supercloud-Dataset.ipynb",
+    "bytes": 266018,
+    "sha256": "c0284f5ff08cd50fceed3ca7acae7f442d965b02496c624f139edb8a3f6f4578"
+  },
+  {
+    "local_evidence_name": "atlas-data.ipynb",
+    "source_url": "https://raw.githubusercontent.com/zhiyunjiang0810/non-clairvoyant-with-predictions/main/Dataset_demonstration%20.ipynb",
+    "bytes": 2589619,
+    "sha256": "69296f3968b14087a89420c0ee693222d6b1598600307fc82402d501a67eacd3"
+  },
+  {
+    "local_evidence_name": "atlas-predict.ipynb",
+    "source_url": "https://raw.githubusercontent.com/zhiyunjiang0810/non-clairvoyant-with-predictions/main/Prediction%2BScheduling.ipynb",
+    "bytes": 209942,
+    "sha256": "b056587acd4421bf6a19524ce86db8e4c9209616286a4f38f6eeebcd49e763fb"
+  },
+  {
+    "local_evidence_name": "philly-readme.md",
+    "source_url": "https://raw.githubusercontent.com/msr-fiddle/philly-traces/master/README.md",
+    "bytes": 5330,
+    "sha256": "fa91e8da81ee36e9e842f280b32ee06322443dfed97a303932ff25ff3606dc0e"
+  },
+  {
+    "local_evidence_name": "lcbench-readme.md",
+    "source_url": "https://raw.githubusercontent.com/automl/LCBench/master/README.md",
+    "bytes": 3090,
+    "sha256": "10a3e28c5f43d32e1599077a69e50832cb242f9ed8beba4c39894aacdd81d838"
+  },
+  {
+    "local_evidence_name": "2026-readme.md",
+    "source_url": "https://raw.githubusercontent.com/alibaba/clusterdata/master/cluster-trace-gpu-v2026/README.md",
+    "bytes": 3377,
+    "sha256": "d8e4878b6d341486fd9700ea668e85b4bcf3f82f56d6c426b14c347324002cc4"
+  },
+  {
+    "local_evidence_name": "2026-build.py",
+    "source_url": "https://raw.githubusercontent.com/alibaba/clusterdata/master/cluster-trace-gpu-v2026/scripts/build_aggregates.py",
+    "bytes": 40765,
+    "sha256": "ff62879e245399fe9bc776c045a37cc7567b6e171d7afa769eeb0f016a0c6651"
+  },
+  {
+    "local_evidence_name": "2026-download.md",
+    "source_url": "https://raw.githubusercontent.com/alibaba/clusterdata/master/cluster-trace-gpu-v2026/docs/data_download.md",
+    "bytes": 1939,
+    "sha256": "69e3db5f6219eb9c457d4f3718d203f974027a2ad96d68f6ef4d446ece960704"
+  },
+  {
+    "local_evidence_name": "2026-genai.md",
+    "source_url": "https://raw.githubusercontent.com/alibaba/clusterdata/master/cluster-trace-v2026-GenAI/README.md",
+    "bytes": 13550,
+    "sha256": "389a0cb2da5212bdccbf3fc00bffd9850b6c0142a5855167dcef350083e526fe"
+  },
+  {
+    "local_evidence_name": "2026-spot.md",
+    "source_url": "https://raw.githubusercontent.com/alibaba/clusterdata/master/cluster-trace-v2026-spot-gpu/README.md",
+    "bytes": 5608,
+    "sha256": "11eb33818d3b40ba430c1bc1e0fd42786af214db334152141e29bccb3d26db2b"
+  },
+  {
+    "local_evidence_name": "2023-convert.py",
+    "source_url": "https://raw.githubusercontent.com/alibaba/clusterdata/master/cluster-trace-gpu-v2023/pod_csv_to_yaml.py",
+    "bytes": 6421,
+    "sha256": "e4c17bf43ad430144fd48e17d520c3a04be3c930721bb6d3918ae2234a6fb42b"
+  },
+  {
+    "local_evidence_name": "nats-train.sh",
+    "source_url": "https://raw.githubusercontent.com/D-X-Y/AutoDL-Projects/main/scripts/NATS-Bench/train-topology.sh",
+    "bytes": 2044,
+    "sha256": "02f47b60f225c3ece27f45a7abd65a39fd6918a125a388360c599bdeeb91d75a"
+  },
+  {
+    "local_evidence_name": "nats-collect.py",
+    "source_url": "https://raw.githubusercontent.com/D-X-Y/AutoDL-Projects/main/exps/NATS-Bench/tss-collect.py",
+    "bytes": 18114,
+    "sha256": "14e2cd14748d3f683ba49dbc95c6a1fd2e7d5b067559c3b5700ca13e1cacfb54"
+  },
+  {
+    "local_evidence_name": "nats-api.py",
+    "source_url": "https://raw.githubusercontent.com/D-X-Y/NATS-Bench/main/nats_bench/api_utils.py",
+    "bytes": 57006,
+    "sha256": "78ba41db90140a5ab597b1ada01cc58565cf1e2af7445790cadb014a0260c793"
+  },
+  {
+    "local_evidence_name": "nats-sample.pbz2",
+    "source_url": "https://raw.githubusercontent.com/D-X-Y/NATS-Bench/main/fake_torch_dir/NATS-tss-v1_0-3ffb9-simple/000011.pickle.pbz2",
+    "bytes": 85220,
+    "sha256": "9e70770646c83f824f0a51422aaa7e89afca861a257ec285cdfada7264345276"
+  },
+  {
+    "local_evidence_name": "2023-pods.csv",
+    "source_url": "https://raw.githubusercontent.com/alibaba/clusterdata/master/cluster-trace-gpu-v2023/csv/openb_pod_list_default.csv",
+    "bytes": 575468,
+    "sha256": "1ee7ed79c27a3b0861cda8ddba86a004c6aba904caafa329a76ae93ca63834a8"
+  },
+  {
+    "local_evidence_name": "2025.csv",
+    "source_url": "https://raw.githubusercontent.com/alibaba/clusterdata/master/cluster-trace-gpu-v2025/disaggregated_DLRM_trace.csv",
+    "bytes": 2118900,
+    "sha256": "fb17bc4b3f412d5280f70f04a1bdf2adfc4429d1e61237a5b106e86206414295"
+  },
+  {
+    "local_evidence_name": "acme-kalos.csv",
+    "source_url": "https://raw.githubusercontent.com/InternLM/AcmeTrace/master/data/job_trace/trace_kalos.csv",
+    "bytes": 8960159,
+    "sha256": "7c5a7845da1d66448fa668342e4ecb622fd9a005118080660ec3ad2788d4c9bf"
+  },
+  {
+    "local_evidence_name": "acme-seren.csv",
+    "source_url": "https://raw.githubusercontent.com/InternLM/AcmeTrace/master/data/job_trace/trace_seren.csv",
+    "bytes": 99262320,
+    "sha256": "747854c73ce8b3263b764aa9ff8d866d89903705d31fcd0e0520c33dd14af9a1"
+  },
+  {
+    "local_evidence_name": "helios.zip",
+    "source_url": "https://raw.githubusercontent.com/S-Lab-System-Group/HeliosData/master/data.zip",
+    "bytes": 36437672,
+    "sha256": "3d22a5f6c0ae669e2fcbfe4200fa9c48664507bc397c677bad8f085222c032ac"
+  },
+  {
+    "local_evidence_name": "pai-task.tar.gz",
+    "source_url": "https://aliopentrace.oss-cn-beijing.aliyuncs.com/v2020GPUTraces/pai_task_table.tar.gz",
+    "bytes": 35514117,
+    "sha256": "cd1d6dc3215d2a8607ccf6b6dd952b5db776df86926c73259fea7c1499ac40e5"
+  },
+  {
+    "local_evidence_name": "pai-job.tar.gz",
+    "source_url": "https://aliopentrace.oss-cn-beijing.aliyuncs.com/v2020GPUTraces/pai_job_table.tar.gz",
+    "bytes": 62065432,
+    "sha256": "5aad7f7caac501136d14ed6a48e40546f825d7b0617a3a4f337e2348fe0a6cb0"
+  },
+  {
+    "local_evidence_name": "pai-group.tar.gz",
+    "source_url": "https://aliopentrace.oss-cn-beijing.aliyuncs.com/v2020GPUTraces/pai_group_tag_table.tar.gz",
+    "bytes": 55064781,
+    "sha256": "722fef30b7fb7aa50dabd79155614b5423a9d65cf45a9b26c590d57725423a14"
+  },
+  {
+    "local_evidence_name": "mit-slurm.csv",
+    "source_url": "https://mit-supercloud-dataset.s3.amazonaws.com/datacenter-challenge/202201/slurm-log.csv",
+    "bytes": 103165427,
+    "sha256": "27259e5b8e6daecd80b7853126af40ba759bc25edc9053fc174ef7a4f186aa01"
+  },
+  {
+    "local_evidence_name": "mit-labels.csv",
+    "source_url": "https://mit-supercloud-dataset.s3.amazonaws.com/datacenter-challenge/202201/labelled_jobids.csv",
+    "bytes": 82332,
+    "sha256": "bd00b9e572442ed9ad900c8919de789e0a4bf225df8a657be9c7b389d7ca6d82"
+  },
+  {
+    "local_evidence_name": "nasbench-prefix.tfrecord",
+    "source_url": "https://storage.googleapis.com/nasbench/nasbench_full.tfrecord (first 4194304 bytes only)",
+    "bytes": 4194304,
+    "sha256": "7bc48af9070421d7188976ebefe25da52979cbd88abeb7abac54f186efd669bb"
+  }
+]
