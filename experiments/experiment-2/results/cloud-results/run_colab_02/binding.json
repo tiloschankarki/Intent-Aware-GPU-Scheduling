@@ -1,0 +1,27 @@
+{
+  "label": "post-hoc internal split-sensitivity, not external replication",
+  "model_seed": 20260927,
+  "split_seed": 20261020,
+  "configuration_sha256": "581ebe95ff21c4ea50ca65ec6417effd81d54687b41ee0b3f4dbc403061de9e0",
+  "runner_sha256": "988ee283c40a6c29abaf5ca930acb060e2414b3f25f5c713e1e62564acf8132e",
+  "source_hashes": {
+    "pipeline/asi_pipeline/__init__.py": "05f59b72c95fe11e48825a04f143c8db97dbab934a3c8f90743fb610c23ec6a4",
+    "pipeline/asi_pipeline/checkpoints.py": "0d95523289640ef4266e3ab8fc4d1fe654ac5605a67d2888c30b4ac0958307e2",
+    "pipeline/asi_pipeline/dataset.py": "310ea3657e50cd767cc241a1d17c21f5e11b2993a9e30e1af93c02ba9d08085e",
+    "pipeline/asi_pipeline/execution.py": "3bbbc97cd38e675202d4b1845bca15532a92f93bd7443e3da01441fd1de4aff7",
+    "pipeline/asi_pipeline/feasibility.py": "54cd4ddf7c32a1e8c12e18b422416779d8a1a8c5c2165f6cc72c9e24e4dc172d",
+    "pipeline/asi_pipeline/metrics.py": "71571aadb26ea4609209b0e2f13f308d87902f8634a3cfcc13d9447b20ac0566",
+    "pipeline/asi_pipeline/modeling.py": "18563ed3247e48a9f3225140f9d4c326da9e7ad1beef4af0434d77581ff270a9",
+    "pipeline/asi_pipeline/primary_data.py": "576b97ccc56986caba479eea7fac26b871d715f673a35398f054f6eea7b6c9ec",
+    "pipeline/asi_pipeline/remote_temporal.py": "88b980a18bce2f534a2d5ea348f7ead5bb37c2f74698e71977eab2a5bad1fd45",
+    "pipeline/asi_pipeline/safety.py": "fa42eeffd7e005b8e9a4ec2ab93e46dfb0f9aa4d3ac0c7be5cae541a0ce4c609",
+    "pipeline/asi_pipeline/scientific_run.py": "662c0c68b20bfdaeafee7555de0dea85e06ea861a3fb96a02afcd1295dd4611e",
+    "pipeline/asi_pipeline/temporal.py": "96a368972fd9d73d05f443b726c02a67d425dab19bc9a0d02841e97b8c8964fd",
+    "pipeline/asi_pipeline/train_cli.py": "3fde03f22b01fe52d65b93a6c258b5774321f58bb8054be202e2c5009e8a3115",
+    "pipeline/asi_pipeline/windows_monitor.py": "112f4fa2a2f7c71de51f8d5ad86ccfca88f533c052cda1b60b65f8cf96eacaaa"
+  },
+  "inputs": {
+    "train": "ef0949fe1039baeff292e7d6ffc24502a5a65573caf62eaefb7d5e46ec1f4a37",
+    "validation": "7db16f27169d1391cbf9c33e43c05cdfa7da6a09070a799bce4dae8ee1ce0525"
+  }
+}

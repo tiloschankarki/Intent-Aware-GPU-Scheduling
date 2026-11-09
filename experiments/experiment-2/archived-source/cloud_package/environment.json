@@ -1,0 +1,16 @@
+{
+  "platform": "macOS-15.7.4-arm64-arm-64bit",
+  "machine": "arm64",
+  "executable": "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+  "python": "3.12.2",
+  "versions": {
+    "lightgbm": "4.7.0",
+    "numpy": "2.0.1",
+    "pandas": "2.2.3",
+    "pyarrow": "25.0.1",
+    "scipy": "1.15.1",
+    "duckdb": "1.5.5",
+    "PyYAML": "6.0.2",
+    "psutil": "6.1.1"
+  }
+}

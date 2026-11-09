@@ -1,244 +1,84 @@
-# Intent-Aware GPU Scheduling
+# GPU Runtime Prediction: Lifecycle Metadata, Workload Generalization, and Evaluation Robustness
 
-**Status: Work in Progress**
+Independent Computer Science research on the Alibaba ASI GPU trace. This repository studies the incremental predictive value of the public lifecycle field `job_type_public`, and how its apparent value changes with baseline controls, workload partitions and evaluation weighting.
 
-This repository contains the work I have been doing around GPU scheduling and resource prediction. Right now, it mainly contains my paper notes, literature comparison, research gap, and the research idea I am trying to develop.
+The target is released execution duration, transformed as `log1p(duration_hours)`. The work does not establish a scheduling policy, user-intent measurement, causal mechanism or operational scheduling improvement. The local directory's legacy name does not describe the current research scope.
 
-The idea started while I was reading papers about GPU clusters and HPC systems. One problem that kept coming up was resource allocation. Users have to request things like GPUs, memory, and expected runtime before their jobs run, but those estimates are not always accurate. If someone asks for too much, resources can sit unused. If they ask for too little, the job might fail or take longer than expected.
+## Research questions
 
-A lot of research already tries to solve this using job history, metadata, profiling, runtime information, and more recently even LLMs.
+1. How much does lifecycle metadata add to resource and priority predictors, and how does that gain change after including application/model controls?
+2. How sensitive is the incremental validation performance to workload-disjoint partition composition?
+3. Across ten predefined partitions of a restricted population, how do execution-weighted and equal-workload comparisons differ, and how concentrated are the observed gains and losses?
 
-While reading these papers, one thing I kept thinking about was:
+## Dataset and scope
 
-> **What if the scheduler also knew why the user was running the job?**
+The original canonical study population contains **4,709,624 executions and 473,265 workload IDs**, with four recognized lifecycle categories and workload-disjoint splits. It is a metadata-rich subset of the ASI trace, not the entire GPU fleet. See the [original checkpoint](experiments/experiment-1/exp1_checkpoint_original.md).
 
-That became the starting point for this research idea.
+Experiment 3 excludes the union of the two historical test workload sets using saved ID-only split maps: **1,337,194 executions / 131,648 workloads** are excluded, leaving **3,372,430 executions / 341,617 workloads**. This is a restricted-population study, not a direct full-population replication; see its [population audit](experiments/experiment-3/archived-source/population_audit.json).
 
-## The idea
+## Experiments and main findings
 
-Two users can submit technically similar jobs but have completely different goals.
+| Experiment | Saved evidence | Finding | Evidence boundary |
+| --- | --- | --- | --- |
+| [1 — Lifecycle metadata value](experiments/experiment-1/README.md) | Historical held-out test summary and frozen Windows execution source | Mean relative LogMAE gain of about **5.88%** against resource + priority controls across three model seeds on one split. With stronger application/model controls, gains are **0.81–1.38%**, and all three saved 95% intervals include zero. | Historical held-out test evidence; model seeds share a split and are not independent datasets. |
+| [2 — Partition sensitivity](experiments/experiment-2/README.md) | Two saved validation comparisons, Colab execution/diagnostic notebooks, original cloud runner and follow-up reports | Execution-weighted relative gains change from **+2.084%** to **−4.907%** across two partitions. | Validation-only, post-hoc sensitivity analysis; no independent test result. |
+| [3 — Predefined partition robustness](experiments/experiment-3/README.md) | Original registration/report, **240 candidate records**, CPU runner and notebook | M1 wins **8/10** execution-weighted and **9/10** equal-workload comparisons. Execution-weighted reversals occur for seeds 20261101 and 20261102; the latter favors M1 under equal-workload weighting. | Twelve candidates per model family per split seed; selected-validation results on a restricted population. No independent test result. |
 
-For example, one person might be testing an idea:
+Lifecycle metadata does **not** consistently improve prediction. The stronger-control effect is small and uncertain in Experiment 1; Experiment 2 reverses sign; Experiment 3 retains negative partitions. Saved concentration and support diagnostics help characterize these patterns, but do not establish their causes. The original-runtime MAE in Experiment 1's broad stronger-control comparison worsens despite lower LogMAE; the metrics answer different questions.
 
-> "This is just an exploratory run. I don't care if it takes longer and I don't want to use more GPUs than necessary."
+Source numbers and arithmetic checks are indexed in [the evidence guide](docs/evidence-guide.md). Unsupported exact attributions are recorded in [source gaps](docs/source-gaps.md), rather than promoted to findings.
 
-Another person could be running the final experiment for a paper:
+## Metrics and interpretation
 
-> "This is my final training run and I need the results before tomorrow."
+LogMAE is absolute prediction error on `log1p(hours)`, not error measured in hours. Relative improvement is `100 × (L0 − L1) / L0`, with positive values favoring M1. Execution weighting gives each execution one vote; equal-workload weighting averages within workload and then across workloads. Neither is GPU-hour weighting or a fairness measure.
 
-The jobs might look similar based on normal metadata, but the intent behind them is different.
+In Experiments 2 and 3, M0 includes resource, priority and application/model features; M1 adds `job_type_public`. Experiment 3 selects models on execution-weighted validation loss and reports both metrics on that same validation data. Overlapping splits are dependent, and win counts are descriptive, not independent-replication probabilities or significance tests.
 
-My idea is to see whether this kind of information can actually help with resource prediction and scheduling.
-
-The current research question is:
-
-> **Can user intent, together with job history and metadata, improve resource prediction and GPU scheduling using a relatively lightweight ML model?**
-
-I specifically want to see whether user intent gives us useful information that we cannot already get from job history and metadata.
-
-## What I have looked at so far
-
-I started by reading work around resource prediction and GPU scheduling.
-
-### Liquid
-
-Liquid was important because it showed that machine learning can predict resource requirements before scheduling. It uses information about the training job and predicts the resources it will need.
-
-This made me interested in the idea of putting a prediction layer **before** the scheduler.
-
-### Pollux
-
-Pollux takes a different approach. Instead of trying to make the perfect decision before the job starts, it watches how training is going and changes GPU allocation while the job is running.
-
-This made me think that the two ideas could work together.
-
-A better prediction could give the scheduler a better starting point, while something like Pollux could still adjust resources later if the prediction was wrong.
-
-### Lucid
-
-Lucid was interesting because it uses previous job history to help predict how long future jobs will take.
-
-It is also relatively lightweight and does not require expensive profiling.
-
-This gives me an important comparison for my idea:
-
-**If history already works well, does adding user intent actually make it better?**
-
-### SchedMate
-
-SchedMate is probably the closest paper I have found to this idea so far.
-
-It uses LLMs along with information such as user prompts, source code, logs, previous jobs, and hardware information to give better information to the scheduler.
-
-This changed my original idea quite a bit.
-
-At first, I was thinking more broadly about using semantic information for scheduling. But SchedMate already explores that direction.
-
-So the question became more specific:
-
-**Can we take explicit user intent, represent it in a simpler way, and find out whether it adds useful information without needing an LLM to understand the entire job?**
-
-That is where the project currently stands.
-
-## What do I mean by "intent"?
-
-I am still working on the exact definition.
-
-Some examples could be:
-
-- Is this an exploratory experiment or a final run?
-- Is there actually a deadline?
-- How flexible is that deadline?
-- Is finishing quickly more important than saving resources?
-- Can the job be interrupted?
-- Is reproducibility important for this run?
-- Would the user accept different hardware if it means waiting less?
-
-Not all of these will necessarily be useful.
-
-Part of the research is figuring out which information actually matters instead of simply asking users for more information.
-
-I also don't want "intent" to just become another priority system where everyone says their job is important. It needs to provide something useful that the scheduler cannot already figure out from normal job information.
-
-## What I am thinking of building
-
-The current idea is not to build an entirely new GPU scheduler.
-
-Instead, I want to build something that sits before an existing scheduler:
+## Repository structure
 
 ```text
-User Intent
-     +
-Job Metadata
-     +
-Previous Jobs
-     |
-     v
-Lightweight ML Model
-     |
-     v
-Resource Prediction
-     |
-     v
-Existing Scheduler
+preprocessing/              Earlier source-backed preprocessing and audit snapshot
+experiments/
+  experiment-1/             Historical test evidence and frozen execution source
+  experiment-2/             Validation sensitivity, source, notebooks and diagnostics
+  experiment-3/             Restricted-population robustness, source and registration
+analysis/                   Static integrity/evidence verifier and audit index
+audits/                   Dated research and artifact audits
+figures/                    Index and historical reproduction script
+literature/                 Index of retained ASI-related prior-art audits
+paper/                      Frozen October 29 manuscript, data and figure package
+docs/                       Evidence guide, provenance, limitations and organization record
 ```
 
-The model could help predict things like GPU requirements, memory requirements, or runtime.
+Original experiment result filenames remain at their existing paths so that historical references and manuscript scripts stay usable. Original and presentation notebooks have distinct filenames. Historical source layouts are retained where imports and relative paths rely on them.
 
-The scheduler itself could stay mostly unchanged.
+## Reproducibility
 
-This is one of the ideas I liked from some of the papers I read: instead of replacing the whole scheduling system, give it better information.
+**Review and verify without training:**
 
-## How I would test it
-
-The most important experiment for me is actually pretty simple.
-
-I want to compare:
-
-```text
-Job information only
-
-vs.
-
-Job information + history
-
-vs.
-
-Job information + history + user intent
+```sh
+python3 -B analysis/verify_repository.py
 ```
 
-If the third version performs better, then I can look at **how much better it is and why**.
+The new standard-library verifier parses Python and notebook JSON, checks recorded file hashes and notebook preservation, and verifies arithmetic/selection consistency from saved summaries. It does not import experiment modules, execute notebooks, train models or open datasets/holdouts.
 
-If it doesn't perform better, that is useful too because it would show that user intent may not provide enough extra information to justify collecting it.
+Start with the [experiment index](experiments/README.md), each experiment README and the [source gaps](docs/source-gaps.md). Historical source is preserved byte-for-byte, including its original environment and execution instructions. Those instructions describe earlier stages and are not current completion certificates.
 
-Some things I would like to measure are:
+Full computational reproduction requires external raw/canonical or train/validation data, original environments and omitted run artifacts. Dataset paths and hashes remain in frozen provenance. Do not silently substitute inputs, protocols or package versions. No installation, training, new experiment or holdout evaluation was performed for this organization pass.
 
-- prediction error
-- GPU utilization
-- wasted GPU time
-- queue time
-- job completion time
-- failed or restarted jobs
+The [historical figure script](paper/asi_manuscript_2026-10-29/reproduce_figures.py) regenerates figures from saved reports and also rewrites derived CSVs/manifests in its own directory. Use a separate scratch copy if reproducing it; this pass did not run it or regenerate figures.
 
-I will most likely start with existing workload traces and simulation instead of trying to get access to a large GPU cluster immediately.
+## Limitations
 
-## Research gap so far
+- One trace and selected populations limit external validity; workload-disjoint splitting does not establish temporal or cross-cluster generalization.
+- A public lifecycle field is not direct user intent. Prediction-time availability and source-to-split lineage are not fully certified.
+- Stronger controls materially reduce apparent value. A positive LogMAE change does not establish lower runtime, cost, queue delay or scheduling benefit.
+- Validation reuse and dependent splits limit inference in Experiments 2 and 3.
+- Missing per-workload aggregates, original model binaries and some source provenance prevent complete numerical reproduction from this compact repository alone.
+- Retained audits identify prior-art and methodological limits; this pass did not newly verify external citations or establish novelty.
 
-I want to be careful about claiming that nobody has done this before.
+## Current status
 
-There is already a lot of work using:
+Experiments 1–3 have saved evidence. The repository is an empirical research record and manuscript work in progress, with explicit reproduction gaps. It is not presented as publication-ready or as an independently confirmed scheduler improvement. See the [organization record](docs/organization-report.md) for this pass and the [historical manuscript revision plan](docs/manuscript-improvement-plan.md) for remaining scientific/editorial work.
 
-- job history
-- metadata
-- user resource estimates
-- runtime information
-- profiling
-- source code
-- logs
-- semantic information
-
-There are also real schedulers that already use things like priorities, queues, deadlines, and QoS rules.
-
-So my claim is **not** that schedulers have never used information from users.
-
-What I have found so far is that **explicit user intent seems to be less explored as its own input**, separate from resource estimates, job history, code, logs, and runtime information.
-
-That is the gap I am currently investigating, and it may change as I read more papers.
-
-## Current progress
-
-So far I have:
-
-- read and taken detailed notes on several related papers
-- compared their inputs, models, scheduling methods, and limitations
-- created a literature comparison table
-- worked on identifying the research gap
-- narrowed down the original idea
-- formed an initial research question
-
-The next steps are to read more of the closest related work, define exactly what counts as user intent, find a suitable workload dataset, and start designing the first experiment.
-
-## Repository
-
-Most of the repository right now is my research notes.
-
-```text
-LiteratureReview/
-    Comparison_Table.md
-    research_gap_summary.md
-
-    PaperInsights/
-        SchedMate.md
-        Liquid.md
-        Pollux.md
-        Lucid.md
-```
-
-I will add the proposal, experiments, code, and results as the project develops.
-
-## Papers currently shaping this idea
-
-Some of the papers I am currently using as starting points are:
-
-- SchedMate: Semantic-Aware Scheduling for GPU Clusters with Large Language Models
-- Liquid: Intelligent Resource Estimation and Network-Efficient Scheduling for Deep Learning Jobs
-- Pollux: Co-adaptive Cluster Scheduling for Goodput-Optimized Deep Learning
-- Lucid: A Non-intrusive, Scalable and Interpretable Scheduler for Deep Learning Training Jobs
-- Helping HPC Users Specify Job Memory Requirements via Machine Learning
-
-There are several others I still need to study more closely.
-
----
-
-This is an ongoing research project, so the research question, approach, and even the main idea may change as I learn more and start experimenting.
-
-For now, this repository is mainly a record of **how the idea is developing and where I am with it.**
-
-
-## ASI evidence package (1 November 2026)
-
-The completed study concerns execution-duration prediction, not a demonstrated intent-aware scheduler. The earlier README above describes the original proposal.
-
-Start with `docs/manuscript-improvement-plan.md` and `docs/source-gaps.md`. `paper/` holds the historical manuscript package; `experiments/` holds compact evidence for Experiments 1-3; `figures/` holds existing exports; `analysis/` indexes saved verification; `preprocessing/` holds selected archival source; `literature/` preserves notes; `audits/` preserves complete dated audits. Legacy folders remain intact.
-
-All imports are copied and SHA-256 recorded in `docs/import-manifest.json`. Raw traces, large datasets, secrets and reserved holdouts are excluded from the import. No scripts, training, new experiments or holdout evaluation were run. This is a documentation/evidence organization pass, not full computational reproduction. Review changes in GitHub Desktop before committing; no commit or push was performed.
+The existing [license](LICENSE) is retained. Dataset and third-party material remain subject to their own terms.

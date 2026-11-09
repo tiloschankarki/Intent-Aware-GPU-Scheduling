@@ -1,0 +1,417 @@
+{
+  "protocol_id": "asi-lifecycle-frozen-v2-pretraining",
+  "status": "frozen_scientific_design_pre_training",
+  "serialization": "JSON-compatible YAML 1.2; loadable with Python json without installing PyYAML",
+  "label_clarification": {
+    "statement": "Schema/label clarification made before model training and before observing lifecycle-ablation results.",
+    "kind": "schema/encoding clarification; NOT a scientific protocol or population change",
+    "conceptual_to_physical": {
+      "offline inference": "offline_inference",
+      "online inference": "online_inference",
+      "training": "training",
+      "dev": "dev"
+    },
+    "recode_source": false
+  },
+  "dataset": {
+    "path": "part-000.parquet",
+    "claimed_release": "Alibaba GPU Cluster Trace v2026 / ASI (handoff-reported)",
+    "independent_version_metadata": null,
+    "expected_rows": 40522321,
+    "schema": {
+      "pod_id": "string",
+      "workload_id": "string",
+      "server_id": "string",
+      "gpu_spec_public": "string",
+      "priority_class": "string",
+      "job_type_public": "string",
+      "model_type_public": "string",
+      "is_genai_request": "bool",
+      "gpu_request": "double",
+      "duration_hours": "double",
+      "schedule_delay_sec": "int64",
+      "ready_delay_sec": "int64",
+      "ready_status": "bool",
+      "schedule_status": "bool"
+    },
+    "expected_lifecycle_counts": {
+      "offline_inference": 32194936,
+      "online_inference": 5054990,
+      "training": 2999580,
+      "unknown": 170977,
+      "other": 70130,
+      "dev": 31708
+    }
+  },
+  "target": "duration_hours",
+  "target_transform": "log1p",
+  "lifecycle_variable": "job_type_public",
+  "primary_lifecycle_categories": [
+    "training",
+    "offline_inference",
+    "online_inference",
+    "dev"
+  ],
+  "excluded_primary_categories": [
+    "unknown",
+    "other"
+  ],
+  "finite_categories": [
+    "training",
+    "offline_inference"
+  ],
+  "trim_durations": false,
+  "remove_duplicate_pod_rows_from_main": false,
+  "feature_groups": {
+    "R": [
+      "gpu_request",
+      "gpu_spec_public"
+    ],
+    "P": [
+      "priority_class"
+    ],
+    "A": [
+      "model_type_public",
+      "is_genai_request"
+    ],
+    "O": [
+      "job_type_public"
+    ],
+    "W": [
+      "workload_id"
+    ]
+  },
+  "blacklisted_predictors": [
+    "duration_hours",
+    "schedule_delay_sec",
+    "ready_delay_sec",
+    "ready_status",
+    "schedule_status",
+    "server_id",
+    "pod_id"
+  ],
+  "paired_ablations": [
+    {
+      "m0": [
+        "R"
+      ],
+      "m1": [
+        "R",
+        "O"
+      ]
+    },
+    {
+      "m0": [
+        "R",
+        "P"
+      ],
+      "m1": [
+        "R",
+        "P",
+        "O"
+      ]
+    },
+    {
+      "m0": [
+        "R",
+        "P",
+        "A"
+      ],
+      "m1": [
+        "R",
+        "P",
+        "A",
+        "O"
+      ]
+    }
+  ],
+  "seen_workload_optional_pair": {
+    "m0": [
+      "R",
+      "P",
+      "A",
+      "W"
+    ],
+    "m1": [
+      "R",
+      "P",
+      "A",
+      "W",
+      "O"
+    ]
+  },
+  "split": {
+    "primary": "workload_disjoint",
+    "group": "workload_id",
+    "fractions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "seed": 20260927,
+    "seed_provenance": "user-confirmed fixed split seed; independent of model seeds",
+    "algorithm": "sha256 of JSON [seed, workload_id]; first 64 bits; fraction thresholds",
+    "null_workload_primary": "exclude",
+    "broad_population": "retain null-workload rows; secondary random-execution split",
+    "secondary": "random_execution",
+    "chronological_enabled": false,
+    "random_algorithm": "sha256 of JSON [20260927, source_row_ordinal]; first 64 bits; 70/15/15 thresholds; ordinal is a physical row locator tied to source SHA-256, never an execution identity or predictor",
+    "primary_workload_feature": false
+  },
+  "model": {
+    "family": "LightGBM",
+    "same_selection_budget": true,
+    "selection_data": [
+      "train",
+      "validation"
+    ],
+    "test_use": "final_evaluation_only",
+    "hyperparameter_grid": [
+      {
+        "candidate_id": 1,
+        "num_leaves": 15,
+        "min_data_in_leaf": 20,
+        "feature_fraction": 0.8
+      },
+      {
+        "candidate_id": 2,
+        "num_leaves": 15,
+        "min_data_in_leaf": 20,
+        "feature_fraction": 1.0
+      },
+      {
+        "candidate_id": 3,
+        "num_leaves": 15,
+        "min_data_in_leaf": 100,
+        "feature_fraction": 0.8
+      },
+      {
+        "candidate_id": 4,
+        "num_leaves": 15,
+        "min_data_in_leaf": 100,
+        "feature_fraction": 1.0
+      },
+      {
+        "candidate_id": 5,
+        "num_leaves": 31,
+        "min_data_in_leaf": 20,
+        "feature_fraction": 0.8
+      },
+      {
+        "candidate_id": 6,
+        "num_leaves": 31,
+        "min_data_in_leaf": 20,
+        "feature_fraction": 1.0
+      },
+      {
+        "candidate_id": 7,
+        "num_leaves": 31,
+        "min_data_in_leaf": 100,
+        "feature_fraction": 0.8
+      },
+      {
+        "candidate_id": 8,
+        "num_leaves": 31,
+        "min_data_in_leaf": 100,
+        "feature_fraction": 1.0
+      },
+      {
+        "candidate_id": 9,
+        "num_leaves": 63,
+        "min_data_in_leaf": 20,
+        "feature_fraction": 0.8
+      },
+      {
+        "candidate_id": 10,
+        "num_leaves": 63,
+        "min_data_in_leaf": 20,
+        "feature_fraction": 1.0
+      },
+      {
+        "candidate_id": 11,
+        "num_leaves": 63,
+        "min_data_in_leaf": 100,
+        "feature_fraction": 0.8
+      },
+      {
+        "candidate_id": 12,
+        "num_leaves": 63,
+        "min_data_in_leaf": 100,
+        "feature_fraction": 1.0
+      }
+    ],
+    "seeds": [
+      20260927,
+      20260928,
+      20260929
+    ],
+    "num_boost_round": 200,
+    "early_stopping_rounds": 30,
+    "selection_metric": "validation LogMAE only",
+    "selection_tie_break": "lowest candidate index",
+    "parameters": {
+      "objective": "regression_l1",
+      "metric": "l1",
+      "learning_rate": 0.05,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 1,
+      "verbosity": -1,
+      "num_threads": 2,
+      "deterministic": true,
+      "force_col_wise": true,
+      "feature_pre_filter": false
+    },
+    "selection_per_model_seed": true,
+    "primary_unseen_comparison": "R+P+A vs R+P+A+O"
+  },
+  "metrics": {
+    "primary": "MAE(log1p(duration_hours))",
+    "delta_absolute": "MAE(M0) - MAE(M1)",
+    "delta_relative_percent": "100 * (MAE(M0) - MAE(M1)) / MAE(M0)",
+    "secondary": [
+      "Spearman",
+      "original-runtime errors",
+      "lifecycle-stratified errors",
+      "finite-execution errors",
+      "tail-stratified errors"
+    ],
+    "tail_bins_hours": [
+      0,
+      1,
+      6,
+      24,
+      72,
+      168,
+      336,
+      672,
+      null
+    ],
+    "tail_labels": [
+      "<1 hour",
+      "1–6 hours",
+      "6–24 hours",
+      "1–3 days",
+      "3–7 days",
+      "7–14 days",
+      "14–28 days",
+      ">=28 days"
+    ],
+    "tail_intervals": "left closed, right open; descriptive errors only; no separate tail models",
+    "runtime_prediction": "expm1(max(predicted_log1p, 0)); nonnegative original-runtime prediction; primary LogMAE uses raw log prediction"
+  },
+  "uncertainty": {
+    "primary_resampling_unit": "workload_id",
+    "replicates": 1000,
+    "sampling": "test workload IDs with replacement; include all rows for each occurrence",
+    "pairing": "same sampled IDs and multiplicities for M0 and M1",
+    "weighting": "execution-row weighted metrics within workload-resampled samples",
+    "confidence_level": 0.95,
+    "interval": "percentile [2.5,97.5]",
+    "quantities": [
+      "absolute LogMAE improvement",
+      "relative LogMAE improvement"
+    ],
+    "seed": 20260927,
+    "broad_random": "point estimates only; no clustered CI claimed",
+    "implementation": "aggregate paired absolute-error sums and row counts per workload; resample aggregates exactly equivalent to duplicating all execution rows",
+    "zero_m0_error": "relative improvement undefined; report null and valid replicate count"
+  },
+  "temporal": {
+    "days": [
+      108,
+      109,
+      110
+    ],
+    "hours": [
+      0,
+      23
+    ],
+    "eligibility": "source pod_id occurs exactly once",
+    "stratification_categories": [
+      "training",
+      "offline_inference",
+      "online_inference",
+      "dev",
+      "unknown",
+      "other"
+    ],
+    "legacy_map": "temporal_map.parquet",
+    "validated_map": "artifacts/temporal/d109h00_eligible.parquet",
+    "remote_url": "https://tre-clusterdata.oss-cn-hangzhou.aliyuncs.com/cluster-trace-gpu-v2026/data/asi_opensource_pod_hourly.zip",
+    "expected_object_bytes": 351803513445,
+    "estimated_transfer_gib": 5.644,
+    "max_range_bytes": 8388608,
+    "remote_execution_enabled": false,
+    "full_scan_enabled": false,
+    "max_transfer_bytes": 7516192768
+  },
+  "triage": {
+    "strong_primary_relative_percent": 3,
+    "strong_finite_or_tail_relative_percent": 5,
+    "weak_relative_percent_range": [
+      1,
+      3
+    ],
+    "kill_primary_relative_percent_at_most": 1,
+    "direction_stability_required": true,
+    "other_kill_conditions": [
+      "gain disappears on unseen workloads",
+      "gain almost entirely Dev/Online residence separation without meaningful finite-execution evidence"
+    ],
+    "interpretation": "approximate predeclared project triage criteria, not statistical laws; 1% boundary is covered by kill criterion"
+  },
+  "pending_before_main_training": [],
+  "execution_permissions": {
+    "install_packages": [
+      "lightgbm",
+      "scipy",
+      "PyYAML"
+    ],
+    "remote_transfer": false,
+    "full_model_training": false,
+    "bounded_dry_run": true
+  },
+  "local_validation": {
+    "memory_limit": "1GB",
+    "threads": 2,
+    "sample_rows": 10000
+  },
+  "completion": {
+    "statement": "Pre-training protocol completion: choices frozen before any lifecycle ablation results were observed.",
+    "previous_protocol": "docs/protocol_versions/checkpoint1/protocol.yaml",
+    "results_observed": false
+  },
+  "encoding": {
+    "native_categorical": [
+      "gpu_spec_public",
+      "priority_class",
+      "model_type_public",
+      "is_genai_request",
+      "job_type_public"
+    ],
+    "fit_categories_on": "train_only",
+    "unseen_or_missing_category": "LightGBM missing code -1",
+    "numeric_missing": "NaN",
+    "target_encoding": false,
+    "lifecycle_derived_encoding": false,
+    "workload_id_predictor_primary": false
+  },
+  "dry_run": {
+    "max_source_rows": 10000,
+    "sampling": "first 10000 physical source rows, before population exclusions; smoke only, not representative",
+    "comparisons": [
+      "R+P+A"
+    ],
+    "populations": [
+      "broad",
+      "finite"
+    ],
+    "evaluations": [
+      "workload_disjoint",
+      "random_execution"
+    ],
+    "all_model_seeds": true,
+    "all_12_candidates": true,
+    "scientific_interpretation": false
+  }
+}

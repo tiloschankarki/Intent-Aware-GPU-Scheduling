@@ -1,0 +1,230 @@
+[
+  {
+    "path": "checkpoint/archive_tools/verify_checkpoint.py",
+    "bytes": 1000,
+    "sha256": "d74d679c0b28cf0362fcf4ca9b78bdb74323656cc933a2da472f6d86cbe26252",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\archive_tools\\verify_checkpoint.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/__init__.py",
+    "bytes": 54,
+    "sha256": "05f59b72c95fe11e48825a04f143c8db97dbab934a3c8f90743fb610c23ec6a4",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\__init__.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/checkpoints.py",
+    "bytes": 3329,
+    "sha256": "0d95523289640ef4266e3ab8fc4d1fe654ac5605a67d2888c30b4ac0958307e2",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\checkpoints.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/dataset.py",
+    "bytes": 5769,
+    "sha256": "310ea3657e50cd767cc241a1d17c21f5e11b2993a9e30e1af93c02ba9d08085e",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\dataset.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/execution.py",
+    "bytes": 15523,
+    "sha256": "3bbbc97cd38e675202d4b1845bca15532a92f93bd7443e3da01441fd1de4aff7",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\execution.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/feasibility.py",
+    "bytes": 3806,
+    "sha256": "54cd4ddf7c32a1e8c12e18b422416779d8a1a8c5c2165f6cc72c9e24e4dc172d",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\feasibility.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/metrics.py",
+    "bytes": 5559,
+    "sha256": "71571aadb26ea4609209b0e2f13f308d87902f8634a3cfcc13d9447b20ac0566",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\metrics.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/modeling.py",
+    "bytes": 2805,
+    "sha256": "18563ed3247e48a9f3225140f9d4c326da9e7ad1beef4af0434d77581ff270a9",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\modeling.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/primary_data.py",
+    "bytes": 15898,
+    "sha256": "576b97ccc56986caba479eea7fac26b871d715f673a35398f054f6eea7b6c9ec",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\primary_data.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/remote_temporal.py",
+    "bytes": 15470,
+    "sha256": "88b980a18bce2f534a2d5ea348f7ead5bb37c2f74698e71977eab2a5bad1fd45",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\remote_temporal.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/safety.py",
+    "bytes": 3894,
+    "sha256": "fa42eeffd7e005b8e9a4ec2ab93e46dfb0f9aa4d3ac0c7be5cae541a0ce4c609",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\safety.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/scientific_run.py",
+    "bytes": 4499,
+    "sha256": "662c0c68b20bfdaeafee7555de0dea85e06ea861a3fb96a02afcd1295dd4611e",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\scientific_run.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/temporal.py",
+    "bytes": 2895,
+    "sha256": "96a368972fd9d73d05f443b726c02a67d425dab19bc9a0d02841e97b8c8964fd",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\temporal.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/train_cli.py",
+    "bytes": 1399,
+    "sha256": "3fde03f22b01fe52d65b93a6c258b5774321f58bb8054be202e2c5009e8a3115",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\train_cli.py"
+  },
+  {
+    "path": "checkpoint/asi_pipeline/windows_monitor.py",
+    "bytes": 10307,
+    "sha256": "112f4fa2a2f7c71de51f8d5ad86ccfca88f533c052cda1b60b65f8cf96eacaaa",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\asi_pipeline\\windows_monitor.py"
+  },
+  {
+    "path": "checkpoint/config/protocol.yaml",
+    "bytes": 10885,
+    "sha256": "4908e86e7526c8ecc298facd46089ac94fd4dec5094eee47af24987237653e61",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\config\\protocol.yaml"
+  },
+  {
+    "path": "checkpoint/environment/requirements-windows.txt",
+    "bytes": 185,
+    "sha256": "e57544fca01f791afd76fe2addd1fb3b46763972c6d61f95e12bef07628fd61b",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\environment\\requirements-windows.txt"
+  },
+  {
+    "path": "checkpoint/scripts/02_build_temporal_map.py",
+    "bytes": 975,
+    "sha256": "f62fc0b76b12d3dc7b123591d9c03b493ababe14be2111022d1718cbff2b0187",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\02_build_temporal_map.py"
+  },
+  {
+    "path": "checkpoint/scripts/03_build_dataset.py",
+    "bytes": 1047,
+    "sha256": "aaaa2f2138ed552966afbb86fe339e55614086507aa64563bcff7a959b9ca571",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\03_build_dataset.py"
+  },
+  {
+    "path": "checkpoint/scripts/04_train_baselines.py",
+    "bytes": 194,
+    "sha256": "1feddc3ac167620889d0936a26afe0218803738676788e6b73f194d81a97da0a",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\04_train_baselines.py"
+  },
+  {
+    "path": "checkpoint/scripts/05_lifecycle_ablation.py",
+    "bytes": 194,
+    "sha256": "e30537ed58af0c764670a35cce075fb72c9e2f95cd8c24162614f2cb41656cef",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\05_lifecycle_ablation.py"
+  },
+  {
+    "path": "checkpoint/scripts/06_generalization.py",
+    "bytes": 4157,
+    "sha256": "f65c94fbca9839991aec846c6d38df1c2beae4a22cad7ac2287c217fcf340ee7",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\06_generalization.py"
+  },
+  {
+    "path": "checkpoint/scripts/prepare_windows.py",
+    "bytes": 1223,
+    "sha256": "1acabdf3f1b29dd1fbb84d602154b0ed041ed3239a1a445af5598f918cb691d3",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\prepare_windows.py"
+  },
+  {
+    "path": "checkpoint/scripts/run_dry_run.py",
+    "bytes": 3509,
+    "sha256": "fe96d306584b4617639d1e57ac9509ce0090d1d20485a3e8caae8956af0e534b",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\run_dry_run.py"
+  },
+  {
+    "path": "checkpoint/scripts/run_windows_science.py",
+    "bytes": 993,
+    "sha256": "97140f2dbcc9e77c6dced0c19c6a3cbbc6a67fbf9b0d6c6e8a0d01bba4134f46",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\run_windows_science.py"
+  },
+  {
+    "path": "checkpoint/scripts/validate_local.py",
+    "bytes": 7373,
+    "sha256": "f07c1fa5086cde4ff88f6c936f61e99cdd6331ef68be467dc7a81ac902ec7d10",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\validate_local.py"
+  },
+  {
+    "path": "checkpoint/scripts/windows_feasibility.py",
+    "bytes": 686,
+    "sha256": "4734d6182f6a64b973ce854c0f30479b95f18036ecc3b28f67766b8574d06900",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\scripts\\windows_feasibility.py"
+  },
+  {
+    "path": "checkpoint/tests/test_engineering.py",
+    "bytes": 11669,
+    "sha256": "8998c2ebc5e12e633b8d9d17a88d3d38349a16261422c72a50ef8adccfc64885",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\tests\\test_engineering.py"
+  },
+  {
+    "path": "checkpoint/tests/test_local_validation.py",
+    "bytes": 4298,
+    "sha256": "8bf2bf96f038993d308962194c26fa6487b8bc0f7d9ed4177156bf26c7afc281",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\tests\\test_local_validation.py"
+  },
+  {
+    "path": "checkpoint/tests/test_metrics.py",
+    "bytes": 6277,
+    "sha256": "6dd1aabf7f1d09ec093256ee830dbe9bc283c7f74ac142b940b21035035cfc9d",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\tests\\test_metrics.py"
+  },
+  {
+    "path": "checkpoint/tests/test_modeling.py",
+    "bytes": 4868,
+    "sha256": "a9938153abc30d71899d11adee3b510225d4852f7b20b045df33f3c1261e3665",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\tests\\test_modeling.py"
+  },
+  {
+    "path": "checkpoint/tests/test_primary_data.py",
+    "bytes": 3662,
+    "sha256": "8a67820ab38c9e651304f9f69a810351dc8c8810667baf09d35a6505653f3f01",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\tests\\test_primary_data.py"
+  },
+  {
+    "path": "checkpoint/tests/test_remote_temporal.py",
+    "bytes": 5412,
+    "sha256": "501892afb127652e28cd1fe8b4ed8a9e71fe4fdb5502ec471f770184d7c5ad1a",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\tests\\test_remote_temporal.py"
+  },
+  {
+    "path": "checkpoint/tests/test_safety.py",
+    "bytes": 3960,
+    "sha256": "4a5a6e9fa7d17d48a252b3bd5ed6c06caed521809f12e1879e27ad2b7ef87f3e",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\tests\\test_safety.py"
+  },
+  {
+    "path": "checkpoint/tests/test_temporal.py",
+    "bytes": 2378,
+    "sha256": "6ccba462ad691b05b827d56296d01540f8b40735218da69a296f2a58b4bc9448",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\tests\\test_temporal.py"
+  },
+  {
+    "path": "checkpoint/windows_run/canonical/data/primary.parquet",
+    "bytes": 85907015,
+    "sha256": "10a3a86c977701c3c26f0bdce231aeb294676d71fef772b96309ceab3d21b0a0",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\windows_run\\canonical\\data\\primary.parquet"
+  },
+  {
+    "path": "checkpoint/windows_run/canonical/manifest.json",
+    "bytes": 9575,
+    "sha256": "57a2fb4187084d8121f77532d7cfbb1519c757106780901072334021ccc8bced",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\windows_run\\canonical\\manifest.json"
+  },
+  {
+    "path": "checkpoint/windows_run/canonical/split-manifest.json",
+    "bytes": 1261,
+    "sha256": "9552fafdd83a38aa5996b311a3b68cbb1b78d2f7b804cd4dc81a506a0b4ecde6",
+    "original_source_path": "C:\\Users\\adars\\OneDrive\\Desktop\\ASI_Research\\resume_31210\\working_checkpoint\\windows_run\\canonical\\split-manifest.json"
+  }
+]

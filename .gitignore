@@ -15,7 +15,7 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 .pytest_cache/
-# Raw or large local assets: compact result CSV/JSON/Parquet remain eligible
+# Raw datasets and fitted model assets remain external; compact result CSV/JSON are retained
 data/raw/
 raw_data/
 raw/
@@ -28,3 +28,31 @@ checkpoints/
 # Reserved outcomes must stay outside this review package
 holdouts/
 reserved_holdouts/
+
+# Data/model formats excluded from this compact research repository
+*.parquet
+*.arrow
+*.feather
+*.duckdb
+*.sqlite
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.bin
+*.pt
+*.pth
+*.onnx
+model.txt
+eligible.parquet
+selection_inputs/
+# Generated local run outputs
+cloud-results/
+!experiments/experiment-2/results/cloud-results/
+!experiments/experiment-2/results/cloud-results/**
+cloud-logs/
+!experiments/experiment-2/provenance/cloud-logs/
+!experiments/experiment-2/provenance/cloud-logs/**

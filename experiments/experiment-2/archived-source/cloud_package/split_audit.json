@@ -1,0 +1,36 @@
+{
+  "split_seed": 20261020,
+  "algorithm": "sha256 of JSON [seed, workload_id]; first 64 bits; fraction thresholds",
+  "requested_probabilities": [
+    0.7,
+    0.15,
+    0.15
+  ],
+  "total_rows": 4709624,
+  "total_workloads": 473265,
+  "disjoint": true,
+  "unique_ordered_row_ordinals": true,
+  "splits": {
+    "train": {
+      "rows": 3223597,
+      "workloads": 330836,
+      "path": "/Users/tiloschan/Downloads/asi_robustness_20261020/selection_inputs/train.parquet",
+      "sha256": "ef0949fe1039baeff292e7d6ffc24502a5a65573caf62eaefb7d5e46ec1f4a37"
+    },
+    "validation": {
+      "rows": 752865,
+      "workloads": 70929,
+      "path": "/Users/tiloschan/Downloads/asi_robustness_20261020/selection_inputs/validation.parquet",
+      "sha256": "7db16f27169d1391cbf9c33e43c05cdfa7da6a09070a799bce4dae8ee1ce0525"
+    },
+    "test": {
+      "rows": 733162,
+      "workloads": 71500,
+      "path": "/Users/tiloschan/Downloads/asi_robustness_20261020/sealed_test/test.parquet",
+      "sha256": "60b7715fd8d3d307618dd27df3a858e3476cd4f72492d6240e294f99eb339dad"
+    }
+  },
+  "source_canonical_sha256": "10a3a86c977701c3c26f0bdce231aeb294676d71fef772b96309ceab3d21b0a0",
+  "configuration_sha256": "581ebe95ff21c4ea50ca65ec6417effd81d54687b41ee0b3f4dbc403061de9e0",
+  "split_map_sha256": "e06c43ec87176849b1073c73912eceb454b4094824531ae945b16d7847510c09"
+}

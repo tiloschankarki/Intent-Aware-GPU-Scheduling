@@ -1,0 +1,1002 @@
+You are taking over an existing ML-systems research project on a NEW
+Windows 11 execution machine.
+
+Machine:
+    Windows 11
+    AMD Ryzen 9
+    16 GiB LPDDR5X RAM
+    NVIDIA GeForce RTX 4060
+
+The project workspace already contains the research code/provenance
+transferred from the original macOS machine:
+
+    config/
+    docs/
+    scripts/
+    tests/
+    README_IMPLEMENTATION.md
+    README_PIPELINE.md
+
+IMPORTANT HIERARCHY:
+
+1. The transferred frozen scientific files are authoritative:
+       config/protocol.yaml
+       docs/protocol.md
+       existing scientific scripts/tests
+
+2. The numerical expectations below are reproducibility checks from the
+   previous machine.
+
+3. This prompt explains intent and execution order.
+
+Do NOT rewrite or reinterpret a frozen decision merely because this
+prompt summarizes it differently.
+
+If this prompt conflicts materially with config/protocol.yaml or
+docs/protocol.md:
+
+    STOP and report the conflict before scientific execution.
+
+Do not silently resolve it.
+
+======================================================================
+A. RESEARCH QUESTION — FROZEN
+======================================================================
+
+Primary question:
+
+Does prospective execution/lifecycle type provide incremental predictive
+value for individual GPU/ML job runtime beyond the prospective controls
+available in ASI, and does that improvement persist under stronger
+generalization such as unseen workloads?
+
+Formal construct:
+
+    prospective execution/lifecycle type
+
+Do NOT relabel this as generic "experimental objective."
+
+Preserve:
+
+L1 = execution/lifecycle type
+     training / development-debug / evaluation /
+     online inference / offline inference / etc.
+
+L2 = planned computational scope
+     epochs / steps / iterations / trials / etc.
+
+L3 = application/model semantics.
+
+L4 = workload/configuration identity.
+
+For ASI:
+
+    job_type_public   = L1 variable of interest
+    model_type_public = L3 control
+    workload_id       = L4-ish identity/configuration proxy
+
+ASI does not publicly provide all desired user/history or L2 planned-scope
+controls. Do not claim otherwise.
+
+======================================================================
+B. FIRST TASK — TAKEOVER AUDIT
+======================================================================
+
+Before downloading/training anything substantial:
+
+Inspect the ENTIRE transferred workspace.
+
+Specifically inspect:
+
+    config/protocol.yaml
+    docs/protocol.md
+    docs/DATASET_AUDIT.md
+    README_IMPLEMENTATION.md
+    README_PIPELINE.md
+
+    scripts/
+    tests/
+
+Determine:
+
+    frozen population definitions
+    frozen split implementation
+    all 12 LightGBM candidate configurations
+    seeds
+    categorical handling
+    target transformation
+    metrics
+    bootstrap implementation
+    safety checks
+    checkpoint/resume behavior
+    blacklist enforcement
+
+Run static/import checks appropriate for Windows.
+
+Do NOT modify scientific logic merely for style/refactoring.
+
+Windows path/environment compatibility fixes are allowed, but document
+them separately as portability changes.
+
+======================================================================
+C. WINDOWS ENVIRONMENT
+======================================================================
+
+Create a NEW Windows-compatible virtual environment inside or adjacent
+to the project.
+
+Do NOT attempt to reuse any macOS virtual environment.
+
+Use the dependency versions specified by the transferred project where
+available.
+
+Previously validated important versions include:
+
+    LightGBM 4.7.0
+    SciPy 1.18.1
+    PyYAML 6.0.3
+
+Determine Python, PyArrow, DuckDB, NumPy, pandas and other versions from
+the transferred files if pinned/documented.
+
+Do NOT silently change LightGBM versions.
+
+The experiment remains:
+
+    CPU LightGBM
+
+Do NOT switch to GPU LightGBM because this machine has an RTX 4060.
+
+Record:
+
+    OS
+    CPU
+    total RAM
+    Python version
+    package versions
+    free disk
+    pagefile/virtual-memory state where measurable
+
+======================================================================
+D. OFFICIAL DATA ACQUISITION
+======================================================================
+
+The raw Parquet was deliberately NOT transferred from macOS.
+
+Download a FRESH copy of the official Alibaba ASI execution-summary
+archive:
+
+https://tre-clusterdata.oss-cn-hangzhou.aliyuncs.com/cluster-trace-gpu-v2026/data/asi_opensource_job_execution_summary.zip
+
+Do NOT download:
+
+    asi_opensource_pod_hourly.zip
+
+The pod_hourly archive is approximately 351.8 GB and belongs to a
+separate temporal-robustness analysis.
+
+For the execution-summary archive record:
+
+    source URL
+    download timestamp
+    archive byte size
+    archive SHA-256
+
+Extract:
+
+    part-000.parquet
+
+Record:
+
+    extracted byte size
+    extracted SHA-256
+
+Keep the raw source immutable after validation.
+
+======================================================================
+E. SOURCE REPRODUCTION GATE
+======================================================================
+
+Independently audit the freshly downloaded Parquet.
+
+Expected source rows:
+
+    40,522,321
+
+Expected required columns:
+
+    pod_id
+    workload_id
+    server_id
+    gpu_spec_public
+    priority_class
+    job_type_public
+    model_type_public
+    is_genai_request
+    gpu_request
+    duration_hours
+    schedule_delay_sec
+    ready_delay_sec
+    ready_status
+    schedule_status
+
+Previously observed lifecycle counts:
+
+    offline_inference  32,194,936
+    online_inference    5,054,990
+    training            2,999,580
+    unknown               170,977
+    other                  70,130
+    dev                    31,708
+
+Previously observed:
+
+    unique pod IDs          36,685,018
+    unique workloads           501,183
+    non-null workload rows   4,792,402
+
+duration_hours previously had:
+
+    no missing/zero/negative values
+    median approximately 0.422222 h
+    p95 approximately 9.688889 h
+    p99 approximately 59.62222 h
+    maximum 1824 h
+
+Independently reproduce the critical values.
+
+If source row count, required schema, or lifecycle counts fail to
+reproduce:
+
+    STOP.
+
+Do NOT alter the scientific population to accommodate different data.
+
+======================================================================
+F. PRIMARY POPULATION — FROZEN
+======================================================================
+
+Use the population definition from the transferred frozen protocol.
+
+Expected definition:
+
+    workload_id IS NOT NULL
+
+AND:
+
+    job_type_public in:
+        training
+        offline_inference
+        online_inference
+        dev
+
+Expected exact result:
+
+    4,709,624 rows
+    473,265 unique workloads
+
+Reproduce this independently.
+
+If it does not reproduce exactly:
+
+    STOP.
+
+Do not sample.
+
+Do not manufacture workload IDs for missing values.
+
+======================================================================
+G. WORKLOAD-DISJOINT SPLIT — FROZEN
+======================================================================
+
+Use the existing frozen split implementation/manifest if present.
+
+Expected split seed:
+
+    20260927
+
+Grouping unit:
+
+    workload_id
+
+Expected exact split:
+
+TRAIN:
+    3,339,542 rows
+    331,486 workloads
+
+VALIDATION:
+      658,761 rows
+       71,074 workloads
+
+TEST:
+      711,321 rows
+       70,705 workloads
+
+Expected lifecycle counts:
+
+TRAIN:
+    training             2,091,126
+    offline_inference      764,755
+    online_inference       465,571
+    dev                     18,090
+
+VALIDATION:
+    training               426,146
+    offline_inference      131,683
+    online_inference        95,598
+    dev                      5,334
+
+TEST:
+    training               442,275
+    offline_inference      134,873
+    online_inference       128,791
+    dev                      5,382
+
+Assert:
+
+    train_workloads ∩ validation_workloads = empty
+    train_workloads ∩ test_workloads = empty
+    validation_workloads ∩ test_workloads = empty
+
+If exact reproduction fails:
+
+    STOP.
+
+Do NOT generate a different but approximately equivalent split.
+
+======================================================================
+H. CANONICAL MODELING ARTIFACT
+======================================================================
+
+After all preceding checks pass, create a compact canonical Parquet
+containing exactly the primary modeling population and at minimum:
+
+    workload_id
+    duration_hours
+    gpu_request
+    gpu_spec_public
+    priority_class
+    model_type_public
+    is_genai_request
+    job_type_public
+    split
+
+Do not aggregate.
+
+Do not sample.
+
+Do not target encode.
+
+Do not frequency encode.
+
+Do not discard workload_id.
+
+Use ordinary lossless Parquet categorical/dictionary compression where
+appropriate.
+
+After writing the artifact:
+
+CLOSE/RELEASE the construction object.
+
+Re-open the artifact FROM DISK in a fresh validation step.
+
+Verify:
+
+    rows = 4,709,624
+    workloads = 473,265
+
+    exact train/validation/test row counts
+    exact workload counts
+    exact lifecycle counts
+    zero workload overlap
+
+Record:
+
+    artifact byte size
+    SHA-256
+    schema
+    Parquet compression
+    row-group configuration
+    raw-source SHA-256
+    protocol/config hashes
+    preparation script hash
+
+Create a machine-readable manifest.
+
+======================================================================
+I. FEATURES — FROZEN
+======================================================================
+
+Target:
+
+    duration_hours
+
+Model target:
+
+    y = log1p(duration_hours)
+
+M0 = R + P + A:
+
+    gpu_request
+    gpu_spec_public
+    priority_class
+    model_type_public
+    is_genai_request
+
+M1 = R + P + A + O:
+
+    gpu_request
+    gpu_spec_public
+    priority_class
+    model_type_public
+    is_genai_request
+    job_type_public
+
+Therefore:
+
+    M0 = exactly 5 predictors
+    M1 = exactly 6 predictors
+
+M1 differs from M0 ONLY by job_type_public.
+
+workload_id is NOT a predictor.
+
+It is used for:
+
+    grouped splitting
+    workload-cluster bootstrap
+
+======================================================================
+J. BLACKLIST — FROZEN
+======================================================================
+
+Never use as prospective predictors:
+
+    duration_hours       [target]
+    schedule_delay_sec
+    ready_delay_sec
+    ready_status
+    schedule_status
+    server_id
+    pod_id
+
+Do not use utilization telemetry.
+
+Do not infer lifecycle from runtime/outcomes.
+
+Verify programmatically that blacklisted columns cannot enter the
+feature matrix.
+
+======================================================================
+K. MODEL — FROZEN
+======================================================================
+
+Use:
+
+    LightGBM 4.7.0
+    CPU
+
+Native categorical handling for:
+
+    gpu_spec_public
+    priority_class
+    model_type_public
+    is_genai_request
+
+and additionally M1:
+
+    job_type_public
+
+Do not switch to GPU training.
+
+Do not introduce:
+
+    target encoding
+    frequency encoding
+    lifecycle-derived features
+
+======================================================================
+L. TEST SUITE
+======================================================================
+
+Run the transferred tests.
+
+Expected historical state on macOS:
+
+    35 passed
+    0 failed
+
+The exact number may differ only if platform-specific tests are
+legitimately skipped/added by existing code.
+
+If a scientific/invariant test fails:
+
+    STOP.
+
+Do not weaken a test to make Windows pass.
+
+If only a Windows path/runtime compatibility issue exists, fix it with
+the smallest possible portability change and document:
+
+    file
+    exact change
+    reason
+    confirmation that scientific behavior is unchanged
+
+Re-run the full test suite afterward.
+
+======================================================================
+M. WINDOWS FULL-POPULATION FEASIBILITY GATE
+======================================================================
+
+ONLY after:
+
+    takeover audit passes
+    source reproduction passes
+    population/split reproduction passes
+    canonical artifact validates
+    test suite passes
+
+perform the full Windows feasibility gate.
+
+This remains:
+
+    ENGINEERING VALIDATION — NOT SCIENTIFIC RESULT
+
+Use the exact full 4,709,624-row population.
+
+Use the already-frozen representative configuration:
+
+    candidate 6
+    num_leaves = 31
+    min_data_in_leaf = 20
+    feature_fraction = 1.0
+
+Seed:
+
+    20260927
+
+Threads:
+
+    2
+
+Run exactly:
+
+    M0 once
+    M1 once
+
+Prefer separate fresh subprocesses.
+
+Measure independently:
+
+    preparation time
+    preparation peak RSS
+    training wall time
+    prediction wall time
+    worker peak RSS
+    system available RAM
+    Windows committed memory
+    pagefile behavior
+    temporary/spill disk
+    model size
+    warnings/errors
+
+Do NOT report M0-vs-M1 predictive effect from this feasibility gate.
+
+Do NOT compare its metrics against scientific thresholds.
+
+======================================================================
+N. FEASIBILITY SAFETY
+======================================================================
+
+This is a borrowed 16 GiB laptop.
+
+Do not intentionally OOM or severely thrash it.
+
+If there is:
+
+    dangerous memory pressure
+    sustained severe paging
+    rapidly growing commit/pagefile use
+    severe system unresponsiveness
+    impending OOM
+
+terminate the current worker cleanly if possible.
+
+Do NOT respond by:
+
+    sampling
+    dropping rows
+    dropping features
+    changing categories
+    changing target
+    changing split
+    changing candidate
+    switching to GPU
+
+If feasibility fails:
+
+    STOP.
+
+Return:
+
+    WINDOWS FULL WORKLOAD-DISJOINT NOT FEASIBLE
+
+No scientific training should follow.
+
+======================================================================
+O. IF AND ONLY IF WINDOWS FEASIBILITY PASSES
+======================================================================
+
+If the exact full-population M0 and M1 feasibility workers both complete
+safely with acceptable system behavior:
+
+    proceed directly to the frozen scientific experiment.
+
+Do not ask for redesign.
+
+Do not change protocol based on feasibility predictions/metrics.
+
+======================================================================
+P. HYPERPARAMETER SEARCH — USE TRANSFERRED PROTOCOL
+======================================================================
+
+Load the authoritative 12 candidate configurations from:
+
+    config/protocol.yaml
+
+Do not reconstruct them from this prompt.
+
+Do not modify them.
+
+M0 and M1 receive the SAME candidate budget.
+
+Selection criterion:
+
+    validation LogMAE only.
+
+The test set remains untouched until selection is complete/frozen.
+
+======================================================================
+Q. MODEL SEEDS — FROZEN
+======================================================================
+
+Use:
+
+    20260927
+    20260928
+    20260929
+
+The workload split remains fixed.
+
+Follow the exact seed/candidate semantics implemented in the transferred
+protocol/code.
+
+======================================================================
+R. RESULT-BLIND EXECUTION
+======================================================================
+
+Execute in stages:
+
+STAGE A
+    validate source/population/split/artifact
+
+STAGE B
+    perform required training and VALIDATION-only candidate selection
+
+STAGE C
+    persist/freeze selected configurations before final test comparison
+
+STAGE D
+    evaluate untouched TEST data for all required seeds
+
+STAGE E
+    perform paired workload bootstrap and frozen stratified analyses
+
+Do not inspect an early test result and change later execution choices.
+
+Checkpoint all long-running work.
+
+The pipeline must be restartable after interruption.
+
+======================================================================
+S. METRICS — FROZEN
+======================================================================
+
+Primary:
+
+    MAE on log1p(duration_hours)
+
+Define:
+
+    delta_absolute =
+        MAE(M0) - MAE(M1)
+
+    delta_relative_percent =
+        100 * (MAE(M0) - MAE(M1)) / MAE(M0)
+
+Also report:
+
+    Spearman correlation
+
+    interpretable original-duration error summaries
+
+    lifecycle-stratified errors
+
+    duration-tail-stratified errors
+
+Frozen duration bins:
+
+    <1h
+    1–6h
+    6–24h
+    1–3d
+    3–7d
+    7–14d
+    14–28d
+    >=28d
+
+======================================================================
+T. WORKLOAD-CLUSTER BOOTSTRAP — FROZEN
+======================================================================
+
+Use:
+
+    1000 replicates
+
+Sampling unit:
+
+    TEST workload_id
+
+For each replicate:
+
+    sample test workload IDs with replacement
+
+    include all rows belonging to each sampled workload
+
+    use the SAME sampled workloads for paired M0/M1 comparison
+
+Bootstrap completed paired predictions/losses.
+
+Do NOT retrain LightGBM during bootstrap.
+
+Report percentile 95% CIs for:
+
+    absolute LogMAE improvement
+    relative LogMAE improvement
+
+======================================================================
+U. SECONDARY FINITE-EXECUTION ANALYSIS
+======================================================================
+
+Run the preplanned secondary analysis:
+
+    training
+    versus
+    offline_inference
+
+Purpose:
+
+Determine whether lifecycle information remains useful when avoiding
+the particularly long-lived Dev/Online distinction.
+
+Do not replace the four-lifecycle primary analysis with this result.
+
+Any existing 784-row exact matched cohort remains a secondary diagnostic
+only if supported by the transferred frozen implementation.
+
+It is NOT the primary analysis.
+
+======================================================================
+V. PRE-FROZEN TRIAGE RULES
+======================================================================
+
+These rules were selected before scientific results.
+
+STRONG:
+
+    approximately >=3% relative primary LogMAE improvement under
+    workload-disjoint generalization
+
+OR
+
+    clearly >=5% effect in an important finite/tail subgroup,
+    stable across seeds/bootstrap.
+
+WEAK / POTENTIALLY INTERESTING:
+
+    approximately 1–3% surviving strong generalization,
+    requiring mechanism/error analysis.
+
+KILL AS STANDALONE CONTRIBUTION:
+
+    <=1%
+
+OR
+
+    benefit exists under easier/random/seen-workload evaluation but
+    disappears under unseen-workload generalization
+
+OR
+
+    apparent value is predominantly trivial separation of long-lived
+    Dev/Online processes without meaningful finite-execution evidence.
+
+Statistical significance alone is insufficient given dataset scale.
+
+Do not move these thresholds after observing results.
+
+======================================================================
+W. SCIENTIFIC INTERPRETATION
+======================================================================
+
+After the ENTIRE frozen experiment completes, answer:
+
+1. Does job_type_public materially improve runtime prediction on unseen
+   workloads?
+
+2. How large is the improvement?
+
+3. Is it stable across the three model seeds?
+
+4. Does the paired workload bootstrap support a robust effect?
+
+5. Does useful signal remain in Training vs Offline inference?
+
+6. Is the effect broadly useful or mostly caused by Dev/Online
+   long-lived behavior?
+
+7. Does it clear the pre-frozen standalone-contribution threshold?
+
+Do NOT rescue a weak result by:
+
+    redefining lifecycle
+    changing population
+    changing controls
+    changing thresholds
+    changing evaluation
+    adding post-hoc features
+
+======================================================================
+X. FINAL RESEARCH DECISION
+======================================================================
+
+After all frozen analyses are complete, return exactly one high-level
+triage classification:
+
+    CONTINUE — STRONG
+
+or
+
+    CONTINUE — WEAK / NEEDS MECHANISM
+
+or
+
+    KILL AS STANDALONE CONTRIBUTION
+
+Explain the decision using the pre-frozen criteria.
+
+======================================================================
+Y. THINGS NOT AUTHORIZED
+======================================================================
+
+Do NOT during this task:
+
+    run the broad ~40M scientific experiment
+    scientifically replace it with a random sample
+
+    download pod_hourly
+    run D108-D110 temporal robustness
+
+    change the research question
+
+    change frozen thresholds
+
+    change frozen feature groups
+
+    switch to GPU LightGBM
+
+    add a model zoo
+
+    invent missing L2/user/history controls
+
+    claim ASI supports controls it does not expose
+
+======================================================================
+Z. FINAL PORTABLE PACKAGE
+======================================================================
+
+After the scientific experiment completes successfully, create a
+portable package suitable for upload to Drive and later archival on the
+original Mac.
+
+Include at minimum:
+
+    canonical modeling Parquet
+    canonical-data manifest
+    split manifest
+
+    config/protocol.yaml
+    docs/protocol.md
+    docs/DATASET_AUDIT.md
+
+    exact preprocessing scripts
+    exact training/evaluation scripts
+    tests
+
+    dependency/environment specification
+
+    validation candidate results
+    selected-configuration manifests
+
+    final test predictions sufficient to reproduce metrics
+    paired losses needed for bootstrap
+    bootstrap outputs
+    stratified result tables
+
+    feasibility report
+    final scientific report
+
+    SHA-256 manifest for important files
+
+Include trained models if reasonably sized.
+
+Do NOT include:
+
+    virtual environment
+    caches
+    temporary/spill files
+    pod_hourly
+    unnecessary raw intermediates
+
+The original raw execution-summary archive/Parquet does not need to be
+included in the portable final package if its official URL and hashes
+are recorded and the canonical dataset is included.
+
+======================================================================
+FINAL REPORTING
+======================================================================
+
+At completion report separately:
+
+TAKEOVER:
+    transferred protocol consistency
+    test results
+    Windows-specific changes
+
+DATA:
+    archive/source hashes
+    source reproduction
+    canonical artifact size/hash
+    exact population/split validation
+
+FEASIBILITY:
+    M0/M1 resource use
+    RAM/pagefile behavior
+    whether Windows full-population feasibility passed
+
+SCIENCE:
+    selected candidates
+    per-seed primary M0/M1 LogMAE
+    absolute and relative improvements
+    bootstrap 95% CIs
+    Spearman
+    original-duration metrics
+    lifecycle/tail analyses
+    Training-vs-Offline result
+
+DECISION:
+    CONTINUE — STRONG
+    CONTINUE — WEAK / NEEDS MECHANISM
+    or
+    KILL AS STANDALONE CONTRIBUTION
+
+EXPORT:
+    package location
+    package size
+    checksum manifest
+
+If any mandatory gate fails, STOP at that gate and report the failure.
+
+Do not bypass a failed gate to obtain a scientific result.

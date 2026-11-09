@@ -1,0 +1,40 @@
+{
+  "gpu_spec_public": [
+    "A10",
+    "A100",
+    "A30",
+    "A800",
+    "H20",
+    "H20-141GB",
+    "H800",
+    "L20",
+    "XPU-A",
+    "XPU-B",
+    "XPU-C",
+    "XPU-D",
+    "XPU-E"
+  ],
+  "priority_class": [
+    "HP",
+    "LP",
+    "Other"
+  ],
+  "model_type_public": [
+    "cv",
+    "dev",
+    "embedding",
+    "genai",
+    "rec",
+    "unknown"
+  ],
+  "is_genai_request": [
+    "False",
+    "True"
+  ],
+  "job_type_public": [
+    "dev",
+    "offline_inference",
+    "online_inference",
+    "training"
+  ]
+}

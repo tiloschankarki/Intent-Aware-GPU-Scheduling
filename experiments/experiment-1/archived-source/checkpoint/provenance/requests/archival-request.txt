@@ -1,0 +1,365 @@
+We are stopping execution on this Windows laptop and need to create a
+complete, portable research checkpoint before leaving the machine.
+
+DO NOT run scientific training.
+DO NOT change the scientific protocol.
+DO NOT change the feasibility result.
+DO NOT delete existing artifacts.
+
+Your task is archival/provenance only.
+
+============================================================
+1. CREATE CHECKPOINT.md
+============================================================
+
+Create:
+
+    CHECKPOINT.md
+
+at the project root.
+
+This document must be sufficiently complete that a future Codex session
+with NO access to today's conversation can understand exactly:
+
+- what research question is being tested,
+- what has already been ruled out,
+- what dataset is being used,
+- what scientific protocol is frozen,
+- what implementation exists,
+- what validation has passed,
+- why execution stopped,
+- what has NOT yet been scientifically tested,
+- and exactly how to resume.
+
+Use the existing repository files, reports, manifests, protocol,
+implementation, and today's generated outputs as authoritative sources.
+
+Do not reconstruct facts from memory if they are available in files.
+
+Include at minimum:
+
+A. PROJECT STATUS
+
+State prominently:
+
+    SCIENTIFIC EXPERIMENT HAS NOT YET RUN.
+
+Neither full-population feasibility M0 nor M1 started on the Windows
+machine.
+
+Therefore there is currently NO scientific evidence for or against the
+lifecycle-type hypothesis.
+
+B. FROZEN RESEARCH QUESTION
+
+Record the exact frozen research question and distinguish:
+
+    L1 execution/lifecycle type
+    L2 planned computational scope
+    L3 application/model semantics
+    L4 workload/configuration identity
+
+Preserve "prospective execution/lifecycle type" terminology.
+
+C. DATASET
+
+Document Alibaba ASI / GPU Cluster Trace v2026.
+
+Record:
+
+- official source URL
+- source archive hash/size if available
+- extracted source hash/size
+- relevant schema
+- lifecycle values
+- provenance conclusions
+- blacklisted fields
+- limitations of ASI controls
+
+D. FROZEN SCIENTIFIC PROTOCOL
+
+Summarize WITHOUT replacing config/protocol.yaml:
+
+- primary population
+- M0 features
+- M1 features
+- target
+- log1p transformation
+- workload-disjoint split
+- split seed
+- model seeds
+- LightGBM version
+- CPU requirement
+- 12 frozen candidates
+- validation-only selection
+- untouched-test rule
+- bootstrap
+- secondary Training-vs-Offline analysis
+- frozen triage thresholds
+
+Clearly state:
+
+    config/protocol.yaml remains authoritative.
+
+E. EXACT REPRODUCED DATA COUNTS
+
+Record the independently reproduced values from today's successful
+Windows validation, including:
+
+    source rows = 40,522,321
+
+    primary rows = 4,709,624
+    primary workloads = 473,265
+
+and the exact frozen train/validation/test row and workload counts.
+
+Include lifecycle-by-split counts if available in the validated reports.
+
+F. IMPLEMENTATION HISTORY
+
+Record:
+
+- original Mac implementation
+- original 35-test validation
+- Mac full-population feasibility failure
+- transfer to Windows
+- fresh Windows environment
+- exact dependency versions
+- 35/35 original tests passing before safeguard work
+- engineering safeguards subsequently added
+- restartability/checkpointing
+- validation-selection freeze before test access
+- Windows resource/safety monitoring
+- associated invariant tests
+- final total = 54 tests passed
+
+Distinguish engineering changes from scientific changes.
+
+Explicitly state whether config/protocol.yaml changed scientifically.
+
+G. WINDOWS FEASIBILITY RESULT
+
+Record exactly:
+
+    WINDOWS FULL WORKLOAD-DISJOINT NOT FEASIBLE
+
+Reason:
+
+    feasibility preflight observed 2.26 GiB commit headroom
+    predeclared minimum = 3 GiB
+
+Therefore:
+
+    neither M0 nor M1 started
+    scientific execution stopped as required
+
+Do NOT describe this as a negative scientific result.
+
+H. CANONICAL ARTIFACT
+
+Document the validated canonical modeling artifact:
+
+- path/name
+- row count
+- workload count
+- schema
+- size
+- SHA-256
+- split validation
+- source/protocol relationships
+
+Use exact values from manifests/reports rather than guessing.
+
+I. NEXT MACHINE REQUIREMENT
+
+Recommended next execution environment:
+
+    >=32 GiB RAM
+    CPU LightGBM
+
+64 GiB is preferable if conveniently available.
+
+GPU acceleration is NOT required and must not replace the frozen CPU
+LightGBM protocol.
+
+The next machine must still run the feasibility gate before scientific
+execution.
+
+J. EXACT RESUME PROCEDURE
+
+Provide numbered instructions for the future execution machine:
+
+1. copy/extract the archived checkpoint
+2. verify SHA-256 manifest
+3. create fresh environment
+4. install exact recorded dependencies
+5. run complete test suite; expect 54 passing unless documented
+   platform-specific behavior explains otherwise
+6. verify frozen protocol/config hashes
+7. obtain/locate canonical/source data according to manifests
+8. verify all data hashes/counts/splits
+9. run full-population feasibility gate
+10. if feasibility fails, stop
+11. if feasibility passes, proceed to frozen scientific experiment
+12. perform validation-only candidate selection
+13. persist/freeze selected configurations
+14. evaluate untouched test set
+15. run paired 1000-workload bootstrap
+16. run Training-vs-Offline secondary analysis
+17. run frozen stratified/tail analyses
+18. apply PRE-FROZEN triage thresholds
+19. return exactly:
+       CONTINUE — STRONG
+       CONTINUE — WEAK / NEEDS MECHANISM
+       or
+       KILL AS STANDALONE CONTRIBUTION
+
+K. DO-NOT-CHANGE SECTION
+
+Explicitly list frozen items that future agents must not alter merely to
+obtain a result.
+
+L. IMPORTANT FILE MAP
+
+Explain what the major files/directories are and which are authoritative.
+
+============================================================
+2. BUILD FINAL ARCHIVAL PACKAGE
+============================================================
+
+Inspect the current project and create a clean archival directory:
+
+    asi_checkpoint_2026-10-06/
+
+Include all files necessary to reproduce/resume the project, including
+at minimum:
+
+    CHECKPOINT.md
+
+    config/
+    docs/
+    scripts/
+    tests/
+
+    README_IMPLEMENTATION.md
+    README_PIPELINE.md
+
+    engineering safeguard implementation
+
+    dependency/environment specification
+
+    protocol/configuration files
+
+    split manifest(s)
+
+    canonical-data manifest(s)
+
+    source/data provenance manifests
+
+    audit results
+
+    feasibility reports
+
+    Windows takeover report
+
+    implementation reports
+
+    checkpoint/resume metadata
+
+    checksum files
+
+Include the canonical modeling Parquet IF it is part of the validated
+portable checkpoint and reasonably sized.
+
+Do NOT include:
+
+    virtual environments
+    __pycache__
+    caches
+    temporary files
+    spill files
+    downloaded 351 GB pod_hourly data
+    unrelated files
+
+Do not unnecessarily duplicate the raw 40M execution-summary Parquet if
+the official URL + exact cryptographic hash + reproducible canonical
+artifact are sufficient.
+
+============================================================
+3. CREATE ARCHIVE + CHECKSUMS
+============================================================
+
+Create:
+
+    asi_checkpoint_2026-10-06.zip
+
+Generate:
+
+    SHA256SUMS.txt
+
+covering the important archived files and the final ZIP itself where
+practical.
+
+After creating the ZIP:
+
+- reopen/test the archive,
+- verify CHECKPOINT.md exists,
+- verify config/protocol.yaml exists,
+- verify scripts and tests exist,
+- verify the expected reports/manifests exist,
+- report ZIP byte size,
+- report ZIP SHA-256.
+
+Do not declare archival success unless the ZIP can be read back.
+
+============================================================
+4. DRIVE UPLOAD
+============================================================
+
+If this Codex environment has authenticated access to my Google Drive
+and is permitted to upload files:
+
+Create/use a clearly named folder such as:
+
+    ASI Research Checkpoint 2026-10-06
+
+Upload:
+
+    asi_checkpoint_2026-10-06.zip
+    CHECKPOINT.md
+    SHA256SUMS.txt
+
+Also upload the final Windows takeover/feasibility report separately for
+easy inspection.
+
+Do NOT overwrite older research checkpoints unless explicitly necessary.
+
+If Google Drive upload is NOT available from this environment:
+
+DO NOT claim it was uploaded.
+
+Instead place all final upload-ready files together in a clearly named
+local output directory and tell me its exact Windows path so I can drag
+that directory/files into Drive manually.
+
+============================================================
+5. FINAL VERIFICATION
+============================================================
+
+At the end report:
+
+- CHECKPOINT.md path
+- archival directory path
+- ZIP path
+- ZIP size
+- ZIP SHA-256
+- test status
+- whether canonical data is included
+- whether Drive upload actually succeeded
+- Drive destination if successful
+- otherwise exact files I need to upload manually
+
+Most important invariant:
+
+This archival task must not alter the frozen scientific experiment or
+turn the Windows feasibility failure into a scientific conclusion.

@@ -1,0 +1,71 @@
+{
+  "historical_test_workloads": [
+    70705,
+    71500
+  ],
+  "overlap_workloads": 10557,
+  "excluded_union_workloads": 131648,
+  "original_workloads": 473265,
+  "eligible_workloads": 341617,
+  "historical_partition_seeds": [
+    20260927,
+    20261020
+  ],
+  "original_executions": 4709624,
+  "eligible_executions": 3372430,
+  "excluded_union_executions": 1337194,
+  "original_population_source": "saved archival metadata: 4,709,624 rows / 473,265 workloads",
+  "eligible_workload_fraction": 0.7218302642282864,
+  "eligible_execution_fraction": 0.7160720261320225,
+  "label": "new restricted-population robustness study; not direct full-population replication",
+  "source_train_validation_counts": [
+    {
+      "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/train_20260927.parquet",
+      "rows": 3339542,
+      "eligible_rows": 2822729,
+      "excluded_rows": 516813
+    },
+    {
+      "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/validation_20260927.parquet",
+      "rows": 658761,
+      "eligible_rows": 549701,
+      "excluded_rows": 109060
+    }
+  ],
+  "historical_test_files_opened": false,
+  "historical_test_outcomes_inspected": false,
+  "historical_ids_use": "only exclusion membership and exclusion counts; not exported",
+  "eligible_selection": "inner join original seed-20260927 train/validation to eligible IDs before returning any features/outcomes",
+  "maps": [
+    {
+      "seed": 20260927,
+      "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/split-map.parquet",
+      "sha256": "222d5c8464ccb48e9a507a81fd838728cee5707e380254340a9c0917426cbaf1",
+      "columns": [
+        "workload_id",
+        "split"
+      ]
+    },
+    {
+      "seed": 20261020,
+      "path": "/Users/tiloschan/Downloads/asi_robustness_20261020/split_map.parquet",
+      "sha256": "e06c43ec87176849b1073c73912eceb454b4094824531ae945b16d7847510c09",
+      "columns": [
+        "workload_id",
+        "split"
+      ]
+    }
+  ],
+  "source_inputs": [
+    {
+      "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/train_20260927.parquet",
+      "sha256": "18f6cbc9e7c12caf23e3f3ee2591aed608be773b114f4e19e8de9a2abd9a3e2a"
+    },
+    {
+      "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/validation_20260927.parquet",
+      "sha256": "ced84beb3cebfb1faee3321e243965b35a042288f30fe40aeafe960dec56f8dd"
+    }
+  ],
+  "feature_target_processing": "copied original features and duration_hours; no re-cleaning, target transform applied at fit time",
+  "prior_inputs_unchanged": true
+}

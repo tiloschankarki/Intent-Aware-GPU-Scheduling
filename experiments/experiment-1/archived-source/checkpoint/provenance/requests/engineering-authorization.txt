@@ -1,0 +1,240 @@
+Authorization granted to add the missing ENGINEERING safeguards required
+for Windows execution.
+
+You may modify/add engineering infrastructure necessary for:
+
+1. restartable/checkpointed training,
+2. persisting/finalizing validation-selected configurations BEFORE any
+   test-set evaluation,
+3. Windows full-population feasibility monitoring and safe termination,
+4. logging, manifests, resume state, and resource monitoring required to
+   make the run reproducible and safe.
+
+This authorization does NOT permit changes to frozen scientific logic.
+
+DO NOT change:
+
+- research question
+- population definitions
+- workload-disjoint split or seed
+- M0/M1 feature definitions
+- target or transformation
+- blacklist
+- categorical handling
+- LightGBM 4.7.0
+- CPU training
+- the 12 frozen candidate configurations in config/protocol.yaml
+- model seeds
+- validation-only model-selection criterion
+- metrics
+- bootstrap procedure
+- secondary finite-execution analysis
+- triage thresholds
+
+Do not replace or reinterpret config/protocol.yaml.
+
+============================================================
+IMPLEMENT THE ENGINEERING SAFEGUARDS FIRST
+============================================================
+
+A. RESTARTABILITY
+
+Make long-running training restartable at the smallest sensible completed
+unit, preferably candidate/model/seed/population stage as supported by
+the existing pipeline.
+
+A completed unit must be written atomically with enough metadata to
+verify that it belongs to the current:
+
+- source dataset hash
+- canonical dataset hash
+- protocol/config hash
+- split manifest hash
+- code/version state
+- model seed
+- candidate ID
+- feature set
+
+On resume:
+
+- reuse only successfully completed compatible units,
+- never silently reuse stale/incompatible results,
+- never treat a partially written result as complete.
+
+Do not alter model fitting behavior to achieve restartability.
+
+============================================================
+B. VALIDATION-SELECTION FREEZE
+============================================================
+
+Enforce a hard phase boundary:
+
+PHASE 1:
+    candidate training + VALIDATION evaluation only
+
+PHASE 2:
+    choose candidates using the existing frozen validation LogMAE rule
+
+PHASE 3:
+    write an immutable/frozen selection manifest to disk
+
+PHASE 4:
+    only after that manifest exists and validates may TEST predictions
+    or TEST metrics be produced.
+
+The selection manifest must contain enough information to reproduce why
+each selected configuration was chosen, including:
+
+- candidate results on validation
+- selected candidate ID/configuration
+- model/population/seed context required by the existing protocol
+- protocol hash
+- dataset/split hashes
+- timestamp
+- code/version identifier where available
+
+The test evaluation code must refuse to run if the required valid frozen
+selection manifest does not exist.
+
+Do not inspect test performance while selecting configurations.
+
+============================================================
+C. WINDOWS FEASIBILITY SAFETY
+============================================================
+
+Implement the feasibility gate described in the takeover prompt.
+
+It must run the exact full primary workload-disjoint population with:
+
+    candidate 6
+    seed 20260927
+    CPU LightGBM
+    2 threads
+
+and execute M0 and M1 preferably as separate fresh worker processes.
+
+Monitor/log, where Windows permits:
+
+- worker RSS
+- system available physical memory
+- committed memory / commit limit
+- pagefile use or equivalent observable paging indicators
+- wall time
+- temporary/spill disk growth
+- worker exit status
+- warnings/errors
+
+Use conservative safety limits appropriate for a borrowed 16 GiB
+Windows laptop.
+
+The monitor may terminate a worker to prevent OOM/severe thrashing.
+
+It may NOT respond to memory pressure by:
+
+- sampling rows
+- changing population
+- changing features
+- changing split
+- changing LightGBM candidate
+- changing model parameters
+- switching to GPU
+- altering target/categories
+
+If a worker is terminated for safety:
+
+    feasibility = FAILED
+
+and scientific execution must remain blocked.
+
+Do not interpret predictive M0-vs-M1 differences from feasibility runs.
+
+============================================================
+D. SCIENTIFIC INVARIANCE TESTS
+============================================================
+
+Add tests for the new safeguards.
+
+At minimum test:
+
+- checkpoint compatibility/rejection
+- partial checkpoint rejection
+- validation-selection manifest creation
+- test access blocked before selection freeze
+- test access permitted after valid freeze
+- protocol/hash mismatch rejection
+- feasibility monitor behavior without changing scientific inputs
+
+Preserve all existing tests.
+
+After implementation run the complete test suite.
+
+All original 35 tests must still pass.
+
+============================================================
+E. AUDIT THE CHANGES
+============================================================
+
+Produce an engineering-change report containing:
+
+- files added
+- files modified
+- concise diff-level description of each change
+- why each change was required
+- confirmation that config/protocol.yaml was not scientifically modified
+- confirmation that populations/features/splits/model candidates/seeds/
+  metrics/thresholds remain unchanged
+- complete test result
+
+Do NOT download the ASI research dataset yet while implementing these
+safeguards.
+
+============================================================
+F. AFTER SAFEGUARDS PASS
+============================================================
+
+Once:
+
+1. all original tests pass,
+2. all new safeguard tests pass,
+3. no frozen scientific invariant changed,
+
+you are authorized to continue the previously supplied takeover prompt
+from the DATA ACQUISITION stage.
+
+Download the official ASI execution-summary archive only.
+
+Then perform, in order:
+
+1. source reproduction gate,
+2. primary-population reproduction gate,
+3. exact workload-disjoint split reproduction,
+4. canonical modeling artifact construction + reopen/hash validation,
+5. Windows full-population feasibility gate.
+
+If ANY mandatory numerical reproduction gate fails:
+
+    STOP.
+
+If Windows feasibility fails:
+
+    STOP.
+
+If Windows feasibility passes safely:
+
+    continue automatically into the frozen scientific experiment using
+    the previously supplied protocol.
+
+Do not ask for another authorization merely because the feasibility gate
+passed.
+
+============================================================
+FINAL RULE
+============================================================
+
+Engineering changes are authorized.
+
+Scientific changes are not.
+
+If implementing an engineering safeguard would require changing frozen
+scientific behavior, STOP and explain exactly why instead of making the
+change.

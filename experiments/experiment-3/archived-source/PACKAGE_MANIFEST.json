@@ -1,0 +1,16 @@
+{
+  "exp3_runner.py": "920ffa415981344292a5e4a0465ad9962e55143a8d67e32fa5980f5f6fb97be4",
+  "frozen_reference.py": "1ee397b75425fb70267b5db3a15f9a64553f016f272a62206b85bc2c217f6bec",
+  "original_protocol.json": "4908e86e7526c8ecc298facd46089ac94fd4dec5094eee47af24987237653e61",
+  "source_provenance.json": "c9bac18018ef7a8a07ab0cc23ef98da71025d385ea05fb6214f882e107da3e16",
+  "population_audit.json": "1f7c6b26ac9a4178721f90aadaec3a5ee93a1f3bf1647c799c700315045f806b",
+  "README.md": "582eebb0098f390fdd8743eaa48dba1ad55783937aef73f80547a5f41ddf4ef3",
+  "verification.json": "d7813eaee27eed376e8e773329d0808ffc10b7d8dfc9ce9f7cc4a61c07daa203",
+  "inputs/eligible.parquet": "07bd7190719877140716f2745391363f6915b77ade4cf6dd6cf1e280e8dc91b4",
+  "inputs/population_audit.json": "1f7c6b26ac9a4178721f90aadaec3a5ee93a1f3bf1647c799c700315045f806b",
+  "inputs/bundle_manifest.json": "dc6c41f425cdd364c07b4af2ee0c33b78a36fb1eea255589c0e2f39203ac170e",
+  "reference_source/execution.py": "3bbbc97cd38e675202d4b1845bca15532a92f93bd7443e3da01441fd1de4aff7",
+  "reference_source/prepare_eligible.py": "9e6689388a1f17562259ea3570e9c95c43e990f4c24d61454e098523a1f651da",
+  "reference_source/safety.py": "fa42eeffd7e005b8e9a4ec2ab93e46dfb0f9aa4d3ac0c7be5cae541a0ce4c609",
+  "reference_source/modeling.py": "18563ed3247e48a9f3225140f9d4c326da9e7ad1beef4af0434d77581ff270a9"
+}

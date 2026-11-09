@@ -1,0 +1,32 @@
+{
+  "result": {
+    "candidate_id": 3,
+    "validation_log_mae": 0.8141400482411273,
+    "best_iteration": 21,
+    "parameters": {
+      "objective": "regression_l1",
+      "metric": "l1",
+      "learning_rate": 0.05,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 1,
+      "verbosity": -1,
+      "num_threads": 2,
+      "deterministic": true,
+      "force_col_wise": true,
+      "feature_pre_filter": false,
+      "num_leaves": 15,
+      "min_data_in_leaf": 100,
+      "feature_fraction": 0.8,
+      "seed": 20260927,
+      "bagging_seed": 20260927,
+      "feature_fraction_seed": 20260927,
+      "data_random_seed": 20260927
+    }
+  },
+  "timing": {
+    "training_seconds": 26.233896483999615,
+    "prediction_seconds": 0.5393947269999444
+  },
+  "peak_rss_bytes": 3061178368,
+  "elapsed_seconds": 26.841575166999974
+}

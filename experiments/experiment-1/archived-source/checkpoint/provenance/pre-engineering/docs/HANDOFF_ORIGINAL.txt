@@ -1,0 +1,1901 @@
+You are taking over implementation of an ML-systems empirical research project.
+
+You are entering AFTER hypothesis development, prior-art auditing, dataset auditing, and protocol design. Your role is primarily SOFTWARE ENGINEERING AND REPRODUCIBLE EXPERIMENT IMPLEMENTATION.
+
+The scientific protocol is frozen before observing the main lifecycle-ablation results.
+
+CRITICAL RULE:
+
+DO NOT change the scientific design because another design appears easier, produces better results, gives more rows, or seems statistically stronger.
+
+If an implementation issue conflicts with the frozen protocol:
+    STOP,
+    explain the conflict,
+    show evidence,
+    propose possible resolutions,
+    and WAIT for an explicit research decision.
+
+Do not silently make that decision yourself.
+
+============================================================
+0. FIRST ACTION — INSPECT BEFORE MODIFYING
+============================================================
+
+The repository should be around:
+
+    ~/Desktop/asi_dataset
+
+Before writing or changing experiment code:
+
+1. Inspect the repository structure.
+2. Inspect existing scripts.
+3. Inspect schemas/metadata of existing Parquet and DuckDB artifacts.
+4. Verify that the expected dataset version is present.
+5. Compare actual repository state against the frozen context below.
+6. Report discrepancies.
+7. Present an implementation plan.
+8. Run only inexpensive schema/smoke checks initially.
+
+Do NOT immediately:
+    - launch full LightGBM training,
+    - download several GiB of pod_hourly,
+    - scan all 185 days,
+    - rewrite working audit scripts,
+    - delete existing artifacts.
+
+Preserve existing research artifacts.
+
+============================================================
+1. RESEARCH QUESTION
+============================================================
+
+The final research question is:
+
+"Does prospective execution/lifecycle type provide incremental predictive
+value for individual GPU/ML job runtime beyond other prospective
+information?"
+
+For the Alibaba ASI dataset specifically:
+
+"Does job_type_public improve individual execution-duration prediction
+beyond the prospective controls available in ASI, and does that
+improvement persist under stronger generalization settings such as
+unseen workloads?"
+
+This is a PREDICTIVE / INFORMATION-CONTRIBUTION study.
+
+It is NOT a causal study.
+
+Formal comparison:
+
+    M0: T_hat = f(X)
+
+    M1: T_hat = f(X, O)
+
+where:
+
+    T = individual execution runtime
+
+    O = prospective execution/lifecycle type
+
+    X = other legitimately available prospective information
+
+The scientific quantity of interest is the incremental predictive value
+of O.
+
+============================================================
+2. TERMINOLOGY — DO NOT BLUR THESE CONSTRUCTS
+============================================================
+
+We deliberately distinguish:
+
+L1 — prospective execution/lifecycle type
+    training
+    development/debugging
+    evaluation
+    online inference
+    offline inference
+    fine-tuning
+    pretraining
+    etc.
+
+L2 — planned computational scope
+    epochs
+    max_steps
+    iterations
+    token budget
+    trial count
+    checkpoint/resume plans
+    etc.
+
+L3 — application/model semantics
+    LLM
+    CV
+    recommendation
+    model family
+    architecture
+    etc.
+
+L4 — workload/configuration identity
+    script/config identity
+    workload ID
+    recurring configuration
+    etc.
+
+Do NOT call L2/L3/L4 "experimental objective."
+
+The formal construct being studied is:
+
+    prospective execution/lifecycle type
+
+not generic "semantics" and not generic "experimental objective."
+
+============================================================
+3. WHY THIS QUESTION SURVIVED PRIOR AUDITING
+============================================================
+
+Several earlier directions were investigated and rejected.
+
+A. Original "experimental objective" idea
+
+The original concept involved debugging, evaluation, HPO, final training,
+etc.
+
+Public traces generally did not expose a sufficiently clean,
+documented, prospective objective label.
+
+The project was narrowed rather than stretching other variables into
+that construct.
+
+B. AcmeTrace
+
+AcmeTrace had attractive labels such as:
+    Eval
+    Pretrain
+    SFT
+    MLLM
+    Debug
+    Other
+
+However, correspondence with an author established that released
+categories were determined using post-execution information, especially
+job-name hints and job duration.
+
+Thus the released label effectively involved:
+
+    type = g(job-name hints, duration)
+
+Using it to predict duration would introduce target leakage.
+
+AcmeTrace was rejected.
+
+C. PAI
+
+PAI exposes useful semantics but primarily L3/L4/task-role information,
+not a sufficiently clean prospective job-level L1 objective.
+
+Do not stretch PAI variables into L1.
+
+D. Completion-aware / scheduler-feedback direction
+
+We investigated delayed runtime-label availability and
+scheduler-dependent feedback loops.
+
+Prior-art auditing showed substantial precedent for event-driven
+runtime updates and related feedback mechanisms.
+
+That direction was killed.
+
+E. Generic "semantics improves runtime prediction"
+
+This is too broad and crowded.
+
+Prior systems already use application type, scripts, model/configuration
+information, workload identity, etc.
+
+The unresolved question is narrower:
+
+Does prospective lifecycle type provide incremental predictive
+information after legitimate controls and under strong generalization?
+
+============================================================
+4. PRIOR-ART STATUS
+============================================================
+
+A bounded prior-art audit was completed before this experiment.
+
+Nearby work includes:
+    PolarisProfiler
+    GradSched
+    historical HPC batch/interactive runtime prediction
+    Menear-style application inclusion/exclusion experiments
+    SchedMate
+    ORA
+    ATLAS
+    related learning-assisted scheduling/runtime systems
+
+No VERIFIED study found in the bounded audit cleanly answered the exact
+question:
+
+    incremental individual GPU/ML runtime-predictive value of
+    prospective lifecycle type beyond strong prospective controls
+
+This is a bounded negative search.
+
+Do NOT claim:
+    "no prior paper exists."
+
+Do NOT claim:
+    lifecycle metadata itself is novel.
+
+Main novelty risk:
+
+    the result could amount merely to a missing ablation of a familiar
+    feature.
+
+Therefore generalization, robustness, and mechanism/error analysis are
+important.
+
+============================================================
+5. MAIN DATASET
+============================================================
+
+Dataset:
+
+Alibaba GPU Cluster Trace v2026 / ASI
+
+Associated study:
+"Heterogeneity at Hyperscale: Characterization and Scheduling of Large
+Production AI Clusters at Alibaba", OSDI 2026.
+
+The trace covers a very large production AI environment.
+
+The key reason ASI is useful is that it separately exposes:
+    job_type_public
+    model_type_public
+    workload_id
+    resource information
+    priority
+    execution duration
+
+The paper/schema describe job/model types as user-provided application
+metadata, providing prospective provenance substantially stronger than
+labels inferred from realized runtime/utilization.
+
+Lifecycle categories include:
+    training
+    dev
+    online
+    offline
+
+Definitions conceptually include:
+    Dev = interactive/ad-hoc prototyping/debugging sessions
+    Training = iterative parameter optimization
+    Offline inference = batch inference such as evaluation/data generation
+    Online inference = user-facing/latency-sensitive serving
+
+job_type_public and model_type_public are distinct constructs.
+
+============================================================
+6. LOCAL MAIN FILE
+============================================================
+
+Expected local file:
+
+    part-000.parquet
+
+This is the extracted:
+
+    asi_opensource_job_execution_summary
+
+Expected schema:
+
+    pod_id
+    workload_id
+    server_id
+    gpu_spec_public
+    priority_class
+    job_type_public
+    model_type_public
+    is_genai_request
+    gpu_request
+    duration_hours
+    schedule_delay_sec
+    ready_delay_sec
+    ready_status
+    schedule_status
+
+Before doing expensive work, verify the actual schema.
+
+If it differs unexpectedly:
+    STOP and report it.
+
+============================================================
+7. FROZEN FIELD SEMANTICS
+============================================================
+
+TARGET:
+
+    duration_hours
+
+PRIMARY LIFECYCLE VARIABLE O:
+
+    job_type_public
+
+RESOURCE/HARDWARE CONTROLS R:
+
+    gpu_request
+    gpu_spec_public
+
+POLICY CONTROL P:
+
+    priority_class
+
+APPLICATION/MODEL CONTROLS A:
+
+    model_type_public
+    is_genai_request
+
+WORKLOAD IDENTITY PROXY W:
+
+    workload_id
+
+Important:
+
+    workload_id is a workload/configuration identity proxy.
+
+It is NOT:
+    user identity
+    planned computational scope
+
+ASI does not expose adequate public L2 scope such as:
+    epochs
+    steps
+    tokens
+    trials
+
+ASI also does not expose adequate public:
+    user/tenant identity
+    user-history controls
+
+Do NOT claim the ASI experiment controls for variables it does not expose.
+
+============================================================
+8. BLACKLISTED PREDICTORS
+============================================================
+
+These fields MUST NOT enter runtime prediction feature matrices:
+
+    duration_hours
+        target
+
+    schedule_delay_sec
+        retrospective/outcome
+
+    ready_delay_sec
+        retrospective/outcome
+
+    ready_status
+        outcome
+
+    schedule_status
+        outcome
+
+    server_id
+        placement outcome
+
+    pod_id
+        identity/join only
+
+Also:
+
+Do NOT use pod_hourly utilization telemetry as prospective runtime
+features.
+
+Do NOT infer lifecycle from:
+    runtime
+    utilization
+    GPU behavior
+    model type
+    hardware
+    outcome fields
+
+Every modeling script should ASSERT that blacklisted variables are absent
+from the feature matrix.
+
+============================================================
+9. COMPLETED EXECUTION-SUMMARY AUDIT
+============================================================
+
+Expected rows:
+
+    40,522,321
+
+Expected unique pod_id values:
+
+    36,685,018
+
+Expected workload_id coverage:
+
+    non-null rows = 4,792,402
+    unique workload IDs = 501,183
+    row coverage ~11.83%
+
+If these numbers differ materially from the local file:
+    STOP and report it.
+
+============================================================
+10. LIFECYCLE DISTRIBUTION
+============================================================
+
+Previously measured:
+
+    offline     32,194,936   ~79.4499%
+    online       5,054,990   ~12.4746%
+    training     2,999,580   ~7.4023%
+    unknown        170,977   ~0.4219%
+    other           70,130   ~0.1731%
+    dev             31,708   ~0.0782%
+
+The execution-summary population is not necessarily distributed like
+the overall production-cluster population described elsewhere in the
+paper.
+
+Any empirical claim must identify the population actually analyzed.
+
+============================================================
+11. MODEL-TYPE DISTRIBUTION
+============================================================
+
+Previously measured:
+
+    genai       32,077,913   ~79.1611%
+    cv           3,660,094   ~9.0323%
+    rec          2,867,756   ~7.0770%
+    unknown      1,393,920   ~3.4399%
+    embedding      496,787   ~1.2260%
+    dev             25,851   ~0.0638%
+
+Lifecycle and model semantics are not interchangeable.
+
+============================================================
+12. TARGET / DURATION AUDIT
+============================================================
+
+duration_hours:
+
+    mean       ~5.153373 h
+    median     ~0.422222 h
+    p95        ~9.688889 h
+    p99        ~59.62222 h
+    p99.9      ~799.5 h
+    max        1824 h
+
+No zero/negative/missing durations were observed.
+
+Approximately 95,804 unique duration values were observed.
+
+Duration appears effectively second-resolution.
+
+There is a conspicuous extreme boundary near:
+
+    1824 h = 76 days
+
+But only approximately 104 executions occur around this extreme boundary.
+
+There is NOT a massive generic pile-up at 76 days.
+
+Therefore:
+
+    do NOT arbitrarily trim the heavy tail.
+
+The target audit was provisionally passed.
+
+Use log-scale modeling/evaluation and explicit tail analyses instead.
+
+============================================================
+13. LIFECYCLE DURATION SEMANTICS
+============================================================
+
+Lifecycle categories have materially different process semantics.
+
+Dev and Online may correspond to long-lived interactive/serving
+residence processes.
+
+Training and Offline inference are more naturally finite execution
+categories.
+
+Therefore the experiment includes BOTH:
+
+A. broad lifecycle analysis
+
+and
+
+B. secondary finite-execution analysis:
+       Training vs Offline
+
+Do NOT redefine the whole research question around Training/Offline.
+
+The broad analysis remains important.
+
+============================================================
+14. WORKLOAD AUDIT
+============================================================
+
+Among non-null workload IDs:
+
+    rows = 4,792,402
+    unique workload IDs = 501,183
+
+Repetition:
+
+    >=2 executions   136,822 workloads
+    >=5               50,870
+    >=10              28,637
+    >=20              18,521
+    >=50              11,438
+    >=100              7,490
+
+Usable workloads in an earlier lifecycle audit:
+    473,265
+
+Workloads containing >=2 lifecycle categories:
+    1,544
+    ~0.326%
+
+Executions belonging to multi-lifecycle workloads:
+    389,236
+    ~8.265%
+
+Within workload + model groups:
+    only 51 groups contained >=2 lifecycle types.
+
+Interpretation:
+
+Lifecycle and workload identity are strongly associated.
+
+A naive within-workload identification strategy is weak.
+
+This does NOT kill the predictive question.
+
+Instead, it motivates an important test:
+
+    Does lifecycle improve prediction on previously unseen workload IDs?
+
+============================================================
+15. STRICT TRAINING/OFFLINE MATCHED COHORT
+============================================================
+
+A previous strict robustness cohort matched observed controls including:
+
+    workload_id
+    model_type_public
+    gpu_request
+    gpu_spec_public
+    priority_class
+
+Known-model Training/Offline result:
+
+    46 configurations
+    784 executions
+
+    training = 355
+    offline  = 429
+
+All were effectively GenAI in that strict known-model cohort.
+
+This sample is too small to carry the main result.
+
+It may be retained as:
+    secondary robustness / diagnostic evidence only.
+
+============================================================
+16. DUPLICATE POD AUDIT
+============================================================
+
+A DuckDB audit established that pod_id is NOT a globally unique
+execution-summary-row identifier.
+
+Multiplicity:
+
+    exactly 1 row: 34,500,558 pods
+    >=2 rows:       2,184,460 pods
+    >=3:              369,193
+    >=5:              142,003
+    >=10:              52,498
+    max rows/pod:          658
+
+Rows belonging to duplicated pods:
+
+    6,021,763
+
+Within duplicated pods, fields changing include:
+
+    workload_id                 74,440 pods   3.41%
+    server_id                  296,263       13.56%
+    gpu_spec_public             11,792        0.54%
+    priority_class               5,972        0.27%
+    job_type_public            108,002        4.94%
+    model_type_public           77,583        3.55%
+    is_genai_request           104,580        4.79%
+    gpu_request                    463        0.02%
+    duration_hours           2,179,948       99.79%
+    schedule_delay_sec         858,957       39.32%
+    ready_delay_sec          1,723,425       78.89%
+    ready_status             1,288,618       58.99%
+    schedule_status            606,234       27.75%
+
+Candidate-key uniqueness:
+
+    pod_id
+        36,685,018 / 40,522,321
+        90.530%
+
+    pod_id + server_id
+        37,459,836
+        92.442%
+
+    pod_id + workload_id
+        36,759,688
+        90.715%
+
+    pod_id + server_id + workload_id
+        37,532,436
+        92.622%
+
+    pod_id + server_id + duration_hours
+        40,253,190
+        99.336%
+
+    pod_id + workload_id + duration_hours
+        40,068,540
+        98.880%
+
+Exact duplicate rows removable:
+    5,644
+
+CRITICAL CONCLUSION:
+
+Do NOT invent a composite execution identifier.
+
+In particular, do not use outcome/placement information such as:
+    duration_hours
+    server_id
+    delays
+    statuses
+
+to manufacture an execution key.
+
+For temporal reconstruction only:
+    restrict to execution-summary rows whose pod_id occurs exactly once.
+
+Do NOT automatically exclude duplicated pod rows from the non-temporal
+main experiment merely because they are duplicated.
+
+============================================================
+17. REMOTE POD_HOURLY DATA
+============================================================
+
+Remote ZIP:
+
+https://tre-clusterdata.oss-cn-hangzhou.aliyuncs.com/cluster-trace-gpu-v2026/data/asi_opensource_pod_hourly.zip
+
+Known object size:
+
+    351,803,513,445 bytes
+
+HTTP byte-range access has already been validated:
+
+    HTTP 206 Partial Content
+    Accept-Ranges: bytes
+
+Do NOT download the full ZIP.
+
+============================================================
+18. POD_HOURLY ZIP STRUCTURE
+============================================================
+
+Central-directory audit established:
+
+    4,440 hourly Parquet members
+    185 days
+    day range 0-184
+    24 hours/day
+    total hourly payload ~327.64 GiB
+
+All 4,440 members use:
+
+    ZIP compression method 0
+    ZIP_STORED
+
+Member layout:
+
+    asi_opensource_pod_hourly/
+        day=<day>/
+        hour=<hour>/
+        part-000.parquet
+
+Typical complete day:
+    ~1.3-2.2 GiB
+
+Hourly members:
+    approximately 35.57-106.76 MiB
+
+============================================================
+19. POD_HOURLY PHYSICAL SCHEMA
+============================================================
+
+A validated hourly Parquet contained 23 physical columns:
+
+    pod_id
+    workload_id
+    server_id
+    cluster_id
+    state_public
+    gpu_spec_public
+    server_gpu_count
+    server_cpu_capacity_cores
+    priority_class
+    job_type_public
+    model_type_public
+    is_genai_request
+    gpu_request
+    gpu_mem_request
+    cpu_request_cores
+    used_gpu_hours
+    avg_gpu_sm_util
+    avg_gpu_mem_gib
+    avg_cpu_request_util
+    avg_memory_util
+    ready_status
+    schedule_delay_sec
+    ready_delay_sec
+
+IMPORTANT:
+
+    day and hour are NOT physical Parquet columns.
+
+They come from the ZIP member path.
+
+For current temporal reconstruction, the essential hourly field is:
+
+    pod_id
+
+Do not turn telemetry/utilization fields into runtime predictors.
+
+============================================================
+20. VALIDATED SELECTIVE EXTRACTION
+============================================================
+
+Day 109 Hour 00 was selectively extracted successfully.
+
+Member:
+
+    asi_opensource_pod_hourly/day=109/hour=00/part-000.parquet
+
+Known metadata:
+
+    file size ~78.70 MiB
+    compression method 0
+    rows = 1,489,135
+    unique pod IDs = 1,489,134
+
+The Parquet validated successfully.
+
+============================================================
+21. DAY109 HOUR00 LINKAGE RESULT
+============================================================
+
+Matching Day109 Hour00 hourly pod IDs against execution-summary pod IDs
+produced:
+
+    matched unique pod IDs = 113,443
+
+Therefore:
+
+    113,443 / 1,489,134
+    ~7.618052%
+
+CRITICAL INTERPRETATION:
+
+This is:
+
+    P(pod exists in execution_summary |
+      pod observed in pod_hourly at D109 H00)
+
+It is NOT:
+
+    P(timestamp recoverable |
+      execution-summary row)
+
+Do NOT report 7.618% as overall temporal coverage.
+
+This single-hour diagnostic primarily proved:
+    remote extraction works
+    Parquet validation works
+    joining works
+
+============================================================
+22. EXISTING TEMPORAL ARTIFACT
+============================================================
+
+Expected file:
+
+    temporal_map.parquet
+
+It was generated from Day109 Hour00.
+
+Expected rows:
+
+    113,443
+
+Expected columns:
+
+    pod_id
+    first_seen_day
+    first_seen_hour
+
+Expected values for the existing rows:
+
+    first_seen_day = 109
+    first_seen_hour = 0
+
+Compressed size was approximately:
+    1.79 MiB
+
+The temporary raw file:
+
+    /tmp/day109_hour00.parquet
+
+was deleted successfully after processing.
+
+Preserve temporal_map.parquet unless validation demonstrates corruption.
+
+============================================================
+23. TEMPORAL RECONSTRUCTION PURPOSE
+============================================================
+
+The execution-summary table has no explicit submission/start day/hour.
+
+We want to know whether a secondary chronological robustness evaluation
+can be constructed:
+
+    past executions -> future executions
+
+This is NOT the main research contribution.
+
+It is a robustness/generalization evaluation.
+
+Because pod_id repeats for some execution-summary rows, we cannot
+unambiguously assign one pod-level first_seen timestamp to every repeated
+execution span.
+
+Therefore temporal reconstruction is restricted to:
+
+    the 34,500,558 execution-summary rows whose pod_id occurs exactly once.
+
+For these eligible rows:
+
+    pod_id -> first_seen_day/hour
+
+is considered unambiguous at the available temporal resolution.
+
+============================================================
+24. TRACK A — FROZEN TEMPORAL FEASIBILITY PROTOCOL
+============================================================
+
+Implement:
+
+    scripts/02_build_temporal_map.py
+
+Purpose:
+
+Determine whether chronological evaluation is feasible and sufficiently
+representative.
+
+INITIAL HARD BOUND:
+
+    Day 108
+    Day 109
+    Day 110
+
+Approximate total full-member transfer:
+
+    Day108 ~1.831 GiB
+    Day109 ~1.875 GiB
+    Day110 ~1.938 GiB
+
+Total:
+    ~5.644 GiB
+
+DO NOT automatically continue beyond Day110.
+
+DO NOT scan all 185 days.
+
+DO NOT download the complete ZIP.
+
+============================================================
+25. TEMPORAL PROCESSING REQUIREMENTS
+============================================================
+
+The temporal script should:
+
+1. Identify the unique-pod eligible execution-summary population.
+
+2. Use efficient local lookup/join structures.
+   Do NOT rescan all 40.5M summary rows independently for every hour.
+
+3. Access the remote ZIP selectively.
+
+4. Process one hourly member at a time.
+
+5. Place temporary raw hourly files under /tmp or another explicitly
+   disposable staging directory.
+
+6. Validate successful extraction and Parquet readability.
+
+7. Read only required data, primarily pod_id.
+
+8. Match against the eligible unique-pod execution-summary population.
+
+9. Record earliest observed day/hour.
+
+10. Persist a compact temporal map.
+
+11. Persist diagnostics after each successfully processed hour.
+
+12. Delete the temporary hourly Parquet ONLY after successful processing
+    and durable checkpointing.
+
+13. Support interruption/resume.
+
+14. Never redownload an already completed hour unless explicitly forced.
+
+15. Log bytes transferred.
+
+16. Log failures.
+
+17. Use atomic/checkpoint-safe writes where practical.
+
+18. Reuse the existing D109H00 temporal-map information rather than
+    losing it.
+
+============================================================
+26. TEMPORAL DIAGNOSTICS
+============================================================
+
+For every processed hour record at least:
+
+    day
+    hour
+    hourly_unique_pods
+    matched_unique_summary_pods
+    newly_recovered_summary_pods
+    cumulative_recovered_summary_pods
+    bytes_transferred
+    processing_status
+
+Also compute lifecycle-stratified recovery using job_type_public from
+the eligible execution-summary population.
+
+After D108-D110 produce a temporal feasibility report containing:
+
+    cumulative eligible-summary coverage
+    per-hour new recovery
+    per-day new recovery
+    lifecycle-specific recovery
+    evidence of any abrupt D108->D109->D110 change
+    bytes transferred
+    processing failures if any
+    estimate of cost/transfer for wider scanning
+
+Do NOT independently decide whether to extend beyond Day110.
+
+Return the report and WAIT for the research decision.
+
+Chronological evaluation may be:
+    KEPT
+or
+    DROPPED
+
+Either result is acceptable.
+
+============================================================
+27. FROZEN PRIMARY POPULATION
+============================================================
+
+Primary broad lifecycle experiment:
+
+    job_type_public in:
+        training
+        offline
+        online
+        dev
+
+Exclude:
+
+    unknown
+    other
+
+from the primary lifecycle experiment.
+
+They may be reported descriptively.
+
+Do NOT silently discard any of the four primary lifecycle categories
+because one is rare.
+
+Do NOT arbitrarily remove long-duration executions.
+
+============================================================
+28. SECONDARY FINITE-EXECUTION POPULATION
+============================================================
+
+Secondary analysis:
+
+    training vs offline
+
+Purpose:
+
+Determine whether lifecycle contributes predictive information without
+depending primarily on the very different long-lived Dev/Online process
+semantics.
+
+This is secondary.
+
+Do not make it the primary population unless the protocol is explicitly
+amended before results are interpreted.
+
+============================================================
+29. FROZEN FEATURE ABLATIONS
+============================================================
+
+Define:
+
+R:
+    gpu_request
+    gpu_spec_public
+
+P:
+    priority_class
+
+A:
+    model_type_public
+    is_genai_request
+
+O:
+    job_type_public
+
+W:
+    workload_id
+
+Required comparisons:
+
+    R
+    vs
+    R + O
+
+    R + P
+    vs
+    R + P + O
+
+    R + P + A
+    vs
+    R + P + A + O
+
+Where meaningful for seen-workload analyses:
+
+    R + P + A + W
+    vs
+    R + P + A + W + O
+
+IMPORTANT:
+
+The strongest generalization question is NOT simply whether adding
+workload_id helps.
+
+It is whether lifecycle type helps on UNSEEN WORKLOADS.
+
+============================================================
+30. TRACK B — MAIN EXPERIMENT
+============================================================
+
+Implement reproducibly:
+
+    scripts/03_build_dataset.py
+    scripts/04_train_baselines.py
+    scripts/05_lifecycle_ablation.py
+    scripts/06_generalization.py
+
+Suggested responsibilities:
+
+03_build_dataset.py
+    validate schema
+    apply frozen population definitions
+    construct frozen feature sets
+    construct split assignments
+    write reusable modeling datasets/split manifests
+    log row counts/exclusions
+
+04_train_baselines.py
+    train M0 models without lifecycle
+    use validation-only model selection
+    persist models/configuration/metrics
+
+05_lifecycle_ablation.py
+    train otherwise equivalent M1 models with lifecycle
+    compare M0 vs M1
+    calculate frozen metrics/effect sizes
+
+06_generalization.py
+    workload-disjoint evaluation
+    broad vs finite-execution analyses
+    tail/lifecycle-stratified analyses
+    bootstrap/uncertainty
+    optional chronological evaluation ONLY if separately approved
+
+Exact file decomposition can vary for good engineering reasons, but the
+scientific protocol cannot.
+
+============================================================
+31. SPLIT PROTOCOL
+============================================================
+
+PRIMARY GENERALIZATION TEST:
+
+    workload-disjoint split
+
+Population:
+    rows with non-null workload_id
+
+Assignment:
+    approximately 70% train
+    15% validation
+    15% test
+
+The grouping unit is:
+    workload_id
+
+NOT individual rows.
+
+No workload_id may appear in more than one split.
+
+Use deterministic fixed seed(s), recorded in protocol/config.
+
+Assert split disjointness.
+
+If violated:
+    fail loudly.
+
+============================================================
+32. NULL WORKLOAD IDs
+============================================================
+
+workload_id is present for only ~11.83% of execution-summary rows.
+
+Rows with NULL workload_id must NOT all be assigned to one fake workload.
+
+For the primary workload-disjoint experiment:
+    exclude rows with null workload_id.
+
+However, do not discard them from the entire study.
+
+Construct a BROAD population analysis not dependent on workload grouping,
+for example the central strong-control comparison:
+
+    R + P + A
+    vs
+    R + P + A + O
+
+Clearly distinguish in outputs/paper:
+
+A. broad execution population
+
+from
+
+B. known-workload / unseen-workload population
+
+Do not imply that the known-workload subset represents all 40.5M rows
+without qualification.
+
+============================================================
+33. SECONDARY SPLITS
+============================================================
+
+Secondary reference:
+
+    random execution split
+
+This is NOT the strongest generalization result.
+
+Optional secondary:
+
+    chronological past -> future split
+
+ONLY activate chronological evaluation after Track A has been reviewed
+and explicitly approved.
+
+Do not automatically activate it just because timestamps exist.
+
+============================================================
+34. PRIMARY MODEL FAMILY
+============================================================
+
+Use:
+
+    LightGBM
+
+The research question concerns information contribution, not model
+competition.
+
+Do NOT introduce a large model zoo.
+
+Do not search for whichever algorithm produces the largest lifecycle
+gain.
+
+If a simple sanity baseline is useful for implementation validation,
+that is acceptable, but LightGBM remains the primary frozen model family.
+
+============================================================
+35. TARGET TRANSFORMATION
+============================================================
+
+Primary modeling target:
+
+    y = log1p(duration_hours)
+
+The original duration remains available for interpretable secondary
+error summaries.
+
+Do not change target transformation based on which produces the strongest
+lifecycle result.
+
+============================================================
+36. HYPERPARAMETER POLICY
+============================================================
+
+Use the same model family and equivalent hyperparameter-selection budget
+for M0 and M1.
+
+Hyperparameters are selected using:
+    training + validation process only
+
+Test data is for:
+    final evaluation only
+
+Do NOT tune on test performance.
+
+Record:
+    exact features
+    exact population
+    exact split
+    seed
+    model parameters
+    software versions
+    training timestamp
+    artifact paths
+
+============================================================
+37. METRICS
+============================================================
+
+PRIMARY METRIC:
+
+    MAE on log1p(duration_hours)
+
+For every paired lifecycle comparison report:
+
+    delta_absolute =
+        MAE(M0) - MAE(M1)
+
+and
+
+    delta_relative_percent =
+        100 * (MAE(M0) - MAE(M1)) / MAE(M0)
+
+Positive delta means lifecycle improved prediction.
+
+Also report:
+
+    Spearman rank correlation
+
+    interpretable original-runtime error summaries where appropriate
+
+    lifecycle-stratified errors
+
+    tail-stratified errors
+
+Do not allow one aggregate number to hide whether improvement comes
+almost entirely from trivially separating long-lived Dev/Online jobs.
+
+============================================================
+38. UNCERTAINTY / BOOTSTRAP
+============================================================
+
+For workload-disjoint evaluation:
+
+Uncertainty estimation must respect workload clustering.
+
+Do not bootstrap millions of individual execution rows as if they were
+independent when the relevant dependence unit is workload.
+
+Use workload-level resampling or another explicitly justified
+cluster-aware approach.
+
+Record the exact procedure.
+
+============================================================
+39. FROZEN PROJECT TRIAGE THRESHOLDS
+============================================================
+
+These thresholds were chosen BEFORE observing the main lifecycle
+ablation result.
+
+Do NOT change them after seeing results.
+
+They are project triage criteria, not universal statistical laws.
+
+STRONG EVIDENCE WORTH CONTINUING:
+
+    approximately >=3% relative improvement in primary LogMAE
+    under a strong generalization setting
+
+OR
+
+    clearly larger >=5% improvement in an important finite/tail subgroup
+
+AND
+
+    direction stable across seeds/bootstrap/robustness checks.
+
+WEAK BUT POTENTIALLY INTERESTING:
+
+    approximately 1-3% improvement
+    that survives strong generalization.
+
+This would require strong mechanism/error analysis.
+
+KILL AS STANDALONE CONTRIBUTION:
+
+    <=1% primary improvement
+
+OR
+
+    lifecycle helps on random/seen-workload evaluation but disappears
+    on unseen workloads
+
+OR
+
+    apparent lifecycle value is almost entirely trivial separation of
+    long-lived Dev/Online residence processes without meaningful
+    finite-execution evidence.
+
+Do NOT substitute statistical significance for effect magnitude.
+
+With tens of millions of rows, tiny effects can have tiny p-values.
+
+============================================================
+40. NO RESULT-DRIVEN PROTOCOL CHANGES
+============================================================
+
+After seeing preliminary results, do NOT independently:
+
+    change populations
+    remove inconvenient categories
+    trim the target differently
+    change target transformation
+    change primary metric
+    change primary split
+    choose a different random seed because results improve
+    add/drop controls because lifecycle effect changes
+    select a different model because it gives a larger lifecycle gain
+    redefine lifecycle
+    redefine novelty
+    change triage thresholds
+
+Any such modification requires an explicit documented protocol amendment.
+
+============================================================
+41. EXISTING LOCAL ARTIFACTS
+============================================================
+
+Useful files may already include:
+
+    part-000.parquet
+    temporal_map.parquet
+    asi_audit.duckdb
+    duplicate_pod_counts.parquet
+
+Existing scripts may include:
+
+    inspect_remote_zip.py
+    analyze_remote_zip_sizes.py
+    process_temporal_hour.py
+    audit_duplicate_pods_duckdb.py
+
+Inspect them.
+
+Reuse working logic where appropriate.
+
+Do not overwrite/delete them merely to make the repository cleaner.
+
+============================================================
+42. KNOWN BAD / INEFFICIENT APPROACHES
+============================================================
+
+Do NOT:
+
+1. Load the entire 40.5M-row multi-column dataset into pandas without
+   necessity.
+
+2. Rescan all 40.5M execution-summary rows independently for every
+   pod_hourly hour.
+
+3. Download the entire ~327.64 GiB pod_hourly payload.
+
+4. Interpret the D109H00 7.618% match as overall temporal coverage.
+
+5. assume pod_id uniquely identifies execution-summary rows.
+
+6. manufacture a composite execution key.
+
+7. use retrospective/outcome variables as predictors.
+
+8. infer lifecycle labels from runtime/utilization/model/hardware.
+
+9. fabricate user/history features.
+
+10. fabricate L2 planned-scope features.
+
+11. claim workload_id is user identity.
+
+12. silently normalize unexpected schema/category differences without
+    reporting them.
+
+13. let exploratory results determine the final protocol.
+
+============================================================
+43. DATA-ENGINEERING STACK
+============================================================
+
+Preferred tools:
+
+DuckDB:
+    large local Parquet scans
+    GROUP BY
+    joins
+    filtering
+    split construction
+    analytical aggregation
+
+PyArrow:
+    Parquet metadata/I/O
+    hourly pod processing
+    remote-member processing
+    compact Parquet artifacts
+
+LightGBM:
+    primary modeling
+
+Avoid distributed infrastructure unless clearly necessary.
+
+This project should remain laptop-feasible where reasonably possible.
+
+============================================================
+44. REPOSITORY / REPRODUCIBILITY STRUCTURE
+============================================================
+
+Create or adapt toward a structure such as:
+
+    config/
+        protocol.yaml
+
+    docs/
+        protocol.md
+        DATASET_AUDIT.md
+
+    scripts/
+        01_target_audit.py
+        02_build_temporal_map.py
+        03_build_dataset.py
+        04_train_baselines.py
+        05_lifecycle_ablation.py
+        06_generalization.py
+
+    artifacts/
+        temporal/
+        datasets/
+        splits/
+        models/
+
+    results/
+        audits/
+        temporal/
+        metrics/
+        bootstrap/
+        tables/
+
+    logs/
+
+    data/
+        README.md
+
+Do not move the giant source Parquet unnecessarily.
+
+Paths should be configurable rather than hard-coded where practical.
+
+============================================================
+45. PROTOCOL FILE
+============================================================
+
+Before running the main experiment, create:
+
+    docs/protocol.md
+
+and:
+
+    config/protocol.yaml
+
+They must encode the frozen scientific decisions in this prompt.
+
+Experiment scripts should read relevant choices from protocol.yaml rather
+than duplicating hidden constants throughout the codebase.
+
+The config should include at least:
+
+    dataset path
+    target
+    lifecycle variable
+    allowed lifecycle categories
+    secondary finite categories
+    feature groups
+    blacklisted predictors
+    split fractions
+    split seed
+    model family
+    target transformation
+    metrics
+    temporal scan bounds
+    triage thresholds
+
+Do not encode result-dependent decisions.
+
+============================================================
+46. DATASET AUDIT DOCUMENT
+============================================================
+
+Create:
+
+    docs/DATASET_AUDIT.md
+
+Populate it with the completed audit facts from this prompt.
+
+Separate:
+
+    OBSERVED FACTS
+
+from:
+
+    INTERPRETATIONS / DESIGN CONSEQUENCES
+
+Examples:
+
+Observed:
+    2,184,460 pod IDs repeat.
+
+Interpretation:
+    pod_id cannot be treated as globally unique execution-row ID.
+
+Observed:
+    7.618% of D109H00 hourly pods matched execution-summary pod IDs.
+
+Interpretation:
+    this is reverse-direction single-hour linkage, not overall temporal
+    coverage.
+
+This distinction matters for paper provenance.
+
+============================================================
+47. LOGGING AND MANIFESTS
+============================================================
+
+Every major script should record:
+
+    source file(s)
+    source schema
+    row counts before filtering
+    row counts after each exclusion
+    category counts
+    feature set
+    split
+    seed
+    output paths
+    software versions
+    elapsed time
+    failures/warnings
+
+Model outputs should include machine-readable manifests.
+
+Do not rely only on terminal output.
+
+============================================================
+48. ASSERTIONS
+============================================================
+
+Add explicit assertions for critical assumptions.
+
+Examples:
+
+    expected target exists
+
+    duration_hours > 0
+
+    job_type_public exists
+
+    no blacklisted predictor in X
+
+    workload IDs are disjoint across grouped splits
+
+    test rows were not used during hyperparameter selection
+
+    temporal mapping only uses eligible unique-pod summary rows
+
+    day/hour parsed from ZIP member path
+
+    D108-D110 hard bound respected unless explicitly overridden after
+    research approval
+
+If an assertion fails:
+    stop rather than silently continuing.
+
+============================================================
+49. CHECKPOINTING / RESUME
+============================================================
+
+Expensive operations must be restartable.
+
+Especially temporal scanning:
+
+After every successfully processed hour:
+    persist progress
+    persist diagnostics
+    persist/update temporal map
+    record member as complete
+    then delete temporary raw Parquet
+
+If interrupted:
+    rerun should continue from the next unfinished member.
+
+Do not require restarting a multi-GiB scan from zero.
+
+============================================================
+50. TEMPORARY FILE SAFETY
+============================================================
+
+Raw hourly Parquets are disposable.
+
+However:
+
+DO NOT delete an hourly file until:
+    extraction succeeded
+    Parquet validated
+    matching succeeded
+    persistent output/checkpoint succeeded
+
+Then delete it automatically.
+
+Never delete:
+    part-000.parquet
+    temporal_map.parquet
+    audit artifacts
+    model outputs
+    protocol files
+
+unless explicitly instructed.
+
+============================================================
+51. COST / BANDWIDTH SAFETY
+============================================================
+
+Temporal automation must track bytes transferred.
+
+Initial authorized remote work is ONLY:
+    Days 108, 109, 110
+
+Do not automatically expand.
+
+If a bug would trigger a complete ZIP download:
+    abort.
+
+If the remote server ignores a Range request unexpectedly:
+    abort rather than downloading the complete object.
+
+============================================================
+52. IMPLEMENTATION PHASES
+============================================================
+
+PHASE 1 — repository inspection
+
+Inspect:
+    files
+    schemas
+    existing scripts
+    installed packages
+    existing artifacts
+
+Return a concise state report.
+
+PHASE 2 — protocol materialization
+
+Create:
+    docs/protocol.md
+    docs/DATASET_AUDIT.md
+    config/protocol.yaml
+
+Do not run expensive experiments.
+
+PHASE 3 — smoke validation
+
+Validate:
+    expected execution-summary schema
+    expected row count
+    expected categories
+    existing temporal_map
+    DuckDB/PyArrow/LightGBM availability
+    split construction on a small sample
+    feature blacklist assertions
+
+PHASE 4 — implement Track A and Track B scripts
+
+Implement reproducibly with tests/checks.
+
+PHASE 5 — small-scale dry run
+
+Use a bounded sample to verify:
+    preprocessing
+    encoding
+    model training
+    M0/M1 parity
+    metrics
+    output manifests
+    split integrity
+
+Do not interpret sample lifecycle effects scientifically.
+
+PHASE 6 — report readiness
+
+Before launching expensive/full runs, report:
+
+    what was implemented
+    tests passed
+    expected runtime
+    expected RAM
+    expected disk use
+    expected remote transfer
+    remaining risks
+
+Then wait for approval before expensive remote/full-model work if the
+environment supports interactive approval.
+
+============================================================
+53. SCIENTIFIC OUTPUT EXPECTATIONS
+============================================================
+
+Eventually the pipeline should make it straightforward to produce
+paper-ready tables such as:
+
+Feature ablation:
+
+    Features            M0 LogMAE    M1 LogMAE    Relative Δ
+    R
+    R+P
+    R+P+A
+    ...
+
+Generalization:
+
+    Evaluation          M0           M1           Relative Δ
+    random
+    unseen workload
+    chronological (if approved)
+
+Population robustness:
+
+    Population          M0           M1           Relative Δ
+    broad lifecycle
+    training/offline
+    tail groups
+
+Lifecycle-specific error tables should also be available.
+
+Do NOT fabricate or pre-fill results.
+
+============================================================
+54. PAPER-PROVENANCE PRINCIPLE
+============================================================
+
+We want a defensible sequence:
+
+    hypothesis
+        ->
+    prior-art audit
+        ->
+    dataset audit
+        ->
+    protocol freeze
+        ->
+    implementation
+        ->
+    results
+
+The code should preserve this provenance.
+
+Do not retroactively rewrite protocol files after results without clearly
+versioning/documenting the amendment.
+
+============================================================
+55. CURRENT RESEARCH STATUS
+============================================================
+
+Open-ended hypothesis exploration is finished.
+
+The project is entering implementation.
+
+Two tracks can proceed:
+
+TRACK A:
+    bounded temporal feasibility
+    D108-D110 only initially
+
+TRACK B:
+    main lifecycle-ablation experiment
+
+Track A does NOT block Track B.
+
+The primary experiment does not require chronological timestamps.
+
+The primary strong generalization evaluation is workload-disjoint.
+
+============================================================
+56. WHAT I WANT FROM YOU FIRST
+============================================================
+
+Do NOT start by running the experiment.
+
+First:
+
+1. Inspect the repository and existing artifacts.
+
+2. Verify whether the expected files/schemas/audit artifacts are present.
+
+3. Identify any discrepancies between the repository and this prompt.
+
+4. Assess whether existing scripts can be reused safely.
+
+5. Propose the exact repository changes/files you intend to create.
+
+6. Explain the implementation architecture for:
+       Track A temporal feasibility
+       Track B main experiment
+
+7. Identify likely RAM/disk/bandwidth bottlenecks on a MacBook Air.
+
+8. Explain how you will prevent:
+       leakage
+       split contamination
+       accidental full ZIP download
+       repeated 40M-row rescans
+       result-driven protocol changes
+
+9. Create the protocol/audit/config files only after reconciling the
+   repository state with this prompt.
+
+10. Run inexpensive smoke checks.
+
+Then report back before launching expensive computation.
+
+Remember:
+
+YOU ARE IMPLEMENTING A FROZEN EXPERIMENT.
+
+If the data contradict an assumption, surface the contradiction.
+Do not quietly redesign the study.

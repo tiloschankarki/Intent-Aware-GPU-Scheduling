@@ -1,0 +1,66 @@
+{
+  "synthetic_seed_runs": 10,
+  "candidate_fits": 240,
+  "intermediate_report_seed_statuses": {
+    "not_started": 8,
+    "complete": 2
+  },
+  "final_report_seed_statuses": {
+    "complete": 10
+  },
+  "resume_exact": true,
+  "pilot_gate_recovery": true,
+  "native_archive_parity_fits": 4,
+  "historical_test_accessed": false,
+  "research_model_fits": 0,
+  "synthetic_resource_bounds_scaled": true,
+  "production_colab_pilot_executed": false,
+  "verified_utc": "2026-10-28T17:56:07.847684+00:00",
+  "contract_tests_passed": 11,
+  "contract_coverage": [
+    "two-map exclusion union and malformed maps",
+    "execution/equal-workload metric weighting",
+    "missing category encoding",
+    "exact encoded-profile support and concentration",
+    "committed checksum and binding corruption",
+    "no overwrite of completed checkpoint",
+    "pilot marker recovery after summary commit",
+    "new test labels excluded from seed frames",
+    "sampled memory reserve violation persists",
+    "completed summary cannot hide a corrupt candidate"
+  ],
+  "runner_sha256": "920ffa415981344292a5e4a0465ad9962e55143a8d67e32fa5980f5f6fb97be4",
+  "prior_inputs_final_hash_check": [
+    {
+      "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/split-map.parquet",
+      "sha256": "222d5c8464ccb48e9a507a81fd838728cee5707e380254340a9c0917426cbaf1",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/tiloschan/Downloads/asi_robustness_20261020/split_map.parquet",
+      "sha256": "e06c43ec87176849b1073c73912eceb454b4094824531ae945b16d7847510c09",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/train_20260927.parquet",
+      "sha256": "18f6cbc9e7c12caf23e3f3ee2591aed608be773b114f4e19e8de9a2abd9a3e2a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/tiloschan/Documents/Codex/2026-10-26/referenced-chatgpt-conversation-this-is-an-5/outputs/ASI_recovery_20260927/validation_20260927.parquet",
+      "sha256": "ced84beb3cebfb1faee3321e243965b35a042288f30fe40aeafe960dec56f8dd",
+      "unchanged": true
+    }
+  ],
+  "review": {
+    "independent_reviewer": "found sampled-reserve breach could be forgotten; reproduced and fixed with regression test",
+    "limitation": "reviewer did not inspect latest verify_seed helper; covered by parent review and corruption regression"
+  },
+  "research_results_status": "not executed; pilot and sweep pending in Colab",
+  "historical_test_files_opened": false,
+  "historical_test_outcomes_inspected": false,
+  "eligible_population": {
+    "executions": 3372430,
+    "workloads": 341617
+  }
+}
